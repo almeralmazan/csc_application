@@ -4,7 +4,8 @@ class HomeController extends BaseController {
 
 	public function index()
 	{
-		return View::make('home.index');
+        $title = 'Home Page';
+		return View::make('home.index', compact('title'));
 	}
 
 }
