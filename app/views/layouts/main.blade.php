@@ -7,7 +7,8 @@
     <title>{{ $title }}</title>
 
     <!-- Bootstrap -->
-    {{ HTML::link('css/bootstrap.min.css') }}
+    <!-- Latest compiled and minified CSS -->
+    {{ HTML::link('//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css') }}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -24,7 +25,7 @@
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 {{ HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') }}
-<!-- Include all compiled plugins (below), or include individual files as needed -->
-{{ HTML::script('js/bootstrap.min.js') }}
+<!-- Latest compiled and minified JavaScript -->
+<script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
 </body>
 </html>
