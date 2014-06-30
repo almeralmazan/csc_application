@@ -17,9 +17,15 @@
                 <li class="{{ set_active('/') }}">
                     {{ HTML::link('/', 'Home') }}
                 </li>
-                <li><a href="index.html">Application Form</a></li>
-                <li><a href="passers.html">List of Passers</a></li>
-                <li><a href="payment.html">Payment</a></li>
+                <li class="{{ set_active('application-form') }}">
+                    {{ HTML::link('application-form', 'Application Form') }}
+                </li>
+                <li class="{{ set_active('list-of-passers') }}">
+                    {{ HTML::link('list-of-passers', 'List of Passers') }}
+                </li>
+                <li class="{{ set_active('payment') }}">
+                    {{ HTML::link('payment', 'Payment') }}
+                </li>
             </ul>
             <form class="navbar-form navbar-right" role="search">
                 <div class="form-group">
