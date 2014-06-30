@@ -27,12 +27,16 @@
                     {{ HTML::link('payment', 'Payment') }}
                 </li>
             </ul>
+
+            @if ( ! Auth::guest())
             <form class="navbar-form navbar-right" role="search">
                 <div class="form-group">
                     <span id="welcome">Welcome, Guest</span>
                 </div>
                 <button type="submit" class="btn btn-default">Logout</button>
             </form>
+            @endif
+
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>
