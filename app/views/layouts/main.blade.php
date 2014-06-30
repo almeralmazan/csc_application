@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>{{ $title }}</title>
 
+    <link rel="icon" type="image/ico" href="{{ URL::to('img/favicon.ico') }}"/>
+
     <!-- Bootstrap -->
     {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/bootstrap-datetimepicker.min.css', ['media' => 'screen']) }}
