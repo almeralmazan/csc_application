@@ -16,14 +16,11 @@
         </div>
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label for="date">Date
-                    of birth</label>
+                <label for="date">Date of birth</label>
             </div>
             <div class="col-md-6">
-                <!-- <input type="text" class="form-control" id="gender" placeholder="Suffix"> -->
-                <div class="input-group date form_date col-md-5" data-date="" data-date-format="MM dd, yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                <div class="input-group date form_date col-md-5" data-date="" data-date-format="MM d, yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
                     <input name="date" class="form-control" size="16" type="text" value="" readonly>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
                 <input type="hidden" id="dtp_input2" value="" />
