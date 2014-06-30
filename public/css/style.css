@@ -1,0 +1,90 @@
+/*general styles*/
+.container {
+	max-width: 1200px;
+}
+
+.content {
+	margin-top: 100px; 
+}
+
+span#welcome {
+	margin-right: 10px;
+}
+
+hr.divider-before-footer {
+	margin-top: 100px;
+}
+
+footer {
+	padding-bottom: 20px;
+}
+/*home page*/
+
+img.logo {
+	width: 100%;
+}
+
+/*applicant's Page*/
+
+div.form-applicant {
+	
+}
+
+h3.form-category-title {
+	text-transform: uppercase;
+	text-align: center;
+}
+
+div.form-category-row {
+	margin-bottom: 15px; 
+}
+
+div.form-category-row:last-child {
+	margin-bottom: 0; 
+}
+
+div.form-category-row label {
+	display:block;
+	text-align: right;
+	margin-top:5px;	
+}
+
+div.requirements-subtitle {
+	margin-top: 30px;
+}
+
+/*passers*/
+
+.search-query {
+	margin-bottom: 50px;
+}
+
+/*MEDIA QUERIES*/
+@media (max-width: 768px) {
+	.logo {
+		width: 200%; 
+	}
+}
+@media (max-width: 992px) {
+
+		/*passers page*/
+
+	div.applicant-name,
+	div.place-of-birth,
+	div.maiden-name,
+	div.address,
+	div.civil-status,
+	div.requirements,
+	div.exam-level {
+		margin-bottom: 10px;
+	}
+
+  	div.form-category-row label {
+		display:block;
+		text-align: left;
+		margin-top:5px;	
+	}
+}
+@media (min-width: 1200px) {
+
+}
