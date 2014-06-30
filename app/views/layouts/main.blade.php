@@ -4,11 +4,12 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>{{ $title }} | Civil Service Commission</title>
+    <title>{{ $title }}</title>
 
     <!-- Bootstrap -->
-    <!-- Latest compiled and minified CSS -->
-    {{ HTML::style('//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css') }}
+    {{ HTML::style('css/bootstrap.min.css') }}
+    {{ HTML::style('css/bootstrap-datetimepicker.min.css', ['media' => 'screen']) }}
+    {{ HTML::style('css/style.css') }}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
@@ -18,12 +19,18 @@
     <![endif]-->
 </head>
 <body>
+    @include('layouts.partials.header-nav')
 
-    <div class="container">
+    <div class="container content">
         @yield('content')
+        @include('layouts.partials.footer')
     </div>
 
-{{ HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') }}
-{{ HTML::script('//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js') }}
+    <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
+    {{ HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') }}
+    <!-- Include all compiled plugins (below), or include individual files as needed -->
+    {{ HTML::script('js/bootstrap.min.js') }}
+    {{ HTML::script('js/bootstrap-datetimepicker.js') }}
+    {{ HTML::script('js/script.js') }}
 </body>
 </html>
