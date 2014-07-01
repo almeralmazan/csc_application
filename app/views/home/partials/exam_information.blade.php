@@ -16,25 +16,26 @@
                 <label for="exam-mode">Exam mode</label>
             </div>
             <div class="col-md-3">
-                <select class="form-control">
-                    <option value="" selected>--select exam mode--</option>
-                    <option value="">Paper and pencil Test</option>
-                    <option value="">Computer-assisted Test</option>
+                <select id="exam-mode" name="exam_mode" class="form-control">
+                    <option value="" selected>-- Select Exam Mode --</option>
+                    <option value="ppt">Paper-and-Pencil Test (PPT)</option>
+                    <option value="cat">Computer-Assisted Test (CAT)</option>
                 </select>
             </div>
         </div>
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label for="exam-mode">Exam level</label>
+                <label for="exam-level">Exam level</label>
             </div>
             <div class="col-md-3 exam-level">
-                <select class="form-control">
-                    <option value="" selected>--select exam level--</option>
-                    <option value="">CSE - Sub professional</option>
-                    <option value="">CSE - Professional</option>
-                    <option value="">Others</option>
+                <select id="exam-level" name="exam_level" class="form-control">
+                    <option value="" selected>-- Select Exam Level --</option>
+                    <option value="subpro">CSE - Sub professional</option>
+                    <option value="pro">CSE - Professional</option>
+                    <option value="other">Others</option>
                 </select>
             </div>
+            <!-- what is lexam-level -->
             <div class="col-md-3 lexam-level">
                 <input class="form-control" type="text" placeholder="If others, specify">
             </div>
@@ -49,11 +50,13 @@
         </div>
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label for="regional-office">CSC Regional office</label>
+                <label for="regional-office">CSC Regional Office</label>
             </div>
-            <div class="col-md-3">
+            <div class="col-md-8">
                 <select class="form-control">
-                    <option value="" selected>--Select Regional office--</option>
+                    <option value="" selected>-- Select Regional Office --</option>
+                    <option value="" selected>CSCRO 3 - Diosdado Macapagal Government Center Maimpis, City of San Fernando, Pampanga</option>
+
                 </select>
             </div>
         </div>
@@ -66,7 +69,7 @@
         </div>
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label>Date start</label>
+                <label>Date Start</label>
             </div>
             <div class="col-md-3">
                 <div class="input-group date form_date col-md-12" data-date="" data-date-format="MM d, yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
@@ -132,13 +135,13 @@
         </div>
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label for="exam-mode">Exam level</label>
+                <label for="exam-mode">Exam Level</label>
             </div>
             <div class="col-md-3 exam-level">
                 <select class="form-control">
-                    <option value="" selected>--select exam level--</option>
-                    <option value="">CSE - Sub professional</option>
-                    <option value="">CSE - Professional</option>
+                    <option value="" selected>-- Select Exam Level --</option>
+                    <option value="exam-level-subpro">CSE - Sub professional</option>
+                    <option value="exam-level-pro">CSE - Professional</option>
                     <option value="">Others</option>
                 </select>
             </div>

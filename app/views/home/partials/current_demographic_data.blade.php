@@ -44,17 +44,13 @@
                 <label for="civil-status">Civil status</label>
             </div>
             <div class="col-md-2 civil-status">
-                <select class="form-control" id="civil-status">
+                <select class="form-control" id="civil-status" name="civil_status">
                     <option value="" selected>Single</option>
-                    <option value="">Married</option>
-                    <option value="">Widowed</option>
-                    <option value="">Legally separated</option>
-                    <option value="">Anulled</option>
-                    <option value="">Others</option>
+                    <option value="married">Married</option>
+                    <option value="widowed">Widowed</option>
+                    <option value="legally_separated">Legally Separated</option>
+                    <option value="anulled">Anulled</option>
                 </select>
-            </div>
-            <div class="col-md-3 civil-status">
-                <input type="text" class="form-control" id="citizenship" placeholder="If other, please specify">
             </div>
         </div>
         <div class="row form-category-row">
@@ -62,7 +58,7 @@
                 <label for="mobile-number">Mobile #</label>
             </div>
             <div class="col-md-3">
-                <input class="form-control" id="mobile-number" type="text" placeholder="">
+                <input class="form-control" id="mobile-number" type="text" placeholder="Example format:   +639439115188">
             </div>
         </div>
         <div class="row form-category-row">
@@ -70,7 +66,7 @@
                 <label for="phone-number">Phone #</label>
             </div>
             <div class="col-md-3">
-                <input class="form-control"  id="phone-number" type="text" placeholder="">
+                <input class="form-control"  id="phone-number" type="text" placeholder="(optional)">
             </div>
         </div>
         <div class="row form-category-row">
@@ -78,7 +74,7 @@
                 <label for="email">Email</label>
             </div>
             <div class="col-md-3">
-                <input class="form-control" id="email" type="email" placeholder="">
+                <input class="form-control" id="email" type="email" placeholder="Email Address">
             </div>
         </div>
     </div>

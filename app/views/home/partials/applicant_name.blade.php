@@ -6,16 +6,16 @@
 </div>
 <div class="row form-applicant">
     <div class="col-md-3 applicant-name">
-        <input type="text" class="form-control" placeholder="Last name">
+        <input type="text" class="form-control" name="applicant_last_name" placeholder="Last Name" autofocus>
     </div>
     <div class="col-md-3 applicant-name">
-        <input type="text" class="form-control" placeholder="First name">
+        <input type="text" class="form-control" name="applicant_first_name" placeholder="First Name">
     </div>
     <div class="col-md-3 applicant-name">
-        <input type="text" class="form-control" placeholder="Middle name">
+        <input type="text" class="form-control" name="applicant_middle_name" placeholder="Middle Name">
     </div>
     <div class="col-md-3 applicant-name">
-        <input type="text" class="form-control" placeholder="Suffix">
+        <input type="text" class="form-control" name="applicant_suffix" placeholder="Suffix ex. Jr, Sr">
     </div>
 </div>
 
