@@ -12,7 +12,8 @@ class HomeController extends BaseController {
     {
         $title = 'Application Form';
         $cities_and_provinces = CityProvince::all();
-        return View::make('home.application_form', compact('title', 'cities_and_provinces'));
+        $branches = CscRegionalOffice::all();
+        return View::make('home.application_form', compact('title', 'cities_and_provinces', 'branches'));
     }
 
     public function listOfPassers()
