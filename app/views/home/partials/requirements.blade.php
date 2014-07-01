@@ -8,7 +8,7 @@
                 <label for="applicant-photo">Upload ID picture</label>
             </div>
             <div class="col-md-2">
-                <input type="file" id="applicant-photo">
+                <input type="file" id="applicant-photo" name="picture-photo">
             </div>
         </div>
         <div class="row form-category-row">
@@ -17,12 +17,11 @@
             </div>
             <div class="col-md-3 requirements">
                 <select class="form-control" id="type-of-requirements">
-                    <option value="" selected>--select type of requirements--</option>
-                    <option value=""></option>
+                    <option value="" selected>-- Select Type of Requirements --</option>
                 </select>
             </div>
             <div class="col-md-2 requirements">
-                <input type="file">
+                <input type="file" name="first_requirement">
             </div>
         </div>
         <div class="row form-category-row">
@@ -31,12 +30,11 @@
             </div>
             <div class="col-md-3 requirements">
                 <select class="form-control" id="type-of-requirements">
-                    <option value="" selected>--select type of requirements--</option>
-                    <option value=""></option>
+                    <option value="" selected>-- Select Type of Requirements --</option>
                 </select>
             </div>
             <div class="col-md-2 requirements">
-                <input type="file">
+                <input type="file" name="second_requirement">
             </div>
         </div>
     </div>

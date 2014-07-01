@@ -8,7 +8,7 @@
                 <label for="csid-no">CSID #</label>
             </div>
             <div class="col-md-3">
-                <input type="text" class="form-control" id="csid-no" placeholder="Filipino">
+                <input type="text" class="form-control" id="csid-no" placeholder="Ex. 1000-0-1">
             </div>
         </div>
         <div class="row form-category-row">
@@ -55,7 +55,9 @@
             <div class="col-md-8">
                 <select class="form-control">
                     <option value="" selected>-- Select Regional Office --</option>
-                    <option value="" selected>CSCRO 3 - Diosdado Macapagal Government Center Maimpis, City of San Fernando, Pampanga</option>
+                    @foreach ($branches as $branch)
+                        <option value="{{ $branch->id }}">{{ $branch->branch }}</option>
+                    @endforeach
 
                 </select>
             </div>

@@ -7,28 +7,15 @@
             <div class="col-md-3">
                 <label for="address">Address</label>
             </div>
-            <div class="col-md-3 address">
-                <select class="form-control" id="address">
-                    <option value="" selected>--select city or province--</option>
-                    <option value=""></option>
-                </select>
-            </div>
-            <div class="col-md-2 address">
-                <select class="form-control">
-                    <option value="" selected>--select--</option>
-                    <option value=""></option>
-                </select>
+            <div class="col-md-6 address">
+                <input class="form-control" type="text" placeholder="# Street, Barangay, City or Province">
             </div>
             <div class="col-md-2">
-                <input class="form-control" type="text" placeholder="Baranggay">
+                <input class="form-control" type="text" placeholder="Zip code">
             </div>
         </div>
         <div class="row form-category-row">
             <div class="col-md-3">
-                <!-- walang laman to -->
-            </div>
-            <div class="col-md-2">
-                <input class="form-control" type="text" placeholder="Zip code">
             </div>
         </div>
         <div class="row form-category-row">
@@ -45,7 +32,7 @@
             </div>
             <div class="col-md-2 civil-status">
                 <select class="form-control" id="civil-status" name="civil_status">
-                    <option value="" selected>Single</option>
+                    <option value="single" selected>Single</option>
                     <option value="married">Married</option>
                     <option value="widowed">Widowed</option>
                     <option value="legally_separated">Legally Separated</option>
@@ -58,7 +45,7 @@
                 <label for="mobile-number">Mobile #</label>
             </div>
             <div class="col-md-3">
-                <input class="form-control" id="mobile-number" type="text" placeholder="Example format:   +639439115188">
+                <input class="form-control" id="mobile-number" name="mobile_number" type="text" placeholder="Example format:  09439115188">
             </div>
         </div>
         <div class="row form-category-row">
@@ -66,7 +53,7 @@
                 <label for="phone-number">Phone #</label>
             </div>
             <div class="col-md-3">
-                <input class="form-control"  id="phone-number" type="text" placeholder="(optional)">
+                <input class="form-control" id="phone-number" name="phone_number" type="text" placeholder="(optional)">
             </div>
         </div>
         <div class="row form-category-row">
