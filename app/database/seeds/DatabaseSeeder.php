@@ -16,6 +16,9 @@ class DatabaseSeeder extends Seeder {
 
         $this->call('CscRegionalOfficeTableSeeder');
         $this->command->info('CscRegionalOffice table seeded!');
+
+        $this->call('UserTableSeeder');
+        $this->command->info('User table seeded!');
 	}
 
 }
