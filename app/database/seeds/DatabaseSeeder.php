@@ -13,6 +13,9 @@ class DatabaseSeeder extends Seeder {
 
         $this->call('CityProvinceTableSeeder');
         $this->command->info('CityProvince table seeded!');
+
+        $this->call('CscRegionalOfficeTableSeeder');
+        $this->command->info('CscRegionalOffice table seeded!');
 	}
 
 }
