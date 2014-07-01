@@ -32,6 +32,13 @@ App::after(function($request, $response)
 | integrates HTTP Basic authentication for quick, simple checking.
 |
 */
+Route::filter('admin', function()
+{
+    if (Auth::user()->role != 'admin')
+    {
+        return Redirect::to('admin/login');
+    }
+});
 
 Route::filter('auth', function()
 {
