@@ -1,5 +1,5 @@
-@extends('layouts.admin')
+@extends('layouts.admin-processor')
 
 @section('content')
-    <h1>Admin</h1>
+
 @stop
