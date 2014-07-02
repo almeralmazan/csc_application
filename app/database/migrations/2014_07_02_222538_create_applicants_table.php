@@ -45,8 +45,10 @@ class CreateApplicantsTable extends Migration {
             $table->string('testing_centers_location')->nullable(false);
             $table->date('schedule_date_start');
             $table->date('schedule_date_end');
-            $table->date('schedule_time_start');
-            $table->date('schedule_time_end');
+            $table->time('schedule_time_start');
+            $table->time('schedule_time_end');
+            $table->string('previous_exam_level', 20);
+            $table->date('previous_date_exam_taken');
 
             // Requirements
             $table->string('upload_id_picture', 50);

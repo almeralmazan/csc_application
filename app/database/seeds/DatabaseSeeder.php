@@ -22,6 +22,9 @@ class DatabaseSeeder extends Seeder {
 
         $this->call('RequirementTableSeeder');
         $this->command->info('Requirement table seeded!');
+
+        $this->call('ApplicantTableSeeder');
+        $this->command->info('Applicant table seeded!');
 	}
 
 }
