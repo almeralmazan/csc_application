@@ -32,12 +32,7 @@
                     <option value="" selected>-- Select Exam Level --</option>
                     <option value="subpro">CSE - Sub professional</option>
                     <option value="pro">CSE - Professional</option>
-                    <option value="other">Others</option>
                 </select>
-            </div>
-            <!-- what is lexam-level -->
-            <div class="col-md-3 lexam-level">
-                <input class="form-control" type="text" placeholder="If others, specify">
             </div>
         </div>
         <div class="row form-category-row">
@@ -50,7 +45,7 @@
         </div>
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label for="regional-office">CSC Regional Office</label>
+                <label for="testing-center-location">Testing Centers</label>
             </div>
             <div class="col-md-8">
                 <select class="form-control">
