@@ -11,9 +11,8 @@
         </div><!-- /input-group -->
     </div><!-- /.col-md-4 -->
     <div class="col-md-3">
-        <div class="input-group date form_date col-md-12" data-date="" data-date-format="MM dd yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-            <input name="date" class="form-control" size="16" type="text" value="2014-06-30" readonly>
-            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+        <div class="input-group date form_date col-md-12" data-date="" data-date-format="MM d, yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+            <input name="date" class="form-control" size="16" type="text" value="" readonly>
             <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
         </div>
         <input type="hidden" id="dtp_input2" value="" />
@@ -28,27 +27,20 @@
 <div class="row">
     <table class="table table-hover">
         <thead>
-        <tr>
-            <th>#</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-        </tr>
+            <tr>
+                <th>#</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+            </tr>
         </thead>
         <tbody>
-        <tr>
-            <td>0001</td>
-            <td>Mark</td>
-            <td>Otto</td>
-        </tr>
-        <tr>
-            <td>0002</td>
-            <td>Jacob</td>
-            <td>Thornton</td>
-        </tr>
-        <tr>
-            <td>0003</td>
-            <td colspan="2">Larry the Bird</td>
-        </tr>
+            @foreach ($applicants as $applicant)
+            <tr>
+                <td>{{ $applicant->csid_no }}</td>
+                <td>{{ $applicant->applicant_first_name }}</td>
+                <td>{{ $applicant->applicant_last_name }}</td>
+            </tr>
+            @endforeach
         </tbody>
     </table>
 </div>
