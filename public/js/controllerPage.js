@@ -5,6 +5,12 @@ var controllerPage = function() {
 
     var init = function() {
 
+            $('#processor-form').on('submit', function(e) {
+                e.preventDefault();
+
+                getProcessorLoginInputs();
+            });
+
             $('#admin-form').on('submit', function(e) {
                 e.preventDefault();
 
@@ -86,6 +92,22 @@ var controllerPage = function() {
 //            });
 //        },
 //
+        getProcessorLoginInputs = function() {
+            dataService.processorLogin()
+                .done( function(data) {
+                    if ( ! data.success) {
+                        $('.login-error')
+                            .addClass('alert alert-danger')
+                            .text(data.message);
+                    } else {
+                        window.location.href = urlBase + '/processor';
+                    }
+                })
+                .fail( function(jqXHR, textStatus, error) {
+                    console.log(textStatus);
+                });
+        },
+
         getAdminLoginInputs = function() {
             dataService.adminLogin()
                 .done( function(data) {

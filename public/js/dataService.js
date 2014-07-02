@@ -6,6 +6,14 @@ var dataService = function () {
 //            return $.post(urlBase + '/admin/login');
 //        };
 
+        processorLogin = function() {
+            return $.ajax({
+                url: urlBase + '/processor/login',
+                type: 'post',
+                data: $('#processor-form').serialize()
+            });
+        },
+
         adminLogin = function() {
             return $.ajax({
                 url: urlBase + '/admin/login',
@@ -51,6 +59,7 @@ var dataService = function () {
     // },
 
     return {
+        processorLogin: processorLogin,
         adminLogin: adminLogin
     };
 }();
