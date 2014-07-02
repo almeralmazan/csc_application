@@ -40,6 +40,14 @@ Route::filter('admin', function()
     }
 });
 
+Route::filter('processor', function()
+{
+    if (Auth::guest())
+    {
+        return Redirect::to('processor/login');
+    }
+});
+
 Route::filter('auth', function()
 {
 	if (Auth::guest())
