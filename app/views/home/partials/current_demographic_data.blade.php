@@ -8,10 +8,10 @@
                 <label for="address">Address</label>
             </div>
             <div class="col-md-6 address">
-                <input class="form-control" type="text" placeholder="# Street, Barangay, City or Province">
+                <input class="form-control" type="text" name="current_demographic_data_address" placeholder="# Street, Barangay, City or Province">
             </div>
             <div class="col-md-2">
-                <input class="form-control" type="text" placeholder="Zip code">
+                <input class="form-control" type="text" name="current_demographic_data_zipcode" placeholder="Zip code">
             </div>
         </div>
         <div class="row form-category-row">
@@ -23,7 +23,7 @@
                 <label for="citizenship">Citizenship</label>
             </div>
             <div class="col-md-2">
-                <input type="text" class="form-control" id="citizenship" placeholder="Filipino" readonly>
+                <input type="text" class="form-control" id="citizenship" name="citizenship" placeholder="Filipino" readonly>
             </div>
         </div>
         <div class="row form-category-row">
@@ -61,7 +61,7 @@
                 <label for="email">Email</label>
             </div>
             <div class="col-md-3">
-                <input class="form-control" id="email" type="email" placeholder="Email Address">
+                <input class="form-control" id="email" type="email" name="email" placeholder="Email Address">
             </div>
         </div>
     </div>
