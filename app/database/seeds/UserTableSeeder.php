@@ -16,6 +16,12 @@ class UserTableSeeder extends Seeder {
             'password'  =>  Hash::make('admin'),
             'role'      =>  'admin'
         ]);
+
+        User::create([
+            'username'  =>  'processor',
+            'password'  =>  Hash::make('processor'),
+            'role'      =>  'processor'
+        ]);
     }
 
 }
