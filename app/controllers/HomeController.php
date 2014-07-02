@@ -42,7 +42,7 @@ class HomeController extends BaseController {
             'maiden_last_name'                  =>  'required',
             'maiden_first_name'                 =>  'required',
             'maiden_middle_name'                =>  'required',
-            'current_demographic_data_address'  =>  'required',
+            'address'                           =>  'required',
             'mobile_number'                     =>  'required|regex:/^(09)([0-9]{9})$/',
             'email'                             =>  'required|email|unique:applicants',
             'testing_centers_location'          =>  'not_in:empty',

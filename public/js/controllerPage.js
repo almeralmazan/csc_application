@@ -141,15 +141,10 @@ var controllerPage = function() {
                         errorsContainer.addClass('alert alert-danger');
                         ulContainer.html(result);
 
-//                        $('#error-message')
-//                            .addClass('alert alert-danger')
-//                            .text(data.message);
-
-//                        console.log(data.message);
+                        window.parent.scrollTo(0,0);
 
                     } else {
                         window.location.href = urlBase + '/applicant-success-page';
-//                        console.log('Success go to landing page');
                     }
                 })
                 .fail( function(jqXHR, textStatus, error) {
