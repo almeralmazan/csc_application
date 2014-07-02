@@ -8,10 +8,7 @@
                 <label for="address">Address</label>
             </div>
             <div class="col-md-6 address">
-                <input class="form-control" type="text" name="current_demographic_data_address" placeholder="# Street, Barangay, City or Province">
-            </div>
-            <div class="col-md-2">
-                <input class="form-control" type="text" name="current_demographic_data_zipcode" placeholder="Zip code">
+                <input class="form-control" type="text" name="address" placeholder="# Street, Barangay, City or Province">
             </div>
         </div>
         <div class="row form-category-row">

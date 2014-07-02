@@ -5,6 +5,8 @@ Route::get('/', 'HomeController@home');
 Route::get('application-form', 'HomeController@applicationForm');
 Route::get('list-of-passers', 'HomeController@listOfPassers');
 Route::get('payment', 'HomeController@payment');
+Route::post('validate-inputs', 'HomeController@validateAllInputs');
+Route::get('applicant-success-page', 'HomeController@successPage');
 
 Route::get('admin/login', 'AdminController@loginPage');
 Route::post('admin/login', 'AdminController@verifyLogin');

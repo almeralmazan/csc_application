@@ -17,7 +17,7 @@
             </div>
             <div class="col-md-3 requirements">
                 <select class="form-control" id="type-of-requirement-1" name="requirement_type_1">
-                    <option value="" selected>-- Select Type of Requirements --</option>
+                    <option value="empty" selected>-- Select Type of Requirements --</option>
                     @foreach ($requirements as $requirement)
                     <option value="{{ $requirement->type }}">{{ $requirement->type }}</option>
                     @endforeach
@@ -33,7 +33,7 @@
             </div>
             <div class="col-md-3 requirements">
                 <select class="form-control" id="type-of-requirement-2" name="requirement_type_2">
-                    <option value="" selected>-- Select Type of Requirements --</option>
+                    <option value="empty" selected>-- Select Type of Requirements --</option>
                     @foreach ($requirements as $requirement)
                     <option value="{{ $requirement->type }}">{{ $requirement->type }}</option>
                     @endforeach

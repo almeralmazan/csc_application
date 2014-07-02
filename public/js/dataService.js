@@ -2,46 +2,29 @@
 var dataService = function () {
     var urlBase = window.location.origin,
 
-//        adminLogin = function() {
-//            return $.post(urlBase + '/admin/login');
-//        };
+    processorLogin = function() {
+        return $.ajax({
+            url: urlBase + '/processor/login',
+            type: 'post',
+            data: $('#processor-form').serialize()
+        });
+    },
 
-        processorLogin = function() {
-            return $.ajax({
-                url: urlBase + '/processor/login',
-                type: 'post',
-                data: $('#processor-form').serialize()
-            });
-        },
+    adminLogin = function() {
+        return $.ajax({
+            url: urlBase + '/admin/login',
+            type: 'post',
+            data: $('#admin-form').serialize()
+        });
+    },
 
-        adminLogin = function() {
-            return $.ajax({
-                url: urlBase + '/admin/login',
-                type: 'post',
-                data: $('#admin-form').serialize()
-            });
-        };
-//
-//        getMovieId = function(id) {
-//            return $.getJSON(urlBase + '/movie/' + id);
-//        },
-//
-//        getReservedSeats = function(movieId, timeId) {
-//            return $.getJSON(urlBase + '/member/movie/' + movieId + '/' + timeId);
-//        },
-
-//        saveAdminReservedSeats = function(seatsArray, movieId, timeId, customerName) {
-//            return $.ajax({
-//                url: urlBase + '/admin/save-reserved-seats',
-//                data: {
-//                    adminReservedSeats: seatsArray,
-//                    movieId: movieId,
-//                    timeId: timeId,
-//                    customerName: customerName
-//                },
-//                type: 'POST'
-//            });
-//        },
+    validateAllInputs = function() {
+        return $.ajax({
+            url: urlBase + '/validate-inputs',
+            type: 'post',
+            data: $('#applicant-form').serialize()
+        });
+    };
 
 //        saveReservedSeats = function(seatsArray, movieId, timeId) {
 //            return $.ajax({
@@ -60,6 +43,7 @@ var dataService = function () {
 
     return {
         processorLogin: processorLogin,
-        adminLogin: adminLogin
+        adminLogin: adminLogin,
+        validateAllInputs: validateAllInputs
     };
 }();

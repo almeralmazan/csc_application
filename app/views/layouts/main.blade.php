@@ -33,6 +33,8 @@
     <!-- Include all compiled plugins (below), or include individual files as needed -->
     {{ HTML::script('js/bootstrap.min.js') }}
     {{ HTML::script('js/bootstrap-datetimepicker.js') }}
+    {{ HTML::script('js/dataService.js') }}
+    {{ HTML::script('js/controllerPage.js') }}
     {{ HTML::script('js/script.js') }}
 </body>
 </html>

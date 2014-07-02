@@ -16,12 +16,13 @@ var controllerPage = function() {
 
                 getAdminLoginInputs();
             });
+
+            $('#applicant-form').on('submit', function(e) {
+                e.preventDefault();
+
+                validateAllInputs();
+            });
         },
-//            $('#registration-form').on('submit', function(e) {
-//                e.preventDefault();
-//
-//                getRegistrationInputs();
-//            });
 
             // Live click from ajax dynamic button
 //            $(document).on('click', '#populate-seats .available-seats', function() {
@@ -121,6 +122,38 @@ var controllerPage = function() {
                 })
                 .fail( function(jqXHR, textStatus, error) {
                    console.log(textStatus);
+                });
+        },
+
+        validateAllInputs = function() {
+            dataService.validateAllInputs()
+                .done( function(data) {
+
+                    var errorsContainer = $('#error-message');
+                    var ulContainer = $('ul#list-of-errors');
+                    var result = '';
+
+                    if ( ! data.success) {
+                        $.each(data.message, function(index, value) {
+                            result += '<li>' + value + '</li>';
+                        });
+
+                        errorsContainer.addClass('alert alert-danger');
+                        ulContainer.html(result);
+
+//                        $('#error-message')
+//                            .addClass('alert alert-danger')
+//                            .text(data.message);
+
+//                        console.log(data.message);
+
+                    } else {
+                        window.location.href = urlBase + '/applicant-success-page';
+//                        console.log('Success go to landing page');
+                    }
+                })
+                .fail( function(jqXHR, textStatus, error) {
+                    console.log(textStatus);
                 });
         };
 //

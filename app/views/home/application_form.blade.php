@@ -2,7 +2,10 @@
 
 @section('content')
 
-<form class="form-horizontal" role="form">
+    <div id="error-message"><ul id="list-of-errors"></ul></div>
+
+<!--<form class="form-horizontal" role="form">-->
+{{ Form::open(['url' => 'validate-inputs', 'class' => 'form-horizontal', 'role' => 'form', 'id' => 'applicant-form']) }}
 
     <!--  Applicant Name -->
     @include('home.partials.applicant_name')
@@ -28,5 +31,5 @@
         <div class="col-md-3"></div>
     </div>
 
-</form>
+{{ Form::close() }}
 @stop

@@ -29,14 +29,9 @@
             <div class="col-md-3">
                 <label for="place-of-birth">Place of Birth</label>
             </div>
-            <div class="col-md-2 place-of-birth">
-                <select class="form-control" id="place-of-birth" name="place_of_birth">
-                    <option value="Philippines" selected>Philippines</option>
-                </select>
-            </div>
             <div class="col-md-3 place-of-birth">
-                <select class="form-control" name="cities_and_provinces">
-                    <option value="" selected>-- Select City or Province --</option>
+                <select class="form-control" name="place_of_birth">
+                    <option value="empty" selected>-- Select Place of Birth--</option>
                     @foreach ($cities_and_provinces as $cp)
                     <option value="{{ $cp->name }}">{{ $cp->name }}</option>
                     @endforeach
@@ -50,10 +45,10 @@
             <div class="col-md-2 maiden-name">
                 <input class="form-control" id="last-name" name="maiden_last_name" type="text" placeholder="Last name">
             </div>
-            <div class="col-md-3 maiden-name">
+            <div class="col-md-2 maiden-name">
                 <input class="form-control" name="maiden_first_name" type="text" placeholder="First name">
             </div>
-            <div class="col-md-3 maiden-name">
+            <div class="col-md-2 maiden-name">
                 <input class="form-control" name="maiden_middle_name" type="text" placeholder="Middle name">
             </div>
         </div>
