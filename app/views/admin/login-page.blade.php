@@ -1,4 +1,4 @@
-@extends('layouts.admin')
+@extends('layouts.admin-processor')
 
 @section('content')
 <div id="fullscreen_bg" class="fullscreen_bg" />
