@@ -8,7 +8,7 @@
                 <label for="applicant-photo">Upload ID picture</label>
             </div>
             <div class="col-md-2">
-                <input type="file" id="applicant-photo" name="picture_photo">
+                {{ Form::file('picture_photo', ['id' => 'applicant-photo']) }}
             </div>
         </div>
         <div class="row form-category-row">
@@ -24,7 +24,7 @@
                 </select>
             </div>
             <div class="col-md-2 requirements">
-                <input type="file" name="first_requirement_image">
+                {{ Form::file('first_requirement_image') }}
             </div>
         </div>
         <div class="row form-category-row">
@@ -40,7 +40,7 @@
                 </select>
             </div>
             <div class="col-md-2 requirements">
-                <input type="file" name="second_requirement_image">
+                {{ Form::file('second_requirement_image') }}
             </div>
         </div>
     </div>

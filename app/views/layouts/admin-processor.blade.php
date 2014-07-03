@@ -22,9 +22,13 @@
 </head>
 <body>
 
-<div class="container content">
-    @yield('content')
-</div>
+    @if (Auth::check())
+        @include('layouts.partials.admin-processor-nav')
+    @endif
+
+    <div class="container content">
+        @yield('content')
+    </div>
 
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 {{ HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') }}
