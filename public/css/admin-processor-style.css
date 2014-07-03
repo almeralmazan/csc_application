@@ -19,6 +19,27 @@ footer {
     padding-bottom: 20px;
 }
 
+/* Admin Schedules tables */
+div.admin-users-container {
+    padding: 0 10px;
+}
+
+.clickable{
+    cursor: pointer;
+}
+
+div.admin-users-heading div {
+    margin-top: -18px;
+    font-size: 15px;
+}
+
+div.admin-users-heading div span{
+    margin-left:5px;
+}
+div.admin-users-body{
+    display: none;
+}
+
 /*-------------------USERS PAGE-------------------------*/
 
 
@@ -298,4 +319,4 @@ div.pagination-container {
     width: 250px;
     height: 100px
 }
-/* End carousel
+/* End carousel */
