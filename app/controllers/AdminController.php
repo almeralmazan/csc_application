@@ -4,8 +4,32 @@ class AdminController extends BaseController {
 
     public function index()
     {
-        $title = 'Admin Page';
-        return View::make('admin.index', compact('title'));
+        $title = 'View Application Page';
+        return View::make('admin.view-application', compact('title'));
+    }
+
+    public function listOfPassers()
+    {
+        $title = 'List of Passers Page';
+        return View::make('admin.list-of-passers', compact('title'));
+    }
+
+    public function schedules()
+    {
+        $title = 'Schedules Page';
+        return View::make('admin.schedules', compact('title'));
+    }
+
+    public function users()
+    {
+        $title = 'Users Page';
+        return View::make('admin.users', compact('title'));
+    }
+
+    public function reports()
+    {
+        $title = 'Reports Page';
+        return View::make('admin.reports', compact('title'));
     }
 
     public function loginPage()
