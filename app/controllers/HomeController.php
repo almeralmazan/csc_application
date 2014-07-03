@@ -46,16 +46,20 @@ class HomeController extends BaseController {
             'mobile_number'                     =>  'required|regex:/^(09)([0-9]{9})$/',
             'email'                             =>  'required|email|unique:applicants',
             'testing_centers_location'          =>  'not_in:empty',
-            'picture_photo'                     =>  'required',
+            'picture_photo'                     =>  'image|mimes:jpeg,jpg,png|max:3072',
             'requirement_type_1'                =>  'not_in:empty',
-            'first_requirement_image'           =>  'required',
+            'first_requirement_image'           =>  'image|mimes:jpeg,jpg,png|max:3072',
             'requirement_type_2'                =>  'not_in:empty',
-            'second_requirement_image'          =>  'required',
+            'second_requirement_image'          =>  'image|mimes:jpeg,jpg,png|max:3072',
         ];
 
         $validation = Validator::make(Input::all(), $rules);
 
-        if ($validation->fails())
+        if ($validation->fails()
+//            is_null(Input::hasFile('picture_photo')) ||
+//            is_null(Input::hasFile('first_requirement_image')) ||
+//            is_null(Input::hasFile('second_requirement_image'))
+        )
         {
             return Response::json([
                 'success' => false,
