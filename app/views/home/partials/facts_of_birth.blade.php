@@ -20,9 +20,10 @@
             </div>
             <div class="col-md-6">
                 <div class="input-group date form_date col-md-5" data-date="" data-date-format="MM d, yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                    <input name="date_of_birth" class="form-control" size="16" type="text" value="" readonly>
+                    <input name="date_of_birth" class="form-control" size="16" type="text" value="{{ Input::old('date_of_birth') }}" readonly>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
+                <span class="alert-danger">{{ $errors->first('date_of_birth') }}</span>
             </div>
         </div>
         <div class="row form-category-row">

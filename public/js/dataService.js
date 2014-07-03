@@ -2,9 +2,9 @@
 var dataService = function () {
     var urlBase = window.location.origin,
 
-    getAllUsers = function() {
-        return $.getJSON(urlBase + '/all-users');
-    },
+//    getAllUsers = function() {
+//        return $.getJSON(urlBase + '/all-users');
+//    },
 
     processorLogin = function() {
         return $.ajax({
@@ -53,7 +53,7 @@ var dataService = function () {
     // },
 
     return {
-        getAllUsers: getAllUsers,
+//        getAllUsers: getAllUsers,
         processorLogin: processorLogin,
         adminLogin: adminLogin,
         validateAllInputs: validateAllInputs,

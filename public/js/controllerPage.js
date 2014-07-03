@@ -17,11 +17,11 @@ var controllerPage = function() {
                 getAdminLoginInputs();
             });
 
-            $('#applicant-form').on('submit', function(e) {
-                e.preventDefault();
-
-                validateAllInputs();
-            });
+//            $('#applicant-form').on('submit', function(e) {
+//                e.preventDefault();
+//
+//                validateAllInputs();
+//            });
 
             $('#add-user-form').on('submit', function(e) {
                 e.preventDefault();
@@ -101,11 +101,11 @@ var controllerPage = function() {
 //            });
 //        },
 
-        getAllUsers = function() {
-            dataService.getAllUsers()
-                .done( function(data) {
-
-                    console.log(data);
+//        getAllUsers = function() {
+//            dataService.getAllUsers()
+//                .done( function(data) {
+//
+//                    console.log(data);
 //                    var taskTableTbody = $('#task-table tbody');
 //                    var html = '';
 //
@@ -122,11 +122,11 @@ var controllerPage = function() {
 //                    }
 //
 //                    taskTableTbody.html(html);
-                })
-                .fail( function(jqXHR, textStatus, error) {
-                    console.log(textStatus);
-                });
-        },
+//                })
+//                .fail( function(jqXHR, textStatus, error) {
+//                    console.log(textStatus);
+//                });
+//        },
 
         getProcessorLoginInputs = function() {
             dataService.processorLogin()
