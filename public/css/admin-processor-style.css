@@ -86,23 +86,6 @@ div.requirements-subtitle {
     margin-top: 30px;
 }
 
-/* application > modal */
-
-.btn-picker {
-    padding: 7px;
-    -webkit-transition: all .1s ease;
-    -o-transition: all .1s ease;
-    -moz-transition: all .1s ease;
-    transition: all .1s ease;
-}
-
-.btn-picker:hover {
-    background-color: #449d44;
-    border-color: #398439;
-    color: #ffffff;
-    cursor: pointer;
-}
-
 /*passers*/
 
 .search-query {
