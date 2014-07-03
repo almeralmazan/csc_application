@@ -65,15 +65,7 @@
                 <label>Date Start</label>
             </div>
             <div class="col-md-3">
-                <input class="form-control" id="date-start" type="text" readonly>
-            </div>
-        </div>
-        <div class="row form-category-row">
-            <div class="col-md-3">
-                <label>Date end</label>
-            </div>
-            <div class="col-md-3">
-                <input class="form-control" id="date-end" type="text" readonly>
+                <input class="form-control" id="date-start" type="text" name="schedule_date_start" readonly>
             </div>
         </div>
         <div class="row form-category-row">
@@ -81,7 +73,7 @@
                 <label>Time start</label>
             </div>
             <div class="col-md-3">
-                <input class="form-control" id="time-start" type="text" readonly>
+                <input class="form-control" id="time-start" type="text" name="schedule_time_start" readonly>
             </div>
         </div>
         <div class="row form-category-row">
@@ -89,7 +81,7 @@
                 <label>Time end</label>
             </div>
             <div class="col-md-3">
-                <input class="form-control" id="time-end" type="text" readonly>
+                <input class="form-control" id="time-end" type="text" name="schedule_time_end" readonly>
             </div>
         </div>
 

@@ -27,6 +27,8 @@ var controllerPage = function() {
                 e.preventDefault();
 
                 validateAddUser();
+
+                getAllUsers();
             });
         },
 
@@ -98,7 +100,34 @@ var controllerPage = function() {
 //                saveAdminReservedSeats(seatsArray, movieId, timeId, customerName);
 //            });
 //        },
+
+        getAllUsers = function() {
+            dataService.getAllUsers()
+                .done( function(data) {
+
+                    console.log(data);
+//                    var taskTableTbody = $('#task-table tbody');
+//                    var html = '';
 //
+//                    // Empty table#task-table tbody
+//                    taskTableTbody.empty();
+//
+//                    for (var i = 0; i < data.length; i++) {
+//                        html += "<tr><td>" + data[i].name + "</td>";
+//                        html += "<td>" + data[i].username + "</td>";
+//                        html += "<td>" + data[i].role + "</td>";
+//                        html += "<td><button type='button' class='btn btn-danger btn-xs' id='btn-delete1'>";
+//                        html += "<span class='glyphicon glyphicon-remove'></span>";
+//                        html += "</button></td></tr>";
+//                    }
+//
+//                    taskTableTbody.html(html);
+                })
+                .fail( function(jqXHR, textStatus, error) {
+                    console.log(textStatus);
+                });
+        },
+
         getProcessorLoginInputs = function() {
             dataService.processorLogin()
                 .done( function(data) {
@@ -184,13 +213,13 @@ var controllerPage = function() {
                         $('#password_confirmation').val('');
 
                         errorsContainer.html(data.message);
-
                     }
                 })
                 .fail( function(jqXHR, textStatus, error) {
                     console.log(textStatus);
                 });
         };
+
 //
 //        getRegistrationInputs = function() {
 //            dataService.register()

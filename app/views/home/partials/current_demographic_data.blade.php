@@ -29,11 +29,11 @@
             </div>
             <div class="col-md-2 civil-status">
                 <select class="form-control" id="civil-status" name="civil_status">
-                    <option value="single" selected>Single</option>
-                    <option value="married">Married</option>
-                    <option value="widowed">Widowed</option>
-                    <option value="legally_separated">Legally Separated</option>
-                    <option value="anulled">Anulled</option>
+                    <option value="Single" selected>Single</option>
+                    <option value="Married">Married</option>
+                    <option value="Widowed">Widowed</option>
+                    <option value="Legally Separated">Legally Separated</option>
+                    <option value="Anulled">Anulled</option>
                 </select>
             </div>
         </div>

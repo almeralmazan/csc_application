@@ -4,7 +4,7 @@ class ProcessorController extends BaseController {
 
     public function index()
     {
-        $title = 'Processor Page';
+        $title = 'View Application Page';
         return View::make('processor.index', compact('title'));
     }
 
@@ -12,6 +12,13 @@ class ProcessorController extends BaseController {
     {
         $title = 'Processor Login Page';
         return View::make('processor.login-page', compact('title'));
+    }
+
+    public function show($applicantId)
+    {
+        $title = 'Applicant Page';
+        $applicant = Applicant::find($applicantId);
+        return View::make('processor.show', compact('title', 'applicant'));
     }
 
     public function verifyLogin()

@@ -68,14 +68,40 @@ class HomeController extends BaseController {
         }
         else
         {
-//            User::create([
-//                'first_name'    =>  Input::get('first_name'),
-//                'last_name'     =>  Input::get('last_name'),
-//                'mobile_number' =>  '+63' . substr(Input::get('mobile_number'), 1),
-//                'email'         =>  Input::get('email'),
-//                'password'      =>  Hash::make(Input::get('password')),
-//                'admin'         =>  0
-//            ]);
+            Applicant::create([
+                'applicant_status'          =>  0,
+                'paid_status'               =>  0,
+                'applicant_last_name'       =>  Input::get('applicant_last_name'),
+                'applicant_first_name'      =>  Input::get('applicant_first_name'),
+                'applicant_middle_name'     =>  Input::get('applicant_middle_name'),
+                'applicant_suffix'          =>  Input::get('applicant_suffix'),
+                'gender'                    =>  Input::get('gender'),
+                'date_of_birth'             =>  Input::get('date_of_birth'),
+                'place_of_birth'            =>  Input::get('place_of_birth'),
+                'maiden_last_name'          =>  Input::get('maiden_last_name'),
+                'maiden_first_name'         =>  Input::get('maiden_first_name'),
+                'maiden_middle_name'        =>  Input::get('maiden_middle_name'),
+                'address'                   =>  Input::get('address'),
+                'citizenship'               =>  Input::get('citizenship'),
+                'civil_status'              =>  Input::get('civil_status'),
+                'mobile_number'             =>  '+63' . substr(Input::get('mobile_number'), 1),
+                'phone_number'              =>  Input::get('phone_number'),
+                'email'                     =>  Input::get('email'),
+                'csid_no'                   =>  Input::get('csid_no'),
+                'new_exam_mode'             =>  Input::get('new_exam_mode'),
+                'new_exam_level'            =>  Input::get('new_exam_level'),
+                'testing_centers_location'  =>  Input::get('testing_centers_location'),
+                'schedule_date_start'       =>  Input::get('schedule_date_start'),
+                'schedule_time_start'       =>  Input::get('schedule_time_start'),
+                'schedule_time_end'         =>  Input::get('schedule_time_end'),
+                'previous_exam_level'       =>  Input::get('previous_exam_level'),
+                'previous_date_exam_taken'  =>  Input::get('previous_date_exam_taken'),
+                'applicant_picture'         =>  Input::file('applicant_picture'),
+                'requirement_type_1'        =>  Input::get('requirement_type_1'),
+                'requirement_image_1'       =>  Input::file('requirement_image_1'),
+                'requirement_type_2'        =>  Input::get('requirement_type_2'),
+                'requirement_image_2'       =>  Input::file('requirement_image_2'),
+            ]);
 
             return Response::json([
                 'success' => true,

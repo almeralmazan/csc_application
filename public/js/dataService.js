@@ -2,6 +2,10 @@
 var dataService = function () {
     var urlBase = window.location.origin,
 
+    getAllUsers = function() {
+        return $.getJSON(urlBase + '/all-users');
+    },
+
     processorLogin = function() {
         return $.ajax({
             url: urlBase + '/processor/login',
@@ -24,7 +28,7 @@ var dataService = function () {
             type: 'post',
             data: $('#applicant-form').serialize()
         });
-    };
+    },
 
     validateAddUser = function() {
         return $.ajax({
@@ -49,6 +53,7 @@ var dataService = function () {
     // },
 
     return {
+        getAllUsers: getAllUsers,
         processorLogin: processorLogin,
         adminLogin: adminLogin,
         validateAllInputs: validateAllInputs,

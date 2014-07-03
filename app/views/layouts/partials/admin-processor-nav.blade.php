@@ -14,6 +14,7 @@
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
+            @if (Auth::user()->role == 'admin')
                 <li class="{{ set_active('admin') }}">
                     {{ HTML::link('admin', 'View Application') }}
                 </li>
@@ -29,11 +30,20 @@
                 <li class="{{ set_active('admin/reports') }}">
                     {{ HTML::link('admin/reports', 'Reports') }}
                 </li>
+            @else
+                <li class="{{ set_active('processor') }}">
+                    {{ HTML::link('admin', 'View Application') }}
+                </li>
+            @endif
             </ul>
             <ul class="nav navbar-nav navbar-right">
                 <li><p class="navbar-text">Welcome {{ Auth::user()->username }}</p></li>
                 <li>
+                @if (Auth::user()->role == 'admin')
                     <a href="{{ URL::to('admin/logout') }}"><span class="glyphicon glyphicon-off"></span> Logout</a>
+                @else
+                    <a href="{{ URL::to('processor/logout') }}"><span class="glyphicon glyphicon-off"></span> Logout</a>
+                @endif
                 </li>
             </ul>
         </div><!-- /.navbar-collapse -->

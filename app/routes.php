@@ -17,6 +17,7 @@ Route::post('processor/login', 'ProcessorController@verifyLogin');
 // Processor Pages
 Route::group(['before' => 'admin', 'prefix' => 'processor'], function() {
     Route::get('/', 'ProcessorController@index');
+    Route::get('applicant/{applicantId}', 'ProcessorController@show');
     Route::get('logout', 'ProcessorController@logout');
 });
 
@@ -33,3 +34,12 @@ Route::group(['before' => 'admin', 'prefix' => 'admin'], function() {
     Route::post('validate-add-user', 'AdminController@addUser');
 });
 
+
+// ------------------------
+//  Retrieving JSON format
+// ------------------------
+Route::get('all-users', function()
+{
+    // returns a json format automatically without toJson() method
+    return User::all();
+});

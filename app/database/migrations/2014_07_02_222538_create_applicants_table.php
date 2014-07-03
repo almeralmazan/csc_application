@@ -15,6 +15,8 @@ class CreateApplicantsTable extends Migration {
         Schema::create('applicants', function($table)
         {
             $table->increments('id');
+            $table->boolean('applicant_status')->default(0);
+            $table->boolean('paid_status')->default(0);
 
             // Applicant Name
             $table->string('applicant_last_name', 50)->nullable(false);
@@ -51,7 +53,7 @@ class CreateApplicantsTable extends Migration {
             $table->date('previous_date_exam_taken');
 
             // Requirements
-            $table->string('upload_id_picture', 50);
+            $table->string('applicant_picture', 50);
             $table->string('requirement_type_1', 25);
             $table->string('requirement_image_1', 50);
             $table->string('requirement_type_2', 25);

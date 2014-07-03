@@ -52,11 +52,21 @@ class AdminController extends BaseController {
                 'message'   =>  $validation->errors()->toArray()
             ]);
         }
+        else
+        {
+            User::create([
+                'name'      =>  Input::get('name'),
+                'username'  =>  Input::get('username'),
+                'role'      =>  Input::get('role'),
+                'password'  =>  Hash::make(Input::get('password'))
+            ]);
 
-        return Response::json([
-            'success'   =>  true,
-            'message'   =>  'Successfully created!'
-        ]);
+            return Response::json([
+                'success'   =>  true,
+                'message'   =>  'Successfully created!'
+            ]);
+        }
+
     }
 
     public function loginPage()

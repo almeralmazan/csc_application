@@ -8,7 +8,7 @@
                 <label for="applicant-photo">Upload ID picture</label>
             </div>
             <div class="col-md-2">
-                {{ Form::file('picture_photo', ['id' => 'applicant-photo']) }}
+                {{ Form::file('applicant_picture', ['id' => 'applicant-photo']) }}
             </div>
         </div>
         <div class="row form-category-row">
