@@ -24,6 +24,10 @@ Route::group(['before' => 'admin', 'prefix' => 'processor'], function() {
 // Admin Pages
 Route::group(['before' => 'admin', 'prefix' => 'admin'], function() {
     Route::get('/', 'AdminController@index');
+    Route::get('list-of-passers', 'AdminController@listOfPassers');
+    Route::get('schedules', 'AdminController@schedules');
+    Route::get('users', 'AdminController@users');
+    Route::get('reports', 'AdminController@reports');
     Route::get('logout', 'AdminController@logout');
 });
 
