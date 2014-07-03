@@ -57,51 +57,42 @@
                 </select>
             </div>
         </div>
-        <div class="row form-category-row">
-            <div class="col-md-3">
-            </div>
-            <div class="col-md-3">
-                <a href="#">View Schedules</a>
-            </div>
-        </div>
+
+        @include('admin.modal-add-schedule')
+
         <div class="row form-category-row">
             <div class="col-md-3">
                 <label>Date Start</label>
             </div>
             <div class="col-md-3">
-                <div class="input-group date form_date col-md-12" data-date="" data-date-format="MM d, yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                    <input class="form-control" size="16" type="text" name="schedule_date_start" value="" readonly>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                </div>
+                <input class="form-control" id="date-start" type="text" readonly>
             </div>
         </div>
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label>Date End</label>
+                <label>Date end</label>
             </div>
             <div class="col-md-3">
-                <div class="input-group date form_date col-md-12" data-date="" data-date-format="MM d, yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                    <input class="form-control" size="16" type="text" name="schedule_date_end" value="" readonly>
-                    <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
-                </div>
+                <input class="form-control" id="date-end" type="text" readonly>
             </div>
         </div>
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label>Time Start</label>
+                <label>Time start</label>
             </div>
             <div class="col-md-3">
-                <input class="form-control" type="text" name="schedule_time_start" readonly>
+                <input class="form-control" id="time-start" type="text" readonly>
             </div>
         </div>
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label>Time End</label>
+                <label>Time end</label>
             </div>
             <div class="col-md-3">
-                <input class="form-control" type="text" name="schedule_time_end" readonly>
+                <input class="form-control" id="time-end" type="text" readonly>
             </div>
         </div>
+
         <div class="row form-category-row">
             <div class="col-md-3 requirements-subtitle">
                 <span>Previous exam taken</span>

@@ -12,12 +12,14 @@ class UserTableSeeder extends Seeder {
         DB::table('users')->delete();
 
         User::create([
+            'name'      =>  'Super Admin',
             'username'  =>  'admin',
             'password'  =>  Hash::make('admin'),
             'role'      =>  'admin'
         ]);
 
         User::create([
+            'name'      =>  'Processor User',
             'username'  =>  'processor',
             'password'  =>  Hash::make('processor'),
             'role'      =>  'processor'

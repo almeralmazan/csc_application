@@ -3,41 +3,48 @@
 @section('content')
 <div class="row admin-users-container">
     <div class="col-md-12">
-        <h3>Add user</h3>
+        <h3>Add User</h3>
     </div>
     <div class="col-md-4">
-        <form class="form-horizontal" role="form">
+        {{ Form::open(['url' => 'admin/validate-add-user', 'id' => 'add-user-form', 'class' => 'form-horizontal', 'role' => 'form']) }}
             <div class="form-group">
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="inputEmail3" placeholder="Name">
+                    {{ Form::text('name', null, ['id' => 'name', 'class' => 'form-control', 'placeholder' => 'Name', 'autofocus']) }}
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="inputPassword3" placeholder="Username">
+                    {{ Form::text('username', null, ['id' => 'username', 'class' => 'form-control', 'placeholder' => 'Username']) }}
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-12">
-                    <select class="form-control">
-                        <option value="" selected>--select role--</option>
-                    </select>
+                    {{ Form::select('role', [
+                        'empty' =>  '-- Select Role --',
+                        'admin' =>  'admin',
+                        'processor' =>  'processor'
+                    ], 'empty', ['class' => 'form-control']) }}
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="inputPassword3" placeholder="Password">
+                    {{ Form::password('password', ['id' => 'password', 'class' => 'form-control', 'placeholder' => 'Password']) }}
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-12">
-                    <input type="text" class="form-control" id="inputPassword3" placeholder="Confirm password">
+                    {{ Form::password('password_confirmation', ['id' => 'password_confirmation', 'class' => 'form-control', 'placeholder' => 'Password Confirmation']) }}
                 </div>
             </div>
 
-            <button type="submit" class="btn btn-primary">Submit</button>
-            
-        </form>
+            {{ Form::submit('Submit', ['class' => 'btn btn-primary']) }}
+
+            <!-- Error container -->
+            <div id="add-user-error-message">
+                <ul id="list-of-errors"></ul>
+            </div>
+
+        {{ Form::close() }}
     </div>
     <div class="col-md-8">
         <div class="panel panel-success">
@@ -54,59 +61,26 @@
             </div>
             <table class="table table-hover" id="task-table">
                 <thead>
-                <tr>
-                    <th>#</th>
-                    <th>Name</th>
-                    <th>Username</th>
-                    <th>Role</th>
-                    <th>Delete ?</th>
-                </tr>
+                    <tr>
+                        <th>Name</th>
+                        <th>Username</th>
+                        <th>Role</th>
+                        <th>Delete ?</th>
+                    </tr>
                 </thead>
                 <tbody>
-                <tr id="row-sample1">
-                    <td>1</td>
-                    <td>John Smith</td>
-                    <td>jsmith@gmail.com</td>
-                    <td>admin</td>
-                    <td>
-                        <button type="button" class="btn btn-danger btn-xs" id="btn-delete1">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </button>
-                    </td>
-                </tr>
-                <tr id="row-sample2">
-                    <td>2</td>
-                    <td>Kilgore Trout</td>
-                    <td>ktrout@gmail.com</td>
-                    <td>processor</td>
-                    <td>
-                        <button type="button" class="btn btn-danger btn-xs"  id="btn-delete2">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </button>
-                    </td>
-                </tr>
-                <tr id="row-sample3">
-                    <td>3</td>
-                    <td>Bob Loblaw</td>
-                    <td>bloblaw@gmail.com</td>
-                    <td>processor</td>
-                    <td>
-                        <button type="button" class="btn btn-danger btn-xs"  id="btn-delete3">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </button>
-                    </td>
-                </tr>
-                <tr id="row-sample4">
-                    <td>4</td>
-                    <td>Emily Hoenikker</td>
-                    <td>ehoenikker@gmail.com</td>
-                    <td>processor</td>
-                    <td>
-                        <button type="button" class="btn btn-danger btn-xs"  id="btn-delete4">
-                            <span class="glyphicon glyphicon-remove"></span>
-                        </button>
-                    </td>
-                </tr>
+                    @foreach ($users as $user)
+                    <tr>
+                        <td>{{ $user->name }}</td>
+                        <td>{{ $user->username }}</td>
+                        <td>{{ $user->role }}</td>
+                        <td>
+                            <button type="button" class="btn btn-danger btn-xs" id="btn-delete1">
+                                <span class="glyphicon glyphicon-remove"></span>
+                            </button>
+                        </td>
+                    </tr>
+                    @endforeach
                 </tbody>
             </table>
         </div>

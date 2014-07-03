@@ -23,13 +23,40 @@ class AdminController extends BaseController {
     public function users()
     {
         $title = 'Users Page';
-        return View::make('admin.users', compact('title'));
+        $users = User::all();
+        return View::make('admin.users', compact('title', 'users'));
     }
 
     public function reports()
     {
         $title = 'Reports Page';
         return View::make('admin.reports', compact('title'));
+    }
+
+    public function addUser()
+    {
+        $rules = [
+            'name'                  =>  'required',
+            'username'              =>  'required',
+            'role'                  =>  'required|in:admin,processor',
+            'password'              =>  'required|confirmed',
+            'password_confirmation' =>  'required'
+        ];
+
+        $validation = Validator::make(Input::all(), $rules);
+
+        if ($validation->fails())
+        {
+            return Response::json([
+                'success'   =>  false,
+                'message'   =>  $validation->errors()->toArray()
+            ]);
+        }
+
+        return Response::json([
+            'success'   =>  true,
+            'message'   =>  'Successfully created!'
+        ]);
     }
 
     public function loginPage()

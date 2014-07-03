@@ -30,10 +30,12 @@
                     {{ HTML::link('admin/reports', 'Reports') }}
                 </li>
             </ul>
-            <div class="navbar-right">
-                <span id="welcome">Welcome, {{ Auth::user()->username }}</span>
-                <a href="{{ URL::to('admin/logout') }}" class="btn btn-default">Logout</a>
-            </div>
+            <ul class="nav navbar-nav navbar-right">
+                <li><p class="navbar-text">Welcome {{ Auth::user()->username }}</p></li>
+                <li>
+                    <a href="{{ URL::to('admin/logout') }}"><span class="glyphicon glyphicon-off"></span> Logout</a>
+                </li>
+            </ul>
         </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
 </nav>

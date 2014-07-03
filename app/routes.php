@@ -29,5 +29,7 @@ Route::group(['before' => 'admin', 'prefix' => 'admin'], function() {
     Route::get('users', 'AdminController@users');
     Route::get('reports', 'AdminController@reports');
     Route::get('logout', 'AdminController@logout');
+
+    Route::post('validate-add-user', 'AdminController@addUser');
 });
 
