@@ -31,7 +31,8 @@ Route::group(['before' => 'admin', 'prefix' => 'admin'], function() {
     Route::get('users', 'AdminController@users');
     Route::get('reports', 'AdminController@reports');
     Route::get('logout', 'AdminController@logout');
-    Route::get('delete/user/{userId}', 'AdminController@delete');
+    Route::get('delete/user/{userId}', 'AdminController@deleteUser');
+    Route::get('delete/schedule/{scheduleId}', 'AdminController@deleteSchedule');
 
     Route::post('validate-add-user', 'AdminController@addUser');
 });

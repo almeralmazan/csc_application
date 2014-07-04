@@ -17,7 +17,8 @@ class AdminController extends BaseController {
     public function schedules()
     {
         $title = 'Schedules Page';
-        return View::make('admin.schedules', compact('title'));
+        $locations = TestingCenter::all();
+        return View::make('admin.schedules', compact('title', 'locations'));
     }
 
     public function users()
@@ -63,12 +64,20 @@ class AdminController extends BaseController {
         }
     }
 
-    public function delete($userId)
+    public function deleteUser($userId)
     {
         $user = User::find($userId);
         $user->delete();
 
-        return Redirect::back()->withMessage('Deleted successfully!');
+        return Redirect::back()->withMessage('Deleted user successfully!');
+    }
+
+    public function deleteSchedule($scheduleId)
+    {
+        $schedule = Schedule::find($scheduleId);
+        $schedule->delete();
+
+        return Redirect::back()->withMessage('Deleted schedule successfully!');
     }
 
     public function loginPage()
