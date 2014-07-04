@@ -68,7 +68,7 @@ class AdminController extends BaseController {
         $user = User::find($userId);
         $user->delete();
 
-        return Redirect::back()->withMessae('deleteUser', 'Deleted successfully!');
+        return Redirect::back()->withMessage('Deleted successfully!');
     }
 
     public function loginPage()
