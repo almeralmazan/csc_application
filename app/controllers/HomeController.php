@@ -33,44 +33,29 @@ class HomeController extends BaseController {
 
     public function validateAllInputs()
     {
-        $rules = [
-            'applicant_last_name'               =>  'required',
-            'applicant_first_name'              =>  'required',
-            'applicant_middle_name'             =>  'required',
-            'date_of_birth'                     =>  'required',
-            'cities_and_provinces'              =>  'not_in:empty',
-            'maiden_last_name'                  =>  'required',
-            'maiden_first_name'                 =>  'required',
-            'maiden_middle_name'                =>  'required',
-            'address'                           =>  'required',
-            'mobile_number'                     =>  'required|regex:/^(09)([0-9]{9})$/',
-            'email'                             =>  'required|email|unique:applicants',
-            'testing_centers_location'          =>  'not_in:empty',
-            'picture_photo'                     =>  'image|mimes:jpeg,jpg,png|max:3072',
-            'requirement_type_1'                =>  'not_in:empty',
-            'first_requirement_image'           =>  'image|mimes:jpeg,jpg,png|max:3072',
-            'requirement_type_2'                =>  'not_in:empty',
-            'second_requirement_image'          =>  'image|mimes:jpeg,jpg,png|max:3072',
-        ];
 
         $messages = [
             'applicant_last_name.required'      =>  'Last name is required',
             'applicant_first_name.required'     =>  'First name is required',
             'applicant_middle_name.required'    =>  'Middle name is required',
-            'date_of_birth.required'            =>  'Date of birth is required'
+            'date_of_birth.required'            =>  'Date of birth is required',
+            'place_of_birth.not_in'             =>  'You must select your place of birth',
+            'maiden_last_name.required'         =>  'Required *',
+            'maiden_first_name.required'        =>  'Required *',
+            'maiden_middle_name.required'       =>  'Required *',
+            'testing_centers_location.not_in'   =>  'Choose Testing Center location',
+            'schedule_date_start.required'      =>  'Required *',
+            'schedule_time_start.required'      =>  'Required *',
+            'schedule_time_end.required'        =>  'Required *',
         ];
 
-        $validation = Validator::make(Input::all(), $rules, $messages);
+        $validation = Validator::make(Input::all(), Applicant::$rules, $messages);
 
         if ($validation->fails())
 //            is_null(Input::hasFile('picture_photo')) ||
 //            is_null(Input::hasFile('first_requirement_image')) ||
 //            is_null(Input::hasFile('second_requirement_image'))
         {
-//            return Response::json([
-//                'success' => false,
-//                'message' => $validation->errors()->toArray()
-//            ]);
             return Redirect::back()->withInput()->withErrors($validation->messages());
         }
         else
@@ -118,9 +103,9 @@ class HomeController extends BaseController {
         }
     }
 
-    public function successPage()
+    public function reservedPage()
     {
-        $title = 'Success Page';
-        return View::make('home.success-page', compact('title'));
+        $title = 'Reserved Page';
+        return View::make('home.reserved-page', compact('title'));
     }
 }

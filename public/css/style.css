@@ -24,8 +24,16 @@ img.logo {
 	width: 100%;
 }
 
-/*applicant's Page*/
+/*--------------*/
+/* Reserve Page */
+/*--------------*/
+div.jumbo-reserved h1,
+p.btn-continue {
+    text-align: center;
+}
 
+
+/*applicant's Page*/
 /* application > modal */
 
 .btn-picker {

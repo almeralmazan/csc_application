@@ -47,10 +47,7 @@ class AdminController extends BaseController {
 
         if ($validation->fails())
         {
-            return Response::json([
-                'success'   =>  false,
-                'message'   =>  $validation->errors()->toArray()
-            ]);
+            return Redirect::back()->withInput()->withErrors($validation->messages());
         }
         else
         {
@@ -61,12 +58,17 @@ class AdminController extends BaseController {
                 'password'  =>  Hash::make(Input::get('password'))
             ]);
 
-            return Response::json([
-                'success'   =>  true,
-                'message'   =>  'Successfully created!'
-            ]);
+            // Redirect with flash message
+            return Redirect::back()->withMessage('User successfully created');
         }
+    }
 
+    public function delete($userId)
+    {
+        $user = User::find($userId);
+        $user->delete();
+
+        return Redirect::back()->withMessae('deleteUser', 'Deleted successfully!');
     }
 
     public function loginPage()

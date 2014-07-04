@@ -53,8 +53,8 @@
                     @foreach ($locations as $loc)
                         <option value="{{ $loc->location }}">{{ $loc->location }}</option>
                     @endforeach
-
                 </select>
+                <span class="alert-danger">{{ $errors->first('testing_centers_location') }}</span>
             </div>
         </div>
 
@@ -66,6 +66,7 @@
             </div>
             <div class="col-md-3">
                 <input class="form-control" id="date-start" type="text" name="schedule_date_start" readonly>
+                <span class="alert-danger">{{ $errors->first('schedule_date_start') }}</span>
             </div>
         </div>
         <div class="row form-category-row">
@@ -74,6 +75,7 @@
             </div>
             <div class="col-md-3">
                 <input class="form-control" id="time-start" type="text" name="schedule_time_start" readonly>
+                <span class="alert-danger">{{ $errors->first('schedule_time_start') }}</span>
             </div>
         </div>
         <div class="row form-category-row">
@@ -82,6 +84,7 @@
             </div>
             <div class="col-md-3">
                 <input class="form-control" id="time-end" type="text" name="schedule_time_end" readonly>
+                <span class="alert-danger">{{ $errors->first('schedule_time_end') }}</span>
             </div>
         </div>
 

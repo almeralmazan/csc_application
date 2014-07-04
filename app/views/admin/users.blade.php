@@ -9,12 +9,14 @@
         {{ Form::open(['url' => 'admin/validate-add-user', 'id' => 'add-user-form', 'class' => 'form-horizontal', 'role' => 'form']) }}
             <div class="form-group">
                 <div class="col-sm-12">
-                    {{ Form::text('name', null, ['id' => 'name', 'class' => 'form-control', 'placeholder' => 'Name', 'autofocus']) }}
+                    <input type="text" id="name" class="form-control" name="name" value="{{ e(Input::old('name')) }}" placeholder="Name" autofocus/>
+                    <span class="alert-danger">{{ $errors->first('name') }}</span>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-12">
-                    {{ Form::text('username', null, ['id' => 'username', 'class' => 'form-control', 'placeholder' => 'Username']) }}
+                    <input type="text" id="username" class="form-control" name="username" value="{{ e(Input::old('username')) }}" placeholder="Username"/>
+                    <span class="alert-danger">{{ $errors->first('username') }}</span>
                 </div>
             </div>
             <div class="form-group">
@@ -24,25 +26,38 @@
                         'admin' =>  'admin',
                         'processor' =>  'processor'
                     ], 'empty', ['class' => 'form-control']) }}
+                    <span class="alert-danger">{{ $errors->first('role') }}</span>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-12">
-                    {{ Form::password('password', ['id' => 'password', 'class' => 'form-control', 'placeholder' => 'Password']) }}
+                    <input type="password" id="password" class="form-control" name="password" value="{{ e(Input::old('password')) }}" placeholder="Password"/>
+                    <span class="alert-danger">{{ $errors->first('password') }}</span>
                 </div>
             </div>
             <div class="form-group">
                 <div class="col-sm-12">
-                    {{ Form::password('password_confirmation', ['id' => 'password_confirmation', 'class' => 'form-control', 'placeholder' => 'Password Confirmation']) }}
+                    <input type="password" id="password-confirmation" class="form-control" name="password_confirmation" value="{{ e(Input::old('password_confirmation')) }}" placeholder="Password Confirmation"/>
+                    <span class="alert-danger">{{ $errors->first('password_confirmation') }}</span>
                 </div>
             </div>
 
             {{ Form::submit('Submit', ['class' => 'btn btn-primary']) }}
 
             <!-- Error container -->
-            <div id="add-user-error-message">
-                <ul id="list-of-errors"></ul>
+            @if (Session::has('message'))
+            <div class="form-group">
+                <div class="col-sm-12">
+                    <div class="alert alert-success alert-dismissible" role="alert">
+                        <button type="button" class="close" data-dismiss="alert">
+                            <span aria-hidden="true">&times;</span>
+                            <span class="sr-only">Close</span>
+                        </button>
+                       {{ Session::get('message') }}
+                    </div>
+                </div>
             </div>
+            @endif
 
         {{ Form::close() }}
     </div>
@@ -75,9 +90,9 @@
                         <td>{{ $user->username }}</td>
                         <td>{{ $user->role }}</td>
                         <td>
-                            <button type="button" class="btn btn-danger btn-xs" id="btn-delete1">
+                            <a href="{{ URL::to('admin/delete/user', $user->id) }}" class="btn btn-danger btn-xs">
                                 <span class="glyphicon glyphicon-remove"></span>
-                            </button>
+                            </a>
                         </td>
                     </tr>
                     @endforeach

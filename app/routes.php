@@ -6,7 +6,8 @@ Route::get('application-form', 'HomeController@applicationForm');
 Route::get('list-of-passers', 'HomeController@listOfPassers');
 Route::get('payment', 'HomeController@payment');
 Route::post('validate-inputs', 'HomeController@validateAllInputs');
-Route::get('applicant-success-page', 'HomeController@successPage');
+Route::get('reserved-page', 'HomeController@reservedPage');
+Route::get('proceed-to-payment', 'HomeController@proceedToPayment');
 
 Route::get('admin/login', 'AdminController@loginPage');
 Route::post('admin/login', 'AdminController@verifyLogin');
@@ -15,7 +16,7 @@ Route::get('processor/login', 'ProcessorController@loginPage');
 Route::post('processor/login', 'ProcessorController@verifyLogin');
 
 // Processor Pages
-Route::group(['before' => 'admin', 'prefix' => 'processor'], function() {
+Route::group(['before' => 'processor', 'prefix' => 'processor'], function() {
     Route::get('/', 'ProcessorController@index');
     Route::get('applicant/{applicantId}', 'ProcessorController@show');
     Route::get('logout', 'ProcessorController@logout');
@@ -30,6 +31,7 @@ Route::group(['before' => 'admin', 'prefix' => 'admin'], function() {
     Route::get('users', 'AdminController@users');
     Route::get('reports', 'AdminController@reports');
     Route::get('logout', 'AdminController@logout');
+    Route::get('delete/user/{userId}', 'AdminController@delete');
 
     Route::post('validate-add-user', 'AdminController@addUser');
 });

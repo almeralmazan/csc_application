@@ -24,11 +24,12 @@
 
     <!-- Save Button -->
     <div class="row">
-        <div class="col-md-3"></div>
         <div class="col-md-6">
             {{ Form::submit('Save Now', ['class' => 'btn btn-success btn-lg btn-block']) }}
         </div>
-        <div class="col-md-3"></div>
+        <div class="col-md-6">
+            {{ HTML::link('proceed-to-payment', 'Save and Proceed to Payment' ,['class' => 'btn btn-primary btn-lg btn-block']) }}
+        </div>
     </div>
 
 {{ Form::close() }}

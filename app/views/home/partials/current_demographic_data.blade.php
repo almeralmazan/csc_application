@@ -8,7 +8,8 @@
                 <label for="address">Address</label>
             </div>
             <div class="col-md-6 address">
-                <input class="form-control" type="text" name="address" placeholder="# Street, Barangay, City or Province">
+                <input class="form-control" type="text" name="address" value="{{ e(Input::old('address')) }}" placeholder="# Street, Barangay, City or Province">
+                <span class="alert-danger">{{ $errors->first('address') }}</span>
             </div>
         </div>
         <div class="row form-category-row">
@@ -20,7 +21,8 @@
                 <label for="citizenship">Citizenship</label>
             </div>
             <div class="col-md-2">
-                <input type="text" class="form-control" id="citizenship" name="citizenship" placeholder="Filipino" readonly>
+                <input type="text" class="form-control" id="citizenship" name="citizenship" value="{{ e(Input::old('citizenship')) }}" placeholder="Filipino" readonly>
+                <span class="alert-danger">{{ $errors->first('citizenship') }}</span>
             </div>
         </div>
         <div class="row form-category-row">
@@ -35,6 +37,7 @@
                     <option value="Legally Separated">Legally Separated</option>
                     <option value="Anulled">Anulled</option>
                 </select>
+                <span class="alert-danger">{{ $errors->first('civil_status') }}</span>
             </div>
         </div>
         <div class="row form-category-row">
@@ -43,6 +46,7 @@
             </div>
             <div class="col-md-3">
                 <input class="form-control" id="mobile-number" name="mobile_number" type="text" placeholder="Example format:  09439115188">
+                <span class="alert-danger">{{ $errors->first('mobile_number') }}</span>
             </div>
         </div>
         <div class="row form-category-row">
@@ -51,6 +55,7 @@
             </div>
             <div class="col-md-3">
                 <input class="form-control" id="phone-number" name="phone_number" type="text" placeholder="(optional)">
+                <span class="alert-danger">{{ $errors->first('phone_number') }}</span>
             </div>
         </div>
         <div class="row form-category-row">
@@ -59,6 +64,7 @@
             </div>
             <div class="col-md-3">
                 <input class="form-control" id="email" type="email" name="email" placeholder="Email Address">
+                <span class="alert-danger">{{ $errors->first('email') }}</span>
             </div>
         </div>
     </div>

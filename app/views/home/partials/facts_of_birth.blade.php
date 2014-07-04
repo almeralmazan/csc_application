@@ -20,7 +20,7 @@
             </div>
             <div class="col-md-6">
                 <div class="input-group date form_date col-md-5" data-date="" data-date-format="MM d, yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                    <input name="date_of_birth" class="form-control" size="16" type="text" value="{{ Input::old('date_of_birth') }}" readonly>
+                    <input name="date_of_birth" class="form-control" size="16" type="text" value="{{ e(Input::old('date_of_birth')) }}" readonly>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
                 <span class="alert-danger">{{ $errors->first('date_of_birth') }}</span>
@@ -37,6 +37,7 @@
                     <option value="{{ $cp->name }}">{{ $cp->name }}</option>
                     @endforeach
                 </select>
+                <span class="alert-danger">{{ $errors->first('place_of_birth') }}</span>
             </div>
         </div>
         <div class="row form-category-row">
@@ -45,12 +46,15 @@
             </div>
             <div class="col-md-2 maiden-name">
                 <input class="form-control" id="last-name" name="maiden_last_name" type="text" placeholder="Last name">
+                <span class="alert-danger">{{ $errors->first('maiden_last_name') }}</span>
             </div>
             <div class="col-md-2 maiden-name">
                 <input class="form-control" name="maiden_first_name" type="text" placeholder="First name">
+                <span class="alert-danger">{{ $errors->first('maiden_first_name') }}</span>
             </div>
             <div class="col-md-2 maiden-name">
                 <input class="form-control" name="maiden_middle_name" type="text" placeholder="Middle name">
+                <span class="alert-danger">{{ $errors->first('maiden_middle_name') }}</span>
             </div>
         </div>
     </div>

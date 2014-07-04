@@ -28,15 +28,15 @@ var dataService = function () {
             type: 'post',
             data: $('#applicant-form').serialize()
         });
-    },
-
-    validateAddUser = function() {
-        return $.ajax({
-            url: urlBase + '/admin/validate-add-user',
-            type: 'post',
-            data: $('#add-user-form').serialize()
-        });
     };
+
+//    validateAddUser = function() {
+//        return $.ajax({
+//            url: urlBase + '/admin/validate-add-user',
+//            type: 'post',
+//            data: $('#add-user-form').serialize()
+//        });
+//    };
 //        saveReservedSeats = function(seatsArray, movieId, timeId) {
 //            return $.ajax({
 //                url: urlBase + '/member/save-reserved-seats',
@@ -57,6 +57,6 @@ var dataService = function () {
         processorLogin: processorLogin,
         adminLogin: adminLogin,
         validateAllInputs: validateAllInputs,
-        validateAddUser: validateAddUser
+//        validateAddUser: validateAddUser
     };
 }();
