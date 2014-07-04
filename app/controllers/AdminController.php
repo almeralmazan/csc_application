@@ -18,7 +18,8 @@ class AdminController extends BaseController {
     {
         $title = 'Schedules Page';
         $locations = TestingCenter::all();
-        return View::make('admin.schedules', compact('title', 'locations'));
+        $schedules = Schedule::getAllSchedules();
+        return View::make('admin.schedules', compact('title', 'locations', 'schedules'));
     }
 
     public function users()
@@ -72,10 +73,48 @@ class AdminController extends BaseController {
         return Redirect::back()->withMessage('Deleted user successfully!');
     }
 
-    public function deleteSchedule($scheduleId)
+    public function addSchedule()
     {
-        $schedule = Schedule::find($scheduleId);
-        $schedule->delete();
+        $rules = [
+            'admin_add_testing_centers' =>  'not_in:empty',
+            'admin_add_date_start'      =>  'required',
+            'admin_add_time_start'      =>  'required',
+            'admin_add_time_end'        =>  'required',
+        ];
+
+        $messages = [
+            'admin_add_testing_centers.not_in'  =>  'Location is required *',
+            'admin_add_date_start.required'     =>  'Required *',
+            'admin_add_time_start.required'     =>  'Required *',
+            'admin_add_time_end.required'       =>  'Required *',
+        ];
+
+        $validation = Validator::make(Input::all(), $rules, $messages);
+
+        if ($validation->fails())
+        {
+            return Redirect::back()->withInput()->withErrors($validation->messages());
+        }
+        else
+        {
+            Schedule::create([
+                'testing_center_id' =>  Input::get('admin_add_testing_centers'),
+                'date_start'        =>  Input::get('admin_add_date_start'),
+                'time_start'        =>  Input::get('admin_add_time_start'),
+                'time_end'          =>  Input::get('admin_add_time_end')
+            ]);
+
+            // Redirect with flash message
+            return Redirect::back()->withMessage('User successfully created');
+        }
+    }
+
+    public function deleteSchedule($scheduleId, $testingCenterId)
+    {
+        DB::table('schedules')
+            ->where('id', $scheduleId)
+            ->where('testing_center_id', $testingCenterId)
+            ->delete();
 
         return Redirect::back()->withMessage('Deleted schedule successfully!');
     }

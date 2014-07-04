@@ -6,39 +6,44 @@
         <h3>Add Schedule</h3>
     </div>
     <div class="col-md-3">
+        {{ Form::open(['url' => 'admin/add/schedule', 'role' => 'form']) }}
         <form role="form">
             <div class="form-group">
                 <label for="location">Location</label>
-                <select name="admin-testing-centers" id="location" class="form-control">
+                <select name="admin_add_testing_centers" id="location" class="form-control">
                     <option value="empty">--Select location--</option>
                     @foreach ($locations as $loc)
-                    <option value="{{ $loc->location }}">{{ $loc->location }}</option>
+                    <option value="{{ $loc->id }}">{{ $loc->location }}</option>
                     @endforeach
                 </select>
+                <span class="alert-danger">{{ $errors->first('admin_add_testing_centers') }}</span>
             </div>
             <div class="form-group">
-                <label>Date start</label>
-                <div class="input-group date form_date col-md-12" data-date="" data-date-format="MM d, yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                    <input name="date" class="form-control" size="16" type="text" value="" readonly>
+                <label>Date Start</label>
+                <div class="input-group date form_date col-md-12" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                    <input name="admin_add_date_start" class="form-control" size="16" type="text" value="{{ Input::old('admin_add_date_start') }}" readonly>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
+                <span class="alert-danger">{{ $errors->first('admin_add_date_start') }}</span>
             </div>
             <div class="form-group">
-                <label>Time start</label>
+                <label>Time Start</label>
                 <div class="input-group date form_time col-md-12" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">
-                    <input class="form-control" size="16" type="text" value="" readonly>
+                    <input class="form-control" size="16" type="text" name="admin_add_time_start" value="{{ Input::old('admin_add_time_start') }}" readonly>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                 </div>
+                <span class="alert-danger">{{ $errors->first('admin_add_time_start') }}</span>
             </div>
             <div class="form-group">
-                <label>Time end</label>
+                <label>Time End</label>
                 <div class="input-group date form_time col-md-12" data-date="" data-date-format="hh:ii" data-link-field="dtp_input3" data-link-format="hh:ii">
-                    <input class="form-control" size="16" type="text" value="" readonly>
+                    <input class="form-control" size="16" type="text" name="admin_add_time_end" value="{{ Input::old('admin_add_time_end') }}" readonly>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-time"></span></span>
                 </div>
+                <span class="alert-danger">{{ $errors->first('admin_add_time_end') }}</span>
             </div>
             <button type="submit" class="btn btn-primary">Submit</button>
-        </form>
+        {{ Form::close() }}
     </div>
 
     <div class="col-md-9">
@@ -73,7 +78,7 @@
                         <td>{{ $schedule->time_start }}</td>
                         <td>{{ $schedule->time_end }}</td>
                         <td>
-                            <a href="{{ URL::to('admin/delete/schedule', $schedule->id) }}" class="btn btn-danger btn-xs">
+                            <a href="{{ URL::action('AdminController@deleteSchedule', [$schedule->id, $schedule->testing_center_id]) }}" class="btn btn-danger btn-xs">
                                 <span class="glyphicon glyphicon-remove"></span>
                             </a>
                         </td>

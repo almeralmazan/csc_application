@@ -17,6 +17,7 @@ class CreateApplicantsTable extends Migration {
             $table->increments('id');
             $table->boolean('applicant_status')->default(0);
             $table->boolean('paid_status')->default(0);
+            $table->boolean('exam_result')->default(0);
 
             // Applicant Name
             $table->string('applicant_last_name', 50)->nullable(false);
@@ -46,7 +47,6 @@ class CreateApplicantsTable extends Migration {
             $table->string('new_exam_level')->default('');
             $table->string('testing_centers_location')->nullable(false);
             $table->date('schedule_date_start');
-            $table->date('schedule_date_end');
             $table->time('schedule_time_start');
             $table->time('schedule_time_end');
             $table->string('previous_exam_level', 20);

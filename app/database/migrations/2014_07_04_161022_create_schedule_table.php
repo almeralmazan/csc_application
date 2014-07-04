@@ -15,6 +15,7 @@ class CreateScheduleTable extends Migration {
         Schema::create('schedules', function($table)
         {
             $table->increments('id');
+            $table->integer('testing_center_id');
             $table->date('date_start');
             $table->time('time_start');
             $table->time('time_end');

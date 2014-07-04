@@ -10,6 +10,7 @@ class ApplicantTableSeeder extends Seeder {
 
             'applicant_status'          =>  0,
             'paid_status'               =>  0,
+            'exam_result'               =>  0,
 
             // Applicant Name
             'applicant_last_name'       => 'Doe',
@@ -39,7 +40,6 @@ class ApplicantTableSeeder extends Seeder {
             'new_exam_level'            => 'subpro',
             'testing_centers_location'  => 'Bayombong',
             'schedule_date_start'       => '2014-07-10',
-            'schedule_date_end'         => '2014-07-10',
             'schedule_time_start'       => '08:00:00',
             'schedule_time_end'         => '10:00:00',
             'previous_exam_level'       => 'previous_subpro',

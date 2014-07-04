@@ -28,9 +28,6 @@ class DatabaseSeeder extends Seeder {
 
         $this->call('ScheduleTableSeeder');
         $this->command->info('Schedule table seeded!');
-
-        $this->call('ScheduleTestCenterTableSeeder');
-        $this->command->info('ScheduleTestCenter table seeded!');
 	}
 
 }
