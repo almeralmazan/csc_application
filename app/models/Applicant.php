@@ -19,11 +19,11 @@ class Applicant extends Eloquent {
         'schedule_date_start'       =>  'required',
         'schedule_time_start'       =>  'required',
         'schedule_time_end'         =>  'required',
-        'picture_photo'             =>  'image|mimes:jpeg,jpg,png|max:3072',
+        'picture_photo'             =>  'image|mimes:jpeg,jpg,png',
         'requirement_type_1'        =>  'not_in:empty',
-        'first_requirement_image'   =>  'image|mimes:jpeg,jpg,png|max:3072',
+        'first_requirement_image'   =>  'image|mimes:jpeg,jpg,png',
         'requirement_type_2'        =>  'not_in:empty',
-        'second_requirement_image'  =>  'image|mimes:jpeg,jpg,png|max:3072',
+        'second_requirement_image'  =>  'image|mimes:jpeg,jpg,png',
     ];
 
     protected $guarded = [];

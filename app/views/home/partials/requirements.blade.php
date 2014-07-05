@@ -10,6 +10,7 @@
             <div class="col-md-2">
                 {{ Form::file('applicant_picture', ['id' => 'applicant-photo']) }}
             </div>
+            <span class="alert-danger">{{ $errors->first('applicant_picture') }}</span>
         </div>
         <div class="row form-category-row">
             <div class="col-md-3">
@@ -22,10 +23,12 @@
                     <option value="{{ $requirement->type }}">{{ $requirement->type }}</option>
                     @endforeach
                 </select>
+                <span class="alert-danger">{{ $errors->first('requirement_type_1') }}</span>
             </div>
             <div class="col-md-2 requirements">
                 {{ Form::file('first_requirement_image') }}
             </div>
+            <span class="alert-danger">{{ $errors->first('first_requirement_image') }}</span>
         </div>
         <div class="row form-category-row">
             <div class="col-md-3">
@@ -38,10 +41,12 @@
                     <option value="{{ $requirement->type }}">{{ $requirement->type }}</option>
                     @endforeach
                 </select>
+                <span class="alert-danger">{{ $errors->first('requirement_type_2') }}</span>
             </div>
             <div class="col-md-2 requirements">
                 {{ Form::file('second_requirement_image') }}
             </div>
+            <span class="alert-danger">{{ $errors->first('second_requirement_image') }}</span>
         </div>
     </div>
 </div>

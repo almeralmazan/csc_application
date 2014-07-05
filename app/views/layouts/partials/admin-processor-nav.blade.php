@@ -32,7 +32,7 @@
                 </li>
             @else
                 <li class="{{ set_active('processor') }}">
-                    {{ HTML::link('admin', 'View Application') }}
+                    {{ HTML::link('processor', 'View Application') }}
                 </li>
             @endif
             </ul>

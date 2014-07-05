@@ -64,14 +64,16 @@ class HomeController extends BaseController {
             'schedule_date_start.required'      =>  'Required *',
             'schedule_time_start.required'      =>  'Required *',
             'schedule_time_end.required'        =>  'Required *',
+            'picture_photo.image'               =>  'Accept only jpeg, jpg, png images',
+            'requirement_type_1.not_in'         =>  'Select a type *',
+            'first_requirement_image.image'     =>  'image|mimes:jpeg,jpg,png|max:3072',
+            'requirement_type_2.not_in'         =>  'Select a type *',
+            'second_requirement_image.image'    =>  'image|mimes:jpeg,jpg,png|max:3072',
         ];
 
         $validation = Validator::make(Input::all(), Applicant::$rules, $messages);
 
         if ($validation->fails())
-//            is_null(Input::hasFile('picture_photo')) ||
-//            is_null(Input::hasFile('first_requirement_image')) ||
-//            is_null(Input::hasFile('second_requirement_image'))
         {
             return Redirect::back()->withInput()->withErrors($validation->messages());
         }
@@ -124,5 +126,11 @@ class HomeController extends BaseController {
     {
         $title = 'Reserved Page';
         return View::make('home.reserved-page', compact('title'));
+    }
+
+    public function proceedToPayment()
+    {
+        $title = 'Proceed To Payment Page';
+        return View::make('home.proceed-to-payment', compact('title'));
     }
 }

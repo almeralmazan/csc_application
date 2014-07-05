@@ -11,8 +11,8 @@
         </div><!-- /input-group -->
     </div><!-- /.col-md-4 -->
     <div class="col-md-3">
-        <div class="input-group date form_date col-md-12" data-date="" data-date-format="MM d, yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-            <input name="date" class="form-control" size="16" type="text" value="" readonly>
+        <div class="input-group date form_date col-md-12" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+            <input name="date" class="form-control" size="16" type="text" value="{{ date('Y-m-d') }}" readonly>
             <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
         </div>
         <input type="hidden" id="dtp_input2" value="" />
