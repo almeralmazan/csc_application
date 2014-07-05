@@ -92,24 +92,3 @@ $( "#choose-this" ).click(function() {
 });
 
 
-$( "#choose-this-two" ).click(function() {
-    var date_start = $( "#picked-date-start-two" ).text();
-    var date_end = $( "#picked-date-end-two" ).text();
-    var time_start = $( "#picked-time-start-two" ).text();
-    var time_end = $( "#picked-time-end-two" ).text();
-    $( "#date-start" ).val( date_start );
-    $( "#date-end" ).val( date_end );
-    $( "#time-start" ).val( time_start );
-    $( "#time-end" ).val( time_end );
-});
-
-$( "#choose-this-three" ).click(function() {
-    var date_start = $( "#picked-date-start-three" ).text();
-    var date_end = $( "#picked-date-end-three" ).text();
-    var time_start = $( "#picked-time-start-three" ).text();
-    var time_end = $( "#picked-time-end-three" ).text();
-    $( "#date-start" ).val( date_start );
-    $( "#date-end" ).val( date_end );
-    $( "#time-start" ).val( time_start );
-    $( "#time-end" ).val( time_end );
-});

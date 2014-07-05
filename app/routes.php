@@ -8,6 +8,7 @@ Route::get('payment', 'HomeController@payment');
 Route::post('validate-inputs', 'HomeController@validateAllInputs');
 Route::get('reserved-page', 'HomeController@reservedPage');
 Route::get('proceed-to-payment', 'HomeController@proceedToPayment');
+Route::get('available-schedules/{locationId}', 'HomeController@getAllAvailableSchedules');
 
 Route::get('admin/login', 'AdminController@loginPage');
 Route::post('admin/login', 'AdminController@verifyLogin');

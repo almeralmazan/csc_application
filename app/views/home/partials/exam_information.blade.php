@@ -48,7 +48,7 @@
                 <label for="testing-center-location">Testing Centers</label>
             </div>
             <div class="col-md-3">
-                <select class="form-control" name="testing_centers_location">
+                <select class="form-control" id="testing-center-location" name="testing_centers_location">
                     <option value="empty" selected>-- Select Testing Centers --</option>
                     @foreach ($locations as $loc)
                         <option value="{{ $loc->id }}">{{ $loc->location }}</option>

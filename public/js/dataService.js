@@ -28,7 +28,11 @@ var dataService = function () {
             type: 'post',
             data: $('#applicant-form').serialize()
         });
-    };
+    },
+
+    getAvailableScheduleForOneLocation = function(locationId) {
+        return $.getJSON(urlBase + '/available-schedules/' + locationId);
+    }
 
 //    validateAddUser = function() {
 //        return $.ajax({
@@ -57,6 +61,6 @@ var dataService = function () {
         processorLogin: processorLogin,
         adminLogin: adminLogin,
         validateAllInputs: validateAllInputs,
-//        validateAddUser: validateAddUser
+        getAvailableScheduleForOneLocation: getAvailableScheduleForOneLocation
     };
 }();

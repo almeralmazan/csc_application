@@ -31,6 +31,23 @@ class HomeController extends BaseController {
         return View::make('home.payment', compact('title'));
     }
 
+    public function getAllAvailableSchedules($locationId)
+    {
+        $result = DB::table('schedules')
+                    ->join('testing_centers', 'schedules.testing_center_id', '=', 'testing_centers.id')
+                    ->where('testing_centers.id', $locationId)
+                    ->select(
+                        'testing_centers.location',
+                        'schedules.id',
+                        'schedules.date_start',
+                        'schedules.time_start',
+                        'schedules.time_end'
+                    )
+                    ->get();
+
+        return $result;
+    }
+
     public function validateAllInputs()
     {
 
