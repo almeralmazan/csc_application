@@ -51,14 +51,15 @@
                 <select class="form-control" name="testing_centers_location">
                     <option value="empty" selected>-- Select Testing Centers --</option>
                     @foreach ($locations as $loc)
-                        <option value="{{ $loc->location }}">{{ $loc->location }}</option>
+                        <option value="{{ $loc->id }}">{{ $loc->location }}</option>
                     @endforeach
                 </select>
                 <span class="alert-danger">{{ $errors->first('testing_centers_location') }}</span>
             </div>
         </div>
 
-        @include('admin.modal-add-schedule')
+        <!-- MODAL -->
+        @include('home.partials.modal-add-schedule')
 
         <div class="row form-category-row">
             <div class="col-md-3">
