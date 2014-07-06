@@ -19,7 +19,7 @@
                 <label for="date">Date of Birth</label>
             </div>
             <div class="col-md-6">
-                <div class="input-group date form_date col-md-5" data-date="" data-date-format="MM d, yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                <div class="input-group date form_date col-md-5" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
                     <input name="date_of_birth" class="form-control" size="16" type="text" value="{{ e(Input::old('date_of_birth')) }}" readonly>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>

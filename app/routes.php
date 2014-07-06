@@ -1,5 +1,22 @@
 <?php
 
+Route::get('test', function()
+{
+//    File::makeDirectory('almeralmazan@gmail.com');
+    $path = public_path() . '/applicant/';
+
+    if (File::makeDirectory($path))
+    {
+        echo 'Successfully create directory';
+    }
+    else
+    {
+        echo 'Failed to create directory';
+    }
+
+//    dd(base_path() . '/');
+});
+
 // Public Pages
 Route::get('/', 'HomeController@home');
 Route::get('application-form', 'HomeController@applicationForm');

@@ -114,8 +114,8 @@
                 <label>Date of Exam Taken</label>
             </div>
             <div class="col-md-3">
-                <div class="input-group date form_date col-md-12" data-date="" data-date-format="MM d, yyyy" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-                    <input class="form-control" size="16" type="text" name="previous_date_exam_taken" value="" readonly>
+                <div class="input-group date form_date col-md-12" data-date="{{ date('Y-m-d') }}" data-date-format="yyyy-mm-dd" data-link-field="dtp_input3">
+                    <input  name="previous_date_exam" class="form-control" size="16" type="text" value="{{ e(Input::old('previous_date_exam')) }}" readonly>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
             </div>

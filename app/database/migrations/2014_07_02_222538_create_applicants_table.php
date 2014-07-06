@@ -45,12 +45,12 @@ class CreateApplicantsTable extends Migration {
             $table->string('csid_no', 15)->default('');
             $table->string('new_exam_mode')->default('');
             $table->string('new_exam_level')->default('');
-            $table->string('testing_centers_location')->nullable(false);
+            $table->integer('testing_centers_location_id')->nullable(false);
             $table->date('schedule_date_start');
             $table->time('schedule_time_start');
             $table->time('schedule_time_end');
             $table->string('previous_exam_level', 20);
-            $table->date('previous_date_exam_taken');
+            $table->date('previous_date_exam')->default('0000-00-00');
 
             // Requirements
             $table->string('applicant_picture', 50);

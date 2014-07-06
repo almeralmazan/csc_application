@@ -27,9 +27,9 @@
                 <li class="{{ set_active('admin/users') }}">
                     {{ HTML::link('admin/users', 'Users') }}
                 </li>
-                <li class="{{ set_active('admin/reports') }}">
-                    {{ HTML::link('admin/reports', 'Reports') }}
-                </li>
+<!--                <li class="{{ set_active('admin/reports') }}">-->
+<!--                    {{ HTML::link('admin/reports', 'Reports') }}-->
+<!--                </li>-->
             @else
                 <li class="{{ set_active('processor') }}">
                     {{ HTML::link('processor', 'View Application') }}
