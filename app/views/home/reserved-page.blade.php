@@ -14,7 +14,15 @@
                     <p>Control #:</p>
                 </div>
                 <div class="col-xs-12 col-sm-9 col-md-10">
-                    <p><strong>214AG32H1</strong></p>
+                    <p><strong>{{ $applicant->controlno }}</strong></p>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-xs-12 col-sm-3 col-md-2">
+                    <p>Name:</p>
+                </div>
+                <div class="col-xs-12 col-sm-9 col-md-10">
+                    <p><strong>{{ $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name }}</strong></p>
                 </div>
             </div>
             <div class="row">
@@ -33,10 +41,10 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td>Quezon City</td>
-                            <td>July 11, 2014</td>
-                            <td>8:00 AM</td>
-                            <td>2:30 PM</td>
+                            <td>{{ $testingCenter->location }}</td>
+                            <td>{{ date('F j, Y - l', strtotime($applicant->schedule_date_start)) }}</td>
+                            <td>{{ date('g:i A', strtotime($applicant->schedule_time_start)) }}</td>
+                            <td>{{ date('g:i A', strtotime($applicant->schedule_time_end)) }}</td>
                         </tr>
                         </tbody>
                     </table>
@@ -57,9 +65,9 @@
                         </thead>
                         <tbody>
                         <tr>
-                            <td>Philippine Daily Inquirer Inc.</td>
+                            <td>Civil Service Commission</td>
                             <td>4951-0067-56</td>
-                            <td>Bank of the Philippine Islands</td>
+                            <td>Land Bank Of The Philippines</td>
                         </tr>
                         </tbody>
                     </table>
@@ -67,7 +75,9 @@
             </div>
             <div class="row">
                 <div class="col-md-12">
-                    <p class="btn-continue"><a class="btn btn-success btn-lg" role="button">Continue browsing</a></p>
+                    <p class="btn-continue">
+                        {{ HTML::link('/', 'Continue browsing', ['class' => 'btn btn-success btn-lg', 'role' => 'button']) }}
+                    </p>
                 </div>
             </div>
         </div>

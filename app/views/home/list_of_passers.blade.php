@@ -28,18 +28,20 @@
     <table class="table table-hover">
         <thead>
             <tr>
-                <th>#</th>
+                <th>Control #</th>
                 <th>First Name</th>
                 <th>Last Name</th>
             </tr>
         </thead>
         <tbody>
             @foreach ($applicants as $applicant)
-            <tr>
-                <td>{{ $applicant->csid_no }}</td>
-                <td>{{ $applicant->applicant_first_name }}</td>
-                <td>{{ $applicant->applicant_last_name }}</td>
-            </tr>
+                @if ($applicant->exam_result == 1)
+                <tr>
+                    <td>{{ $applicant->controlno }}</td>
+                    <td>{{ $applicant->applicant_first_name }}</td>
+                    <td>{{ $applicant->applicant_last_name }}</td>
+                </tr>
+                @endif
             @endforeach
         </tbody>
     </table>

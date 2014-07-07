@@ -8,9 +8,10 @@ class ApplicantTableSeeder extends Seeder {
 
         Applicant::create([
 
+            'controlno'                 =>  1,
             'applicant_status'          =>  0,
             'paid_status'               =>  0,
-            'exam_result'               =>  0,
+            'exam_result'               =>  1,
 
             // Applicant Name
             'applicant_last_name'       => 'Doe',
@@ -35,9 +36,9 @@ class ApplicantTableSeeder extends Seeder {
             'email'                     => 'omg@gmail.com',
 
             // Exam Information
-            'csid_no'                   => '10001-1',
+            'csid_no'                   => '',
             'new_exam_mode'             => 'ppt',
-            'new_exam_level'            => 'subpro',
+            'new_exam_level'            => 'pro',
             'testing_centers_location_id'  => 6,
             'schedule_date_start'       => '2014-07-10',
             'schedule_time_start'       => '08:00:00',

@@ -27,4 +27,9 @@ class Applicant extends Eloquent {
     ];
 
     protected $guarded = [];
+
+    public function getControlnoAttribute($value)
+    {
+        return str_pad($value, 7, '0', STR_PAD_LEFT);
+    }
 }

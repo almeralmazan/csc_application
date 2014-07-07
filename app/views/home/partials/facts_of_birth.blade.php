@@ -45,15 +45,15 @@
                 <label for="last-name">Mother's Maiden Name</label>
             </div>
             <div class="col-md-2 maiden-name">
-                <input class="form-control" id="last-name" name="maiden_last_name" type="text" placeholder="Last name">
+                <input class="form-control" id="last-name" name="maiden_last_name" value="{{ e(Input::old('maiden_last_name')) }}" type="text" placeholder="Last name">
                 <span class="alert-danger">{{ $errors->first('maiden_last_name') }}</span>
             </div>
             <div class="col-md-2 maiden-name">
-                <input class="form-control" name="maiden_first_name" type="text" placeholder="First name">
+                <input class="form-control" name="maiden_first_name" value="{{ e(Input::old('maiden_first_name')) }}" type="text" placeholder="First name">
                 <span class="alert-danger">{{ $errors->first('maiden_first_name') }}</span>
             </div>
             <div class="col-md-2 maiden-name">
-                <input class="form-control" name="maiden_middle_name" type="text" placeholder="Middle name">
+                <input class="form-control" name="maiden_middle_name" value="{{ e(Input::old('maiden_middle_name')) }}" type="text" placeholder="Middle name">
                 <span class="alert-danger">{{ $errors->first('maiden_middle_name') }}</span>
             </div>
         </div>

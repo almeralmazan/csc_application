@@ -15,6 +15,7 @@ class CreateApplicantsTable extends Migration {
         Schema::create('applicants', function($table)
         {
             $table->increments('id');
+            $table->integer('controlno');
             $table->boolean('applicant_status')->default(0);
             $table->boolean('paid_status')->default(0);
             $table->boolean('exam_result')->default(0);
@@ -60,7 +61,10 @@ class CreateApplicantsTable extends Migration {
             $table->string('requirement_image_2', 50);
 
             $table->timestamps();
+
         });
+
+        DB::unprepared("ALTER TABLE applicants CHANGE controlno controlno INT(7) UNSIGNED ZEROFILL NOT NULL DEFAULT '1';");
 	}
 
 	/**

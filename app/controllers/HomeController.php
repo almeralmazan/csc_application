@@ -78,6 +78,15 @@ class HomeController extends BaseController {
         }
         else
         {
+            // Workaround for auto incrementing value for control number
+            // with leading zeros
+            $control = DB::select('SELECT AUTO_INCREMENT as number
+                                        FROM INFORMATION_SCHEMA.TABLES
+                                        WHERE TABLE_SCHEMA = ?
+                                        AND TABLE_NAME = ?', ['csc_application_db', 'applicants']);
+
+
+            // Workaround to previous date exam date field if it is empty
             $previousDateExamInputted = Input::get('previous_date_exam');
             $previousDateExam = '';
 
@@ -87,7 +96,8 @@ class HomeController extends BaseController {
             }
 
             $applicant = new Applicant;
-            $applicant->applicant_last_name       = Input::get('applicant_last_name');
+            $applicant->controlno                 =  $control[0]->number;
+            $applicant->applicant_last_name       =  Input::get('applicant_last_name');
             $applicant->applicant_first_name      =  Input::get('applicant_first_name');
             $applicant->applicant_middle_name     =  Input::get('applicant_middle_name');
             $applicant->applicant_suffix          =  Input::get('applicant_suffix');
@@ -119,18 +129,20 @@ class HomeController extends BaseController {
             $applicant->requirement_image_2       =  Input::file('second_requirement_image');
 
             $applicant->save();
+            
+            $lastInsertedId = $applicant->id;
 
-            return Response::json([
-                'success' => true,
-                'message' => 'Successfully registered!'
-            ]);
+            return Redirect::action('HomeController@reservedPage', [$lastInsertedId]);
         }
     }
 
-    public function reservedPage()
+    public function reservedPage($applicantId)
     {
         $title = 'Reserved Page';
-        return View::make('home.reserved-page', compact('title'));
+        $applicant = Applicant::find($applicantId);
+        $testingCenter = TestingCenter::find($applicant->testing_centers_location_id);
+
+        return View::make('home.reserved-page', compact('title', 'applicant', 'testingCenter'));
     }
 
     public function proceedToPayment()

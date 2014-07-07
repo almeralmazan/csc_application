@@ -1,29 +1,12 @@
 <?php
 
-Route::get('test', function()
-{
-//    File::makeDirectory('almeralmazan@gmail.com');
-    $path = public_path() . '/applicant/';
-
-    if (File::makeDirectory($path))
-    {
-        echo 'Successfully create directory';
-    }
-    else
-    {
-        echo 'Failed to create directory';
-    }
-
-//    dd(base_path() . '/');
-});
-
 // Public Pages
 Route::get('/', 'HomeController@home');
 Route::get('application-form', 'HomeController@applicationForm');
 Route::get('list-of-passers', 'HomeController@listOfPassers');
 Route::get('payment', 'HomeController@payment');
 Route::post('validate-inputs', 'HomeController@validateAllInputs');
-Route::get('reserved-page', 'HomeController@reservedPage');
+Route::get('reserved-page/{applicantId}', 'HomeController@reservedPage');
 Route::get('proceed-to-payment', 'HomeController@proceedToPayment');
 Route::get('available-schedules/{locationId}', 'HomeController@getAllAvailableSchedules');
 
