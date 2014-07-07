@@ -21,6 +21,7 @@
                     <option value="ppt">Paper-and-Pencil Test (PPT)</option>
                     <option value="cat">Computer-Assisted Test (CAT)</option>
                 </select>
+                <span class="alert-danger">{{ $errors->first('new_exam_mode') }}</span>
             </div>
         </div>
         <div class="row form-category-row">
@@ -33,6 +34,7 @@
                     <option value="subpro">CSE - Sub professional</option>
                     <option value="pro">CSE - Professional</option>
                 </select>
+                <span class="alert-danger">{{ $errors->first('new_exam_level') }}</span>
             </div>
         </div>
         <div class="row form-category-row">

@@ -59,6 +59,8 @@ class HomeController extends BaseController {
             'maiden_last_name.required'         =>  'Required *',
             'maiden_first_name.required'        =>  'Required *',
             'maiden_middle_name.required'       =>  'Required *',
+            'new_exam_mode.not_in'              =>  'Required *',
+            'new_exam_level.not_in'             =>  'Required *',
             'testing_centers_location.not_in'   =>  'Choose Testing Center location',
             'schedule_date_start.required'      =>  'Required *',
             'schedule_time_start.required'      =>  'Required *',

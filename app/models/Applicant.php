@@ -9,6 +9,8 @@ class Applicant extends Eloquent {
         'date_of_birth'             =>  'required',
         'place_of_birth'            =>  'not_in:empty',
         'cities_and_provinces'      =>  'not_in:empty',
+        'new_exam_mode'             =>  'not_in:empty',
+        'new_exam_level'            =>  'not_in:empty',
         'maiden_last_name'          =>  'required',
         'maiden_first_name'         =>  'required',
         'maiden_middle_name'        =>  'required',

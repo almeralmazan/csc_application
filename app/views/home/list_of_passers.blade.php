@@ -4,7 +4,7 @@
 <div class="row search-query">
     <div class="col-md-3">
         <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search here">
+            <input type="text" class="form-control" name="search_query" placeholder="Search here">
             <span class="input-group-btn">
               <button class="btn btn-success" type="button">Go!</button>
             </span>
@@ -19,8 +19,8 @@
     </div><!-- /.col-md-4 -->
     <div class="col-md-3">
         <select class="form-control">
-            <option value="" selected>CSE - Sub Professional</option>
-            <option value="">CSE - Professional</option>
+            <option value="subpro" selected>CSE - Sub Professional</option>
+            <option value="pro">CSE - Professional</option>
         </select>
     </div><!-- /.col-md-4 -->
 </div>

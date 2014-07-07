@@ -32,15 +32,12 @@ var dataService = function () {
 
     getAvailableScheduleForOneLocation = function(locationId) {
         return $.getJSON(urlBase + '/available-schedules/' + locationId);
-    }
+    },
 
-//    validateAddUser = function() {
-//        return $.ajax({
-//            url: urlBase + '/admin/validate-add-user',
-//            type: 'post',
-//            data: $('#add-user-form').serialize()
-//        });
-//    };
+    getListOfPassers = function(searchQuery, dateOfExam, examLevel) {
+        return $.getJSON(urlBase + '/list-of-passers/' + searchQuery + '/' + dateOfExam + '/' + examLevel);
+    };
+
 //        saveReservedSeats = function(seatsArray, movieId, timeId) {
 //            return $.ajax({
 //                url: urlBase + '/member/save-reserved-seats',
@@ -49,18 +46,13 @@ var dataService = function () {
 //            });
 //        }
 
-    // checkinParticipant = function(id) {
-    //     return $.ajax({
-    //         url: urlBase + '/participants/' + id + '/checkin',
-    //         type: 'POST'
-    //     });
-    // },
 
     return {
 //        getAllUsers: getAllUsers,
         processorLogin: processorLogin,
         adminLogin: adminLogin,
         validateAllInputs: validateAllInputs,
-        getAvailableScheduleForOneLocation: getAvailableScheduleForOneLocation
+        getAvailableScheduleForOneLocation: getAvailableScheduleForOneLocation,
+        getListOfPassers: getListOfPassers
     };
 }();
