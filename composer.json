@@ -5,7 +5,7 @@
 	"license": "MIT",
 	"require": {
 		"laravel/framework": "4.2.*",
-        "twilio/sdk": "dev-master"
+        "twilio/sdk": "3.12.4"
 	},
 	"autoload": {
 		"classmap": [
