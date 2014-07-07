@@ -1,6 +1,6 @@
 <div class="row">
     <div class="col-md-12">
-        <h3>Applicant Name</h3>
+        <h3>Applicant Name <span class="required">*</span></h3>
         <hr>
     </div>
 </div>
@@ -18,7 +18,7 @@
         <span class="alert-danger">{{ $errors->first('applicant_middle_name') }}</span>
     </div>
     <div class="col-md-3 applicant-name">
-        <input type="text" class="form-control" name="applicant_suffix" value="{{ e(Input::old('applicant_suffix')) }}" placeholder="Suffix ex. Jr, Sr">
+        <input type="text" class="form-control" name="applicant_suffix" value="{{ e(Input::old('applicant_suffix')) }}" placeholder="Suffix ex. Jr, Sr (Optional)">
         <span class="alert-danger">{{ $errors->first('applicant_suffix') }}</span>
     </div>
 </div>

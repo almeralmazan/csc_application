@@ -13,7 +13,7 @@
         </div>
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label for="exam-mode">Exam mode</label>
+                <label for="exam-mode">Exam mode <span class="required">*</span></label>
             </div>
             <div class="col-md-3">
                 <select id="exam-mode" name="new_exam_mode" class="form-control">
@@ -25,7 +25,7 @@
         </div>
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label for="exam-level">Exam level</label>
+                <label for="exam-level">Exam level <span class="required">*</span></label>
             </div>
             <div class="col-md-3 exam-level">
                 <select id="exam-level" name="new_exam_level" class="form-control">
@@ -45,7 +45,7 @@
         </div>
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label for="testing-center-location">Testing Centers</label>
+                <label for="testing-center-location">Testing Centers <span class="required">*</span></label>
             </div>
             <div class="col-md-3">
                 <select class="form-control" id="testing-center-location" name="testing_centers_location">
@@ -63,7 +63,7 @@
 
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label>Date Start</label>
+                <label>Date Start <span class="required">*</span></label>
             </div>
             <div class="col-md-3">
                 <input class="form-control" id="date-start" type="text" name="schedule_date_start" readonly>
@@ -72,7 +72,7 @@
         </div>
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label>Time start</label>
+                <label>Time start <span class="required">*</span></label>
             </div>
             <div class="col-md-3">
                 <input class="form-control" id="time-start" type="text" name="schedule_time_start" readonly>
@@ -81,7 +81,7 @@
         </div>
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label>Time end</label>
+                <label>Time end <span class="required">*</span></label>
             </div>
             <div class="col-md-3">
                 <input class="form-control" id="time-end" type="text" name="schedule_time_end" readonly>

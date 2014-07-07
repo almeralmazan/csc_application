@@ -5,7 +5,7 @@
     <div class="panel-body">
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label for="address">Address</label>
+                <label for="address">Address <span class="required">*</span></label>
             </div>
             <div class="col-md-6 address">
                 <input class="form-control" type="text" name="address" value="{{ e(Input::old('address')) }}" placeholder="# Street, Barangay, City or Province">
@@ -18,7 +18,7 @@
         </div>
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label for="citizenship">Citizenship</label>
+                <label for="citizenship">Citizenship <span class="required">*</span></label>
             </div>
             <div class="col-md-2">
                 <input type="text" class="form-control" id="citizenship" name="citizenship" value="{{ e(Input::old('citizenship')) }}" placeholder="Filipino" readonly>
@@ -27,7 +27,7 @@
         </div>
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label for="civil-status">Civil status</label>
+                <label for="civil-status">Civil status <span class="required">*</span></label>
             </div>
             <div class="col-md-2 civil-status">
                 <select class="form-control" id="civil-status" name="civil_status">
@@ -42,7 +42,7 @@
         </div>
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label for="mobile-number">Mobile #</label>
+                <label for="mobile-number">Mobile # <span class="required">*</span></label>
             </div>
             <div class="col-md-3">
                 <input class="form-control" id="mobile-number" name="mobile_number" type="text" placeholder="Example format:  09439115188">
@@ -60,7 +60,7 @@
         </div>
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label for="email">Email</label>
+                <label for="email">Email <span class="required">*</span></label>
             </div>
             <div class="col-md-3">
                 <input class="form-control" id="email" type="email" name="email" placeholder="Email Address">

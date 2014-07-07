@@ -5,7 +5,7 @@
     <div class="panel-body">
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label for="gender">Gender</label>
+                <label for="gender">Gender <span class="required">*</span></label>
             </div>
             <div class="col-md-2">
                 <select class="form-control" id="gender" name="gender">
@@ -16,7 +16,7 @@
         </div>
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label for="date">Date of Birth</label>
+                <label for="date">Date of Birth <span class="required">*</span></label>
             </div>
             <div class="col-md-6">
                 <div class="input-group date form_date col-md-5" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
@@ -28,7 +28,7 @@
         </div>
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label for="place-of-birth">Place of Birth</label>
+                <label for="place-of-birth">Place of Birth <span class="required">*</span></label>
             </div>
             <div class="col-md-3 place-of-birth">
                 <select class="form-control" name="place_of_birth">
@@ -42,7 +42,7 @@
         </div>
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label for="last-name">Mother's Maiden Name</label>
+                <label for="last-name">Mother's Maiden Name <span class="required">*</span></label>
             </div>
             <div class="col-md-2 maiden-name">
                 <input class="form-control" id="last-name" name="maiden_last_name" value="{{ e(Input::old('maiden_last_name')) }}" type="text" placeholder="Last name">

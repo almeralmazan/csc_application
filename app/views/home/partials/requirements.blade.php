@@ -5,7 +5,7 @@
     <div class="panel-body">
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label for="applicant-photo">Upload ID picture</label>
+                <label for="applicant-photo">Upload ID picture <span class="required">*</span></label>
             </div>
             <div class="col-md-2">
                 {{ Form::file('applicant_picture', ['id' => 'applicant-photo']) }}
@@ -14,7 +14,7 @@
         </div>
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label for="type-of-requirements">Requirement #1</label>
+                <label for="type-of-requirements">Requirement #1 <span class="required">*</span></label>
             </div>
             <div class="col-md-3 requirements">
                 <select class="form-control" id="type-of-requirement-1" name="requirement_type_1">
@@ -32,7 +32,7 @@
         </div>
         <div class="row form-category-row">
             <div class="col-md-3">
-                <label for="type-of-requirements">Requirement #2</label>
+                <label for="type-of-requirements">Requirement #2 <span class="required">*</span></label>
             </div>
             <div class="col-md-3 requirements">
                 <select class="form-control" id="type-of-requirement-2" name="requirement_type_2">

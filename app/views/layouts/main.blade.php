@@ -8,6 +8,7 @@
 
     <link rel="icon" type="image/ico" href="{{ URL::to('img/favicon.ico') }}"/>
 
+    <style> .required { color: red; } </style>
     <!-- Bootstrap -->
     {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/bootstrap-datetimepicker.min.css', ['media' => 'screen']) }}
