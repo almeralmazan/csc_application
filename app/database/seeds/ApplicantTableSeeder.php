@@ -9,9 +9,9 @@ class ApplicantTableSeeder extends Seeder {
         Applicant::create([
 
             'controlno'                 =>  1,
-            'applicant_status'          =>  0,
-            'paid_status'               =>  0,
-            'exam_result'               =>  1,
+            'applicant_status'          =>  1,
+            'paid_status'               =>  1,
+            'exam_result'               =>  0,
 
             // Applicant Name
             'applicant_last_name'       => 'Doe',
