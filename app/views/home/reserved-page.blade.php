@@ -58,6 +58,7 @@
                     <table class="table table-bordered">
                         <thead>
                         <tr>
+                            <th>Exam Fee</th>
                             <th>Account Name</th>
                             <th>Account Number</th>
                             <th>Bank</th>
@@ -65,6 +66,7 @@
                         </thead>
                         <tbody>
                         <tr>
+                            <td>{{ $payment->price }}</td>
                             <td>Civil Service Commission</td>
                             <td>4951-0067-56</td>
                             <td>Land Bank Of The Philippines</td>
@@ -73,6 +75,16 @@
                     </table>
                 </div>
             </div>
+
+            <!-- Info -->
+            <div class="row">
+                <div class="col-md-offset-2 col-md-8">
+                    <div class="alert alert-info" role="alert">
+                        <strong>This will serve as a info ! ! !</strong>
+                    </div>
+                </div>
+            </div>
+
             <div class="row">
                 <div class="col-md-12">
                     <p class="btn-continue">

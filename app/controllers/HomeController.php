@@ -142,9 +142,10 @@ class HomeController extends BaseController {
     {
         $title = 'Reserved Page';
         $applicant = Applicant::find($applicantId);
+        $payment = Payment::find($applicantId);
         $testingCenter = TestingCenter::find($applicant->testing_centers_location_id);
 
-        return View::make('home.reserved-page', compact('title', 'applicant', 'testingCenter'));
+        return View::make('home.reserved-page', compact('title', 'applicant', 'payment', 'testingCenter'));
     }
 
     public function proceedToPayment()
