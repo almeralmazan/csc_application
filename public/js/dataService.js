@@ -36,23 +36,19 @@ var dataService = function () {
 
     getListOfPassers = function(searchQuery, dateOfExam, examLevel) {
         return $.getJSON(urlBase + '/list-of-passers/' + searchQuery + '/' + dateOfExam + '/' + examLevel);
-    };
+    },
 
-//        saveReservedSeats = function(seatsArray, movieId, timeId) {
-//            return $.ajax({
-//                url: urlBase + '/member/save-reserved-seats',
-//                data: { reservedSeats: seatsArray, movieId: movieId, timeId: timeId },
-//                type: 'POST'
-//            });
-//        }
+    getApplicantStatus = function(controlNumber) {
+        return $.getJSON(urlBase + '/search-control-no/' + controlNumber);
+    };
 
 
     return {
-//        getAllUsers: getAllUsers,
         processorLogin: processorLogin,
         adminLogin: adminLogin,
         validateAllInputs: validateAllInputs,
         getAvailableScheduleForOneLocation: getAvailableScheduleForOneLocation,
-        getListOfPassers: getListOfPassers
+        getListOfPassers: getListOfPassers,
+        getApplicantStatus: getApplicantStatus
     };
 }();

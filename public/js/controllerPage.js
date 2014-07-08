@@ -38,6 +38,14 @@ var controllerPage = function() {
                 $("#time-start").val(time_start);
                 $("#time-end").val(time_end);
             });
+
+            $('#search-control-no-form').on('submit', function(e) {
+                e.preventDefault();
+
+                var controlNumber = $('#control-number-field').val();
+
+                getApplicantStatus(controlNumber);
+            });
         },
 
         getProcessorLoginInputs = function() {
@@ -98,67 +106,39 @@ var controllerPage = function() {
                 .fail(function(jqXHR, textStatus, error) {
                     console.log(textStatus);
                 });
+        },
+
+        getApplicantStatus = function(controlNumber) {
+            dataService.getApplicantStatus(controlNumber)
+                .done( function(data) {
+
+                    var paidOrNotPaid = data.message[0].applicant_status;
+                    var fullName = data.message[0].applicant_first_name + ' ' +
+                                    data.message[0].applicant_last_name;
+
+                    if (data.success) {
+
+                        if (paidOrNotPaid === 1) {
+                            $('#status-container #status-paid').text('Paid');
+                        } else {
+                            $('#status-container #status-paid').text('Not Paid');
+                        }
+
+                        $('#status-container #applicant-name').text(fullName);
+                        $('#status-container #schedule-date-start').text(
+                            moment(data.message[0].schedule_date_start)
+                                .format('MMMM D, YYYY')
+                        );
+                    } else {
+                        $('#status-container #status-paid').text('No results');
+                        $('#status-container #applicant-name').text('No results');
+                        $('#status-container #schedule-date-start').text('No results');
+                    }
+                })
+                .fail( function(jqXHR, textStatus, error) {
+                    console.log(textStatus);
+                });
         };
-
-//        validateAllInputs = function() {
-//            dataService.validateAllInputs()
-//                .done( function(data) {
-//
-//                    var errorsContainer = $('#error-message');
-//                    var ulContainer = $('ul#list-of-errors');
-//                    var result = '';
-//
-//                    if ( ! data.success) {
-//                        $.each(data.message, function(index, value) {
-//                            result += '<li>' + value + '</li>';
-//                        });
-//
-//                        errorsContainer.addClass('alert alert-danger');
-//                        ulContainer.html(result);
-//
-//                        window.parent.scrollTo(0,0);
-//
-//                    } else {
-//                        window.location.href = urlBase + '/applicant-success-page';
-//                    }
-//                })
-//                .fail( function(jqXHR, textStatus, error) {
-//                    console.log(textStatus);
-//                });
-//        },
-
-//        validateAddUser = function() {
-//            dataService.validateAddUser()
-//                .done( function(data) {
-//
-//                    var errorsContainer = $('#add-user-error-message');
-//                    var ulContainer = $('ul#list-of-errors');
-//                    var result = '';
-//
-//                    if ( ! data.success) {
-//                        $.each(data.message, function(index, value) {
-//                            result += '<li>' + value + '</li>';
-//                        });
-//
-//                        errorsContainer.addClass('alert alert-danger');
-//                        ulContainer.html(result);
-//
-//                    } else {
-//                        errorsContainer.removeClass('alert-danger')
-//                        errorsContainer.addClass('alert-success');
-//
-//                        $('#name').val('');
-//                        $('#username').val('');
-//                        $('#password').val('');
-//                        $('#password_confirmation').val('');
-//
-//                        errorsContainer.html(data.message);
-//                    }
-//                })
-//                .fail( function(jqXHR, textStatus, error) {
-//                    console.log(textStatus);
-//                });
-//        };
 
     return {
         init: init

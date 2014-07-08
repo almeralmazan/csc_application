@@ -7,9 +7,9 @@ Route::get('test', function()
     $client = new Services_Twilio($account_sid, $auth_token);
 
     $client->account->messages->create(array(
-        'To' => "+639353626640",
+        'To' => "+639159115188",
         'From' => "+14849976019",
-        'Body' => "hello",
+        'Body' => "hello gwapo",
     ));
 });
 
@@ -17,11 +17,13 @@ Route::get('test', function()
 Route::get('/', 'HomeController@home');
 Route::get('application-form', 'HomeController@applicationForm');
 Route::get('list-of-passers', 'HomeController@listOfPassers');
+Route::get('payment-status', 'HomeController@paymentStatus');
 Route::get('payment', 'HomeController@payment');
 Route::post('validate-inputs', 'HomeController@validateAllInputs');
 Route::get('reserved-page/{applicantId}', 'HomeController@reservedPage');
 Route::get('proceed-to-payment', 'HomeController@proceedToPayment');
 Route::get('available-schedules/{locationId}', 'HomeController@getAllAvailableSchedules');
+Route::get('search-control-no/{controlNumber}', 'HomeController@getApplicantStatus');
 
 Route::get('admin/login', 'AdminController@loginPage');
 Route::post('admin/login', 'AdminController@verifyLogin');

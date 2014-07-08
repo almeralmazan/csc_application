@@ -23,6 +23,9 @@
                 <li class="{{ set_active('list-of-passers') }}">
                     {{ HTML::link('list-of-passers', 'List of Passers') }}
                 </li>
+                <li class="{{ set_active('payment-status') }}">
+                    {{ HTML::link('payment-status', 'Payment Status') }}
+                </li>
                 <li class="{{ set_active('payment') }}">
                     {{ HTML::link('payment', 'Payment') }}
                 </li>

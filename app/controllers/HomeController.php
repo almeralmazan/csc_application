@@ -25,10 +25,42 @@ class HomeController extends BaseController {
         return View::make('home.list_of_passers', compact('title', 'applicants'));
     }
 
+    public function paymentStatus()
+    {
+        $title = 'Payment Status';
+        return View::make('home.payment-status', compact('title'));
+    }
+
     public function payment()
     {
         $title = 'Payment';
         return View::make('home.payment', compact('title'));
+    }
+
+    public function getApplicantStatus($controlNumber)
+    {
+        $result = DB::table('applicants')
+                    ->where('controlno', '=', $controlNumber)
+                    ->select(
+                        'applicant_status',
+                        'applicant_last_name',
+                        'applicant_first_name',
+                        'schedule_date_start'
+                    )
+                    ->get();
+
+        if (empty($result))
+        {
+            return Response::json([
+                'success'   =>  false,
+                'message'    =>  'No results'
+            ]);
+        }
+
+        return Response::json([
+            'success'   =>  true,
+            'message'   =>  $result
+        ]);
     }
 
     public function getAllAvailableSchedules($locationId)
@@ -90,11 +122,14 @@ class HomeController extends BaseController {
 
             // Workaround to previous date exam date field if it is empty
             $previousDateExamInputted = Input::get('previous_date_exam');
-            $previousDateExam = '';
 
             if (empty($previousDateExamInputted))
             {
                 $previousDateExam = '0000-00-00';
+            }
+            else
+            {
+                $previousDateExam = $previousDateExamInputted;
             }
 
             $applicant = new Applicant;
@@ -129,10 +164,14 @@ class HomeController extends BaseController {
             $applicant->requirement_image_1       =  Input::file('first_requirement_image');
             $applicant->requirement_type_2        =  Input::get('requirement_type_2');
             $applicant->requirement_image_2       =  Input::file('second_requirement_image');
-
             $applicant->save();
             
             $lastInsertedId = $applicant->id;
+
+            Payment::create([
+                'applicant_id'  =>  $lastInsertedId,
+                'price'         =>  500.00
+            ]);
 
             return Redirect::action('HomeController@reservedPage', [$lastInsertedId]);
         }

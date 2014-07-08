@@ -7,7 +7,9 @@
 @section('content')
 <div class="container content">
 
-    <div id="error-message"><ul id="list-of-errors"></ul></div>
+    <div class="logo-app-form">
+        <center>{{ HTML::image('img/logo-app-form.png') }}</center>
+    </div>
 
 <!--<form class="form-horizontal" role="form">-->
 {{ Form::open(['url' => 'validate-inputs', 'files' => true, 'class' => 'form-horizontal', 'role' => 'form', 'id' => 'applicant-form']) }}
@@ -29,11 +31,8 @@
 
     <!-- Save Button -->
     <div class="row">
-        <div class="col-md-6">
+        <div class="col-md-offset-3 col-md-6">
             {{ Form::submit('Save Now', ['class' => 'btn btn-success btn-lg btn-block']) }}
-        </div>
-        <div class="col-md-6">
-            {{ HTML::link('proceed-to-payment', 'Save and Proceed to Payment' ,['class' => 'btn btn-primary btn-lg btn-block']) }}
         </div>
     </div>
 

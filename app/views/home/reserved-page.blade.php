@@ -76,20 +76,14 @@
                 </div>
             </div>
 
-            <!-- Info -->
-            <div class="row">
-                <div class="col-md-offset-2 col-md-8">
-                    <div class="alert alert-info" role="alert">
-                        <strong>This will serve as a info ! ! !</strong>
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-                <div class="col-md-12">
+            <div class="row margin-top">
+                <div class="col-md-6">
                     <p class="btn-continue">
-                        {{ HTML::link('/', 'Continue browsing', ['class' => 'btn btn-success btn-lg', 'role' => 'button']) }}
+                        {{ HTML::link('/', 'Go back to Main Website', ['class' => 'btn btn-success btn-block btn-lg', 'role' => 'button']) }}
                     </p>
+                </div>
+                <div class="col-md-6">
+                    {{ HTML::link('proceed-to-payment', 'Save and Proceed to Payment' ,['class' => 'btn btn-primary btn-lg btn-block']) }}
                 </div>
             </div>
         </div>

@@ -7,6 +7,10 @@
 	margin-top: 100px;
 }
 
+.margin-top {
+    margin-top: 25px;
+}
+
 span#welcome {
 	margin-right: 10px;
 }
