@@ -1,6 +1,11 @@
 @extends('layouts.main')
 
+@section('header')
+    @include('layouts.partials.header-nav')
+@stop
+
 @section('content')
+<div class="container content">
 
     <div id="error-message"><ul id="list-of-errors"></ul></div>
 
@@ -33,4 +38,5 @@
     </div>
 
 {{ Form::close() }}
+</div>
 @stop

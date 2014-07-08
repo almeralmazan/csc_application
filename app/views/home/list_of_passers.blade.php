@@ -1,6 +1,11 @@
 @extends('layouts.main')
 
+@section('header')
+    @include('layouts.partials.header-nav')
+@stop
+
 @section('content')
+<div class="container content">
 <div class="row search-query">
     <div class="col-md-3">
         <div class="input-group">
@@ -46,5 +51,5 @@
         </tbody>
     </table>
 </div>
-
+</div>
 @stop
