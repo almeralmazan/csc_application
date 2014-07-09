@@ -8,6 +8,12 @@ class ProcessorController extends BaseController {
         return View::make('processor.index', compact('title'));
     }
 
+    public function reserved()
+    {
+        $title = 'Reserved Page';
+        return View::make('processor.reserved', compact('title'));
+    }
+
     public function loginPage()
     {
         $title = 'Processor Login Page';

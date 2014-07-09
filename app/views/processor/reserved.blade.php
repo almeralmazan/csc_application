@@ -3,7 +3,7 @@
 @section('content')
 <div class="row">
     <div class="col-md-12">
-        <h2>List of Paid Applicants</h2>
+        <h2>List of Reserved Applicants</h2>
         <hr>
     </div>
 </div>
@@ -25,20 +25,20 @@
         <input type="hidden" id="dtp_input2" value="" />
     </div><!-- /.col-md-4 -->
     <div class="col-md-3">
-        <select class="form-control" name="exam_level">
-            <option value="subpro" selected>CSE - Sub Professional</option>
-            <option value="pro">CSE - Professional</option>
+        <select class="form-control">
+            <option value="" selected>CSE - Sub Professional</option>
+            <option value="">CSE - Professional</option>
         </select>
     </div><!-- /.col-md-4 -->
 </div>
 <div class="row table-container">
     <table class="table table-hover">
         <thead>
-            <tr>
-                <th>Control number</th>
-                <th>Name</th>
-                <th>Schedule</th>
-            </tr>
+        <tr>
+            <th>Control number</th>
+            <th>Name</th>
+            <th>Schedule</th>
+        </tr>
         </thead>
         <tbody>
         <tr>
@@ -71,3 +71,4 @@
     </ul>
 </div>
 @stop
+

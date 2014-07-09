@@ -32,7 +32,10 @@
 <!--                </li>-->
             @else
                 <li class="{{ set_active('processor') }}">
-                    {{ HTML::link('processor', 'View Application') }}
+                    {{ HTML::link('processor', 'Paid Applicants') }}
+                </li>
+                <li class="{{ set_active('processor/reserved') }}">
+                    {{ HTML::link('processor/reserved', 'Reserved Applicants') }}
                 </li>
             @endif
             </ul>
