@@ -34,41 +34,22 @@
 <div class="row table-container">
     <table class="table table-hover">
         <thead>
-        <tr>
-            <th>Control number</th>
-            <th>Name</th>
-            <th>Schedule</th>
-        </tr>
+            <tr>
+                <th>Control number</th>
+                <th>Name</th>
+                <th>Schedule</th>
+            </tr>
         </thead>
         <tbody>
-        <tr>
-            <td><a href="">0001</a></td>
-            <td><a href="">Mark Bukerti</a></td>
-            <td>01/01/1991</td>
-        </tr>
-        <tr>
-            <td><a href="">0002</a></td>
-            <td><a href="">Jacob Abbe</a></td>
-            <td>12/12/2014</td>
-        </tr>
-        <tr>
-            <td><a href="">0003</a></td>
-            <td><a href="">Larry the Bird</a></td>
-            <td>11/11/2014</td>
-        </tr>
+        @foreach ($applicants as $applicant)
+            <tr>
+                <td>{{ $applicant->controlno }}</a></td>
+                <td><a href="{{ URL::to('processor/applicant/' . $applicant->id) }}">{{ $applicant->applicant_first_name .' '. $applicant->applicant_last_name }}</a></td>
+                <td>{{ date('F j, Y', strtotime($applicant->schedule_date_start)) }}</td>
+            </tr>
+        @endforeach
         </tbody>
     </table>
-</div>
-<div class="row pagination-container">
-    <ul class="pagination">
-        <li><a href="#">«</a></li>
-        <li class="active"><a href="#">1</a></li>
-        <li><a href="#">2</a></li>
-        <li><a href="#">3</a></li>
-        <li><a href="#">4</a></li>
-        <li><a href="#">5</a></li>
-        <li><a href="#">»</a></li>
-    </ul>
 </div>
 @stop
 
