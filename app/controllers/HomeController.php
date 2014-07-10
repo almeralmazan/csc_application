@@ -132,6 +132,25 @@ class HomeController extends BaseController {
                 $previousDateExam = $previousDateExamInputted;
             }
 
+            // Applicant Picture File upload
+            $applicantPictureImage  = Input::file('applicant_picture');
+            $applicantPicFileName   = date('Y-m-d-') . $applicantPictureImage->getClientOriginalName();
+
+            // First Requirement Image
+            $firstRequirementImage      = Input::file('first_requirement_image');
+            $firstRequirementFileName   = date('Y-m-d-') . $firstRequirementImage->getClientOriginalName();
+
+            // Second Requirement Image
+            $secondRequirementImage     = Input::file('second_requirement_image');
+            $secondRequirementFileName  = date('Y-m-d-') . $secondRequirementImage->getClientOriginalName();
+
+
+            $destinationPath        = public_path() . '/img/applicants';
+            $applicantPictureImage->move($destinationPath, $applicantPicFileName);
+            $firstRequirementImage->move($destinationPath, $firstRequirementFileName);
+            $secondRequirementImage->move($destinationPath, $secondRequirementFileName);
+
+
             $applicant = new Applicant;
             $applicant->controlno                 =  $control[0]->number;
             $applicant->applicant_last_name       =  Input::get('applicant_last_name');
@@ -159,11 +178,11 @@ class HomeController extends BaseController {
             $applicant->schedule_time_end         =  Input::get('schedule_time_end');
             $applicant->previous_exam_level       =  Input::get('previous_exam_level');
             $applicant->previous_date_exam        =  $previousDateExam;
-            $applicant->applicant_picture         =  Input::file('applicant_picture');
+            $applicant->applicant_picture         =  $applicantPicFileName;
             $applicant->requirement_type_1        =  Input::get('requirement_type_1');
-            $applicant->requirement_image_1       =  Input::file('first_requirement_image');
+            $applicant->requirement_image_1       =  $firstRequirementFileName;
             $applicant->requirement_type_2        =  Input::get('requirement_type_2');
-            $applicant->requirement_image_2       =  Input::file('second_requirement_image');
+            $applicant->requirement_image_2       =  $secondRequirementFileName;
             $applicant->save();
             
             $lastInsertedId = $applicant->id;

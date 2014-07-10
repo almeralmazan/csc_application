@@ -26,9 +26,9 @@
                 <li class="{{ set_active('payment-status') }}">
                     {{ HTML::link('payment-status', 'Payment Status') }}
                 </li>
-                <li class="{{ set_active('payment') }}">
-                    {{ HTML::link('payment', 'Payment') }}
-                </li>
+<!--                <li class="{{ set_active('payment') }}">-->
+<!--                    {{ HTML::link('payment', 'Payment') }}-->
+<!--                </li>-->
             </ul>
 
             @if ( ! Auth::guest())
