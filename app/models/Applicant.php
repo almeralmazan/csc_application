@@ -30,6 +30,20 @@ class Applicant extends Eloquent {
 
     protected $guarded = [];
 
+    public static function getPaidStatus($status)
+    {
+        $result = DB::table('applicants')
+                    ->where('paid_status', $status)
+                    ->select('id',
+                            'controlno',
+                            'applicant_last_name',
+                            'applicant_first_name',
+                            'schedule_date_start'
+                    )->get();
+
+        return $result;
+    }
+
     public function getControlnoAttribute($value)
     {
         return str_pad($value, 7, '0', STR_PAD_LEFT);

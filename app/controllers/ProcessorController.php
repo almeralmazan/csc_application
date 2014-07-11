@@ -5,22 +5,14 @@ class ProcessorController extends BaseController {
     public function index()
     {
         $title = 'View Application Page';
-        $applicants = DB::table('applicants')
-                        ->where('paid_status', 1)
-                        ->select('id', 'controlno', 'applicant_last_name', 'applicant_first_name', 'schedule_date_start')
-                        ->get();
-
+        $applicants = Applicant::getPaidStatus(1);
         return View::make('processor.index', compact('title', 'applicants'));
     }
 
     public function reserved()
     {
         $title = 'Reserved Page';
-        $applicants = DB::table('applicants')
-                        ->where('paid_status', 0)
-                        ->select('id', 'controlno', 'applicant_last_name', 'applicant_first_name', 'schedule_date_start')
-                        ->get();
-
+        $applicants = Applicant::getPaidStatus(0);
         return View::make('processor.reserved', compact('title', 'applicants'));
     }
 
