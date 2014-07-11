@@ -23,14 +23,12 @@ Route::get('payment', 'HomeController@payment');
 Route::post('validate-inputs', 'HomeController@validateAllInputs');
 Route::get('reserved-page/{applicantId}', 'HomeController@reservedPage');
 Route::get('proceed-to-payment', 'HomeController@proceedToPayment');
-Route::get('available-schedules/{locationId}', 'HomeController@getAllAvailableSchedules');
 Route::get('search-control-no/{controlNumber}', 'HomeController@getApplicantStatus');
-
 Route::get('admin/login', 'AdminController@loginPage');
 Route::post('admin/login', 'AdminController@verifyLogin');
-
 Route::get('processor/login', 'ProcessorController@loginPage');
 Route::post('processor/login', 'ProcessorController@verifyLogin');
+
 
 // Processor Pages
 Route::group(['before' => 'processor', 'prefix' => 'processor'], function() {
@@ -65,3 +63,7 @@ Route::get('all-users', function()
     // returns a json format automatically without toJson() method
     return User::all();
 });
+
+// AJAX
+Route::get('available-schedules/{locationId}', 'HomeController@allAvailableSchedules');
+

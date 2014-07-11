@@ -44,6 +44,38 @@ class Applicant extends Eloquent {
         return $result;
     }
 
+    public static function getApplicantStatus($controlNumber)
+    {
+        $result = DB::table('applicants')
+                    ->where('controlno', '=', $controlNumber)
+                    ->select(
+                        'applicant_status',
+                        'applicant_last_name',
+                        'applicant_first_name',
+                        'schedule_date_start'
+                    )
+                    ->get();
+
+        return $result;
+    }
+
+    public static function getAllAvailableSchedules($locationId)
+    {
+        $result = DB::table('schedules')
+                    ->join('testing_centers', 'schedules.testing_center_id', '=', 'testing_centers.id')
+                    ->where('testing_centers.id', $locationId)
+                    ->select(
+                        'testing_centers.location',
+                        'schedules.id',
+                        'schedules.date_start',
+                        'schedules.time_start',
+                        'schedules.time_end'
+                    )
+                    ->get();
+
+        return $result;
+    }
+
     public function getControlnoAttribute($value)
     {
         return str_pad($value, 7, '0', STR_PAD_LEFT);

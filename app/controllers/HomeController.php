@@ -39,45 +39,20 @@ class HomeController extends BaseController {
 
     public function getApplicantStatus($controlNumber)
     {
-        $result = DB::table('applicants')
-                    ->where('controlno', '=', $controlNumber)
-                    ->select(
-                        'applicant_status',
-                        'applicant_last_name',
-                        'applicant_first_name',
-                        'schedule_date_start'
-                    )
-                    ->get();
+        $result = Applicant::getApplicantStatus($controlNumber);
 
         if (empty($result))
         {
-            return Response::json([
-                'success'   =>  false,
-                'message'    =>  'No results'
-            ]);
+            return Response::json(['success' => false, 'message' => 'No results']);
         }
 
-        return Response::json([
-            'success'   =>  true,
-            'message'   =>  $result
-        ]);
+        return Response::json(['success' => true, 'message' => $result]);
     }
 
-    public function getAllAvailableSchedules($locationId)
+    // AJAX
+    public function allAvailableSchedules($locationId)
     {
-        $result = DB::table('schedules')
-                    ->join('testing_centers', 'schedules.testing_center_id', '=', 'testing_centers.id')
-                    ->where('testing_centers.id', $locationId)
-                    ->select(
-                        'testing_centers.location',
-                        'schedules.id',
-                        'schedules.date_start',
-                        'schedules.time_start',
-                        'schedules.time_end'
-                    )
-                    ->get();
-
-        return $result;
+        return Applicant::getAllAvailableSchedules($locationId);
     }
 
     public function validateAllInputs()
