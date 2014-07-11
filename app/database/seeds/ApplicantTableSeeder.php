@@ -47,7 +47,7 @@ class ApplicantTableSeeder extends Seeder {
             'previous_date_exam'        => '2012-07-01',
 
             // Requirements
-            'applicant_picture'         => 'my_pic.jpg',
+            'applicant_picture'         => 'photo.png',
             'requirement_type_1'        => 'BIR ID',
             'requirement_image_1'       => 'bir_id_image.jpg',
             'requirement_type_2'        => 'SSS ID',
