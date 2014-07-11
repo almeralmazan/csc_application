@@ -1,18 +1,5 @@
 <?php
 
-// Working Live Messaging
-//Route::get('test', function()
-//{
-//    $account_sid = 'AC81e2fe008ee80f5bfebbdf566ba9c5e5';
-//    $auth_token = 'd704f52acd7c7db554c1f11aa02377e1';
-//    $client = new Services_Twilio($account_sid, $auth_token);
-//
-//    $client->account->messages->create(array(
-//        'To' => "+639236923431",
-//        'From' => "+14849976019",
-//        'Body' => "hello this is a test from twilio, almer",
-//    ));
-//});
 
 // Public Pages
 Route::get('/', 'HomeController@home');
