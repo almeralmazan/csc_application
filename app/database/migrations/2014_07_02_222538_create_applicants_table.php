@@ -18,7 +18,7 @@ class CreateApplicantsTable extends Migration {
             $table->integer('controlno');
             $table->boolean('applicant_status')->default(0);
             $table->boolean('paid_status')->default(0);
-            $table->boolean('exam_result')->default(0);
+            $table->boolean('exam_status')->default(0);
 
             // Applicant Name
             $table->string('applicant_last_name', 50)->nullable(false);

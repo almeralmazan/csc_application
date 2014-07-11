@@ -11,7 +11,7 @@ class ApplicantTableSeeder extends Seeder {
             'controlno'                 =>  1,
             'applicant_status'          =>  1,
             'paid_status'               =>  1,
-            'exam_result'               =>  0,
+            'exam_status'               =>  0,
 
             // Applicant Name
             'applicant_last_name'       => 'Doe',
