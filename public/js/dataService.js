@@ -2,10 +2,6 @@
 var dataService = function () {
     var urlBase = window.location.origin,
 
-//    getAllUsers = function() {
-//        return $.getJSON(urlBase + '/all-users');
-//    },
-
     processorLogin = function() {
         return $.ajax({
             url: urlBase + '/processor/login',
@@ -40,6 +36,10 @@ var dataService = function () {
 
     getApplicantStatus = function(controlNumber) {
         return $.getJSON(urlBase + '/search-control-no/' + controlNumber);
+    },
+
+    deleteUser = function(userId) {
+        return $.getJSON(urlBase + '/admin/delete/user/' + userId);
     };
 
 
@@ -49,6 +49,7 @@ var dataService = function () {
         validateAllInputs: validateAllInputs,
         getAvailableScheduleForOneLocation: getAvailableScheduleForOneLocation,
         getListOfPassers: getListOfPassers,
-        getApplicantStatus: getApplicantStatus
+        getApplicantStatus: getApplicantStatus,
+        deleteUser: deleteUser
     };
 }();

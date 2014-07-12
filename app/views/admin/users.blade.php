@@ -90,7 +90,7 @@
                         <td>{{ $user->username }}</td>
                         <td>{{ $user->role }}</td>
                         <td>
-                            <a href="{{ URL::action('AdminController@deleteUser', [$user->id]) }}" class="btn btn-danger btn-xs">
+                            <a href="#" data-id="{{ $user->id }}" data-name="{{ $user->name }}" class="delete-user btn btn-danger btn-xs">
                                 <span class="glyphicon glyphicon-remove"></span>
                             </a>
                         </td>

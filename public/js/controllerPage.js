@@ -46,6 +46,21 @@ var controllerPage = function() {
 
                 getApplicantStatus(controlNumber);
             });
+
+            // delete user
+            $('.delete-user').on('click', function() {
+                var name = $(this).data('name'),
+                    id = $(this).data('id');
+
+                bootbox.confirm(
+                    'Are you sure you want to delete <strong>' + name + '</strong>?',
+                    function(accept) {
+                        if (accept) {
+                            location.href = '/admin/delete/user/' + id;
+                        }
+                    }
+                );
+            });
         },
 
         getProcessorLoginInputs = function() {
@@ -134,6 +149,16 @@ var controllerPage = function() {
                         $('#status-container #applicant-name').text('No results');
                         $('#status-container #schedule-date-start').text('No results');
                     }
+                })
+                .fail( function(jqXHR, textStatus, error) {
+                    console.log(textStatus);
+                });
+        },
+
+        deleteUser = function(userId) {
+            dataService.deleteUser(userId)
+                .done( function(data) {
+                    console.log('Deleted user successfully!');
                 })
                 .fail( function(jqXHR, textStatus, error) {
                     console.log(textStatus);

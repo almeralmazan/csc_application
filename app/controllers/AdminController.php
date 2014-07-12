@@ -70,7 +70,7 @@ class AdminController extends BaseController {
         $user = User::find($userId);
         $user->delete();
 
-        return Redirect::back()->withMessage('Deleted user successfully!');
+        return Redirect::back();
     }
 
     public function addSchedule()
