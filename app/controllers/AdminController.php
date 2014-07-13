@@ -116,7 +116,7 @@ class AdminController extends BaseController {
             ->where('testing_center_id', $testingCenterId)
             ->delete();
 
-        return Redirect::back()->withMessage('Deleted schedule successfully!');
+        return Redirect::back();
     }
 
     public function loginPage()

@@ -78,7 +78,7 @@
                         <td>{{ $schedule->time_start }}</td>
                         <td>{{ $schedule->time_end }}</td>
                         <td>
-                            <a href="{{ URL::action('AdminController@deleteSchedule', [$schedule->id, $schedule->testing_center_id]) }}" class="btn btn-danger btn-xs">
+                            <a href="#" data-schedule-id="{{ $schedule->id }}" data-testing-center-id="{{ $schedule->testing_center_id }}" class="delete-schedule btn btn-danger btn-xs">
                                 <span class="glyphicon glyphicon-remove"></span>
                             </a>
                         </td>

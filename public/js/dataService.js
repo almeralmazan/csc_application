@@ -38,6 +38,10 @@ var dataService = function () {
         return $.getJSON(urlBase + '/search-control-no/' + controlNumber);
     },
 
+    deleteSchedule = function(scheduleId, testingCenterId) {
+        return $.getJSON(urlBase + '/admin/delete/schedule/' + scheduleId + '/test-center/' + testingCenterId);
+    },
+
     deleteUser = function(userId) {
         return $.getJSON(urlBase + '/admin/delete/user/' + userId);
     };
@@ -50,6 +54,7 @@ var dataService = function () {
         getAvailableScheduleForOneLocation: getAvailableScheduleForOneLocation,
         getListOfPassers: getListOfPassers,
         getApplicantStatus: getApplicantStatus,
+        deleteSchedule: deleteSchedule,
         deleteUser: deleteUser
     };
 }();

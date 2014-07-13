@@ -47,6 +47,21 @@ var controllerPage = function() {
                 getApplicantStatus(controlNumber);
             });
 
+            // delete schedule
+            $('.delete-schedule').on('click', function() {
+                var scheduleId = $(this).data('schedule-id'),
+                    testingCenterId = $(this).data('testing-center-id');
+
+                bootbox.confirm(
+                    'Are you sure you want to delete this schedule?',
+                    function(accept) {
+                        if (accept) {
+                            location.href = '/admin/delete/schedule/' + scheduleId + '/test-center/' + testingCenterId;
+                        }
+                    }
+                );
+            });
+
             // delete user
             $('.delete-user').on('click', function() {
                 var name = $(this).data('name'),
