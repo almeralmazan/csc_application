@@ -9,7 +9,7 @@
 </div>
 <div class="row search-query">
     <div class="col-md-3">
-        <input type="text" class="form-control" placeholder="Search here" ng-model="search_name">
+        <input type="text" class="form-control" placeholder="Search name here" ng-model="search_name">
     </div><!-- /.col-md-4 -->
     <div class="col-md-3">
         <select class="form-control" ng-model="exam_level">
@@ -18,7 +18,7 @@
         </select>
     </div><!-- /.col-md-4 -->
 </div>
-<div class="row table-container" ng-contrller="ProcessorReservedController">
+<div class="row table-container" ng-controller="ProcessorReservedController">
     <table class="table table-hover">
         <thead>
             <tr>

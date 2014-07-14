@@ -25,7 +25,7 @@ app.controller('ProcessorReservedController', ['$scope', '$http', function($scop
     $scope.applicants = [];
 
     $http({
-        url: baseUrl + '/processor/reserced-applicants',
+        url: baseUrl + '/processor/reserved-applicants',
         method: 'GET'
     }).success(function (data) {
         $scope.applicants = data;

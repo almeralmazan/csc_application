@@ -4,7 +4,11 @@
 }
 
 .content {
-    margin-top: 100px;
+    margin-top: 60px;
+}
+
+.margin-top {
+    margin-top: 25px;
 }
 
 span#welcome {
@@ -12,40 +16,11 @@ span#welcome {
 }
 
 hr.divider-before-footer {
-
+    margin-top: 100px;
 }
 
 footer {
     padding-bottom: 20px;
-}
-
-/* ------------------------------- */
-/* Admin Schedules tables */
-/* ------------------------------- */
-
-/* Adding user form in Admin */
-#add-user-error-message {
-    margin-top: 20px;
-}
-
-div.admin-users-container {
-    padding: 0 10px;
-}
-
-.clickable{
-    cursor: pointer;
-}
-
-div.admin-users-heading div {
-    margin-top: -18px;
-    font-size: 15px;
-}
-
-div.admin-users-heading div span{
-    margin-left:5px;
-}
-div.admin-users-body{
-    display: none;
 }
 
 /*-------------------USERS PAGE-------------------------*/
@@ -86,11 +61,30 @@ div.requirements-subtitle {
     margin-top: 30px;
 }
 
+/*application > modal */
+
+.btn-picker {
+    padding: 7px;
+    -webkit-transition: all .1s ease;
+    -o-transition: all .1s ease;
+    -moz-transition: all .1s ease;
+    transition: all .1s ease;
+}
+
+.btn-picker:hover {
+    background-color: #449d44;
+    border-color: #398439;
+    color: #ffffff;
+    cursor: pointer;
+}
+
+
+
 /*passers*/
 
-.search-query {
+div.search-query {
     max-width: 1000px;
-    margin: 0 auto 20px;
+    margin: 50px auto 20px;
 }
 
 div.table-container,
@@ -99,7 +93,11 @@ div.pagination-container {
     margin: 0 auto;
 }
 
+/*reserved page*/
 
+div.jumbo-reserved h1, p.btn-continue {
+    text-align: center;
+}
 
 
 /*-------------------PROCESSORS PAGE-------------------------*/
@@ -187,6 +185,11 @@ div.pagination-container {
 
 /*approve-page*/
 
+.applicant-image {
+    max-width: 250px;
+    width: 100%;
+}
+
 .user-row {
     margin-bottom: 14px;
 }
@@ -217,11 +220,30 @@ div.pagination-container {
 .table-user-information > tbody > tr > td {
     border-top: 0;
 }
-.toppad {
-    margin-top:20px;
+
+/*----------------------------------ADMIN PAGE--------------------------------------*/
+
+/*ADMIN USERS PAGE*/
+
+div.admin-users-container {
+    padding: 0 10px;
 }
 
+.clickable{
+    cursor: pointer;
+}
 
+div.admin-users-heading div {
+    margin-top: -18px;
+    font-size: 15px;
+}
+
+div.admin-users-heading div span{
+    margin-left:5px;
+}
+div.admin-users-body{
+    display: none;
+}
 
 
 /*MEDIA QUERIES*/
@@ -265,6 +287,11 @@ div.pagination-container {
         margin-top:5px;
     }
 
+    /*processors page*/
+
+    .applicant-details{
+        margin-top: 25px;
+    }
 }
 @media (min-width: 1200px) {
 
