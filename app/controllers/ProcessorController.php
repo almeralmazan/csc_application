@@ -16,6 +16,34 @@ class ProcessorController extends BaseController {
         return View::make('processor.reserved', compact('title', 'applicants'));
     }
 
+    public function getAllPaidApplicants()
+    {
+        return DB::table('applicants')
+                ->where('paid_status', 1)
+                ->select(
+                    'id',
+                    'controlno',
+                    'applicant_last_name',
+                    'applicant_first_name',
+                    'schedule_date_start',
+                    'new_exam_level'
+                )->get();
+    }
+
+    public function getAllReservedApplicants()
+    {
+        return DB::table('applicants')
+            ->where('paid_status', 0)
+            ->select(
+                'id',
+                'controlno',
+                'applicant_last_name',
+                'applicant_first_name',
+                'schedule_date_start',
+                'new_exam_level'
+            )->get();
+    }
+
     public function loginPage()
     {
         $title = 'Processor Login Page';
