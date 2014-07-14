@@ -38,7 +38,7 @@ class ApplicantTableSeeder extends Seeder {
             // Exam Information
             'csid_no'                   => '',
             'new_exam_mode'             => 'ppt',
-            'new_exam_level'            => 'pro',
+            'new_exam_level'            => 'Professional',
             'testing_centers_location_id'  => 6,
             'schedule_date_start'       => '2014-07-10',
             'schedule_time_start'       => '08:00:00',
