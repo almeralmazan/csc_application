@@ -35,6 +35,40 @@ class AdminController extends BaseController {
         return View::make('admin.reports', compact('title'));
     }
 
+    public function getAllApplicants()
+    {
+        return DB::table('applicants')
+                ->select(
+                    'id',
+                    'controlno',
+                    'applicant_last_name',
+                    'applicant_first_name',
+                    'schedule_date_start',
+                    'new_exam_level'
+                )->get();
+    }
+
+    public function getAllPassedApplicants()
+    {
+        return DB::table('applicants')
+                ->where('exam_status', 1)
+                ->select(
+                    'id',
+                    'controlno',
+                    'applicant_last_name',
+                    'applicant_first_name',
+                    'schedule_date_start',
+                    'new_exam_level'
+                )->get();
+    }
+
+    public function show($applicantId)
+    {
+        $title = 'Applicant Page';
+        $applicant = Applicant::find($applicantId);
+        return View::make('admin.show', compact('title', 'applicant'));
+    }
+
     public function addUser()
     {
         $rules = [

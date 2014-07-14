@@ -8,6 +8,30 @@ app.config(['$interpolateProvider', function ($interpolateProvider) {
     $interpolateProvider.endSymbol(']}');
 }]);
 
+
+app.controller('AdminViewController', ['$scope', '$http', function($scope, $http) {
+    $scope.applicants = [];
+
+    $http({
+        url: baseUrl + '/admin/applicants',
+        method: 'GET'
+    }).success(function (data) {
+        $scope.applicants = data;
+    });
+}]);
+
+app.controller('AdminSearchController', ['$scope', '$http', function($scope, $http) {
+    $scope.applicants = [];
+
+    $http({
+        url: baseUrl + '/admin/passed-applicants',
+        method: 'GET'
+    }).success(function (data) {
+        $scope.applicants = data;
+    });
+}]);
+
+
 app.controller('ProcessorSearchController', ['$scope', '$http', function($scope, $http)
 {
     $scope.applicants = [];

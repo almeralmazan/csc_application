@@ -35,6 +35,9 @@ Route::group(['before' => 'admin', 'prefix' => 'admin'], function() {
     Route::get('schedules', 'AdminController@schedules');
     Route::get('users', 'AdminController@users');
     Route::get('reports', 'AdminController@reports');
+    Route::get('applicants', 'AdminController@getAllApplicants');
+    Route::get('applicant/{applicantId}', 'AdminController@show');
+    Route::get('passed-applicants', 'AdminController@getAllPassedApplicants');
     Route::get('logout', 'AdminController@logout');
     Route::get('delete/user/{userId}', 'AdminController@deleteUser');
     Route::post('add/schedule', 'AdminController@addSchedule');

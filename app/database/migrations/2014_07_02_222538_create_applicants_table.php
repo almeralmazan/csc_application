@@ -19,6 +19,7 @@ class CreateApplicantsTable extends Migration {
             $table->boolean('applicant_status')->default(0);
             $table->boolean('paid_status')->default(0);
             $table->boolean('exam_status')->default(0);
+            $table->date('paid_date')->default('0000-00-00');
 
             // Applicant Name
             $table->string('applicant_last_name', 50)->nullable(false);

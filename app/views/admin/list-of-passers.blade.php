@@ -3,53 +3,41 @@
 @section('content')
 <div class="row search-query">
     <div class="col-md-3">
-        <div class="input-group">
-            <input type="text" class="form-control" placeholder="Search here">
-            <span class="input-group-btn">
-              <button class="btn btn-success" type="button">Go!</button>
-            </span>
-        </div><!-- /input-group -->
+        <input type="text" class="form-control" placeholder="Search here" ng-model="search_name">
     </div><!-- /.col-md-4 -->
     <div class="col-md-3">
         <div class="input-group date form_date col-md-12" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
-            <input name="date" class="form-control" size="16" type="text" value="{{ date('Y-m-d') }}" readonly>
+            <input name="date" class="form-control" size="16" type="text" value="" readonly ng-model="search_date">
+            <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
             <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
         </div>
         <input type="hidden" id="dtp_input2" value="" />
     </div><!-- /.col-md-4 -->
     <div class="col-md-3">
-        <select class="form-control">
-            <option value="subpro" selected>CSE - Sub Professional</option>
-            <option value="prof">CSE - Professional</option>
+        <select class="form-control" ng-model="exam_level">
+            <option value="Sub Pro" selected>CSE - Sub Professional</option>
+            <option value="Professional">CSE - Professional</option>
         </select>
     </div><!-- /.col-md-4 -->
 </div>
-<div class="row table-container">
+<div class="row table-container" ng-controller="AdminSearchController">
     <table class="table table-hover">
         <thead>
             <tr>
                 <th>Control number</th>
                 <th>First Name</th>
                 <th>Last Name</th>
+                <th>Date of Exam</th>
             </tr>
         </thead>
         <tbody>
-            <tr>
-                <td>0001</td>
-                <td>Mark</td>
-                <td>Otto</td>
-            </tr>
-            <tr>
-                <td>0002</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-            </tr>
-            <tr>
-                <td>0003</td>
-                <td colspan="2">Larry the Bird</td>
+            <tr ng-repeat="applicant in applicants | filter:search_name | filter:search_date | filter:exam_level">
+                <td>{[ applicant.controlno ]}</td>
+                <td>{[ applicant.applicant_first_name ]}</td>
+                <td>{[ applicant.applicant_last_name ]}</td>
+                <td>{[ applicant.schedule_date_start | date ]}</td>
             </tr>
         </tbody>
     </table>
 </div>
-
 @stop

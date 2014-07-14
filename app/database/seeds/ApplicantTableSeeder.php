@@ -12,6 +12,7 @@ class ApplicantTableSeeder extends Seeder {
             'applicant_status'          =>  1,
             'paid_status'               =>  1,
             'exam_status'               =>  0,
+            'paid_date'                 =>  '2014-07-05',
 
             // Applicant Name
             'applicant_last_name'       => 'Doe',
@@ -60,6 +61,7 @@ class ApplicantTableSeeder extends Seeder {
             'applicant_status'          =>  1,
             'paid_status'               =>  1,
             'exam_status'               =>  1,
+            'paid_date'                 =>  '2014-07-03',
 
             // Applicant Name
             'applicant_last_name'       => 'Alvarez',
@@ -108,6 +110,7 @@ class ApplicantTableSeeder extends Seeder {
             'applicant_status'          =>  1,
             'paid_status'               =>  0,
             'exam_status'               =>  0,
+            'paid_date'                 =>  '0000-00-00',
 
             // Applicant Name
             'applicant_last_name'       => 'Villanueva',
@@ -156,6 +159,7 @@ class ApplicantTableSeeder extends Seeder {
             'applicant_status'          =>  1,
             'paid_status'               =>  1,
             'exam_status'               =>  1,
+            'paid_date'                 =>  '2014-07-22',
 
             // Applicant Name
             'applicant_last_name'       => 'Reyes',
@@ -204,6 +208,7 @@ class ApplicantTableSeeder extends Seeder {
             'applicant_status'          =>  1,
             'paid_status'               =>  0,
             'exam_status'               =>  1,
+            'paid_date'                 =>  '0000-00-00',
 
             // Applicant Name
             'applicant_last_name'       => 'Balbuena',
