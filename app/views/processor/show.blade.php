@@ -4,13 +4,6 @@
 <div class="row">
     <div class="col-md-1">
     </div>
-<!--    <div class="col-md-11">-->
-<!--        <a href="{{ URL::to('processor') }}" class="btn btn-default">-->
-<!--            <span>-->
-<!--                {{ HTML::image('img/back.png') }}-->
-<!--            </span>-->
-<!--        </a>-->
-<!--    </div>-->
 </div>
 
 <div class="row">
@@ -22,9 +15,11 @@
             <div class="panel-body">
                 <div class="row">
                     <div class="col-md-3 col-lg-3 " align="center">
-                        {{ HTML::image('img/applicants/' . $applicant->applicant_picture, 'User Pic', ['class' => 'img-circle', 'width' => '120']) }}
+                        {{ HTML::image('img/applicants/' . $applicant->applicant_picture, 'User Pic', ['class' => 'img-circle img-responsive applicant-image', 'width' => '120']) }}
+                        {{ HTML::image('img/applicants/' . $applicant->requirement_image_1, 'Requirement 1', ['class' => 'img-responsive applicant-image margin-top', 'width' => '120']) }}
+                        {{ HTML::image('img/applicants/' . $applicant->requirement_image_2, 'Requirement 2', ['class' => 'img-responsive applicant-image margin-top', 'width' => '120']) }}
                     </div>
-                    <div class=" col-md-9 col-lg-9 ">
+                    <div class=" col-md-9 col-lg-9 applicant-details">
                         <table class="table table-user-information">
                             <tbody>
                             <tr>
