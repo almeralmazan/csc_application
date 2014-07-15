@@ -11,6 +11,7 @@
     <!-- Bootstrap -->
     {{ HTML::style('css/bootstrap.min.css') }}
     {{ HTML::style('css/bootstrap-datetimepicker.min.css', ['media' => 'screen']) }}
+    {{ HTML::style('css/lightbox.css') }}
     {{ HTML::style('css/admin-processor-style.css') }}
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -30,10 +31,12 @@
         @yield('content')
     </div>
 
+
 <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!--{{ HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') }}-->
 <!-- Include all compiled plugins (below), or include individual files as needed -->
 {{ HTML::script('js/jquery.min.js') }}
+{{ HTML::script('js/lightbox.min.js') }}
 {{ HTML::script('js/bootstrap.min.js') }}
 {{ HTML::script('js/bootstrap-datetimepicker.js') }}
 {{ HTML::script('js/bootbox.min.js') }}

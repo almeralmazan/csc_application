@@ -57,6 +57,17 @@ class ProcessorController extends BaseController {
         return View::make('processor.show', compact('title', 'applicant'));
     }
 
+    public function updatePage($applicantId)
+    {
+        $title = 'Applicant Update Page';
+        $applicant = Applicant::find($applicantId);
+        return View::make('processor.update', compact('title', 'applicant'));
+    }
+
+    public function updateStatus()
+    {
+
+    }
     public function verifyLogin()
     {
         $credentials = Auth::attempt([

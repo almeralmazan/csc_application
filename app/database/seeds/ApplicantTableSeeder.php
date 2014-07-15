@@ -107,7 +107,7 @@ class ApplicantTableSeeder extends Seeder {
             'controlno'                 =>  3,
             'applicant_status'          =>  1,
             'paid_status'               =>  0,
-            'exam_status'               =>  0,
+            'exam_status'               =>  2,
 
             // Applicant Name
             'applicant_last_name'       => 'Villanueva',
@@ -203,7 +203,7 @@ class ApplicantTableSeeder extends Seeder {
             'controlno'                 =>  5,
             'applicant_status'          =>  1,
             'paid_status'               =>  0,
-            'exam_status'               =>  1,
+            'exam_status'               =>  2,
 
             // Applicant Name
             'applicant_last_name'       => 'Balbuena',
