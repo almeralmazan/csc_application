@@ -50,10 +50,12 @@
                             <div class="col-md-12">
                                 <div class="col-md-12 text-center">
                                     <h4>
-                                        @if ($applicant->applicant_status == 1)
+                                        @if ($applicant->applicant_status == 0)
+                                            <span class="label label-danger">Disapprove</span>
+                                        @elseif ($applicant->applicant_status == 1)
                                             <span class="label label-success">Approve</span>
                                         @else
-                                            <span class="label label-primary">Disapprove</span>
+                                            <span class="label label-info">Not Verified</span>
                                         @endif
 
                                         @if ($applicant->paid_status == 1)

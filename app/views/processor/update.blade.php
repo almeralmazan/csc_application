@@ -21,7 +21,7 @@
                         </div>
                         <div class="col-md-7">
                             {{ Form::select('applicant_status',
-                                ['1' => 'Approve', '0' => 'Disapprove'],
+                                ['0' => 'Disapprove', '1' => 'Approve', '2' => 'Not Verified'],
                                 $applicant->applicant_status,
                                 ['class' => 'form-control']); }}
                         </div>
