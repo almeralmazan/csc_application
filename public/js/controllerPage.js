@@ -169,6 +169,13 @@ var controllerPage = function() {
                     }
                 );
             });
+
+            // filter results between two dates
+            $('#results-form').on('submit', function(e) {
+                e.preventDefault();
+
+                filterResults();
+            });
         },
 
         getProcessorLoginInputs = function() {
@@ -271,6 +278,31 @@ var controllerPage = function() {
                 .fail( function(jqXHR, textStatus, error) {
                     console.log(textStatus);
                 });
+        },
+
+        filterResults = function() {
+            dataService.filterResults()
+                .done(function(data) {
+
+                    var resultsContainer = $('#table-results');
+                    var html = '';
+
+                    resultsContainer.empty();
+
+                    for (var i = 0; i < data.length; i++) {
+                        html += '<tr>';
+                        html += '<td>' + data[i].paid_date + '</td>';
+                        html += '<td>' + data[i].applicant_first_name + ' ' + data[i].applicant_last_name + '</td>';
+                        html += '<td>' + data[i].new_exam_level + '</td>';
+                        html += '<td>' + data[i].price + '</td>';
+                        html += '</tr>';
+                    }
+
+                    resultsContainer.html(html);
+                })
+                .fail(function(jqXHR, textStatus, error) {
+                    console.log(textStatus);
+                })
         };
 
     return {

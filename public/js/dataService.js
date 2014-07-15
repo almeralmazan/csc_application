@@ -44,8 +44,16 @@ var dataService = function () {
 
     deleteUser = function(userId) {
         return $.getJSON(urlBase + '/admin/delete/user/' + userId);
-    };
+    },
 
+    // filter results between two dates
+    filterResults = function() {
+        return $.ajax({
+            url: urlBase + '/admin/filter-results',
+            type: 'get',
+            data: $('#results-form').serialize()
+        });
+    };
 
     return {
         processorLogin: processorLogin,
@@ -55,6 +63,7 @@ var dataService = function () {
         getListOfPassers: getListOfPassers,
         getApplicantStatus: getApplicantStatus,
         deleteSchedule: deleteSchedule,
-        deleteUser: deleteUser
+        deleteUser: deleteUser,
+        filterResults: filterResults
     };
 }();

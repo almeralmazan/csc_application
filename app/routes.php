@@ -45,6 +45,7 @@ Route::group(['before' => 'admin', 'prefix' => 'admin'], function() {
     Route::post('add/schedule', 'AdminController@addSchedule');
     Route::get('delete/schedule/{scheduleId}/test-center/{testingCenterId}', 'AdminController@deleteSchedule');
 
+    Route::get('filter-results', 'AdminController@filterResults');
     Route::post('validate-add-user', 'AdminController@addUser');
 });
 

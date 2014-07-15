@@ -32,7 +32,20 @@ class AdminController extends BaseController {
     public function reports()
     {
         $title = 'Reports Page';
-        return View::make('admin.reports', compact('title'));
+        $applicants = DB::table('applicants')
+                        ->join('payments', 'payments.applicant_id', '=', 'applicants.id')
+                        ->where('paid_status', 1)
+                        ->select(
+                            'payments.paid_date',
+                            'applicants.applicant_last_name',
+                            'applicants.applicant_first_name',
+                            'applicants.new_exam_level',
+                            'payments.price'
+                        )
+                        ->orderBy('payments.paid_date')
+                        ->get();
+
+        return View::make('admin.reports', compact('title', 'applicants'));
     }
 
     public function getAllReports($dateStart, $dateEnd)
@@ -167,6 +180,47 @@ class AdminController extends BaseController {
             ->delete();
 
         return Redirect::back();
+    }
+
+    public function filterResults()
+    {
+        if (Request::ajax())
+        {
+            $dateStart = Input::get('search_date_start');
+            $dateEnd = Input::get('search_date_end');
+
+            /* SELECT
+                applicants.applicant_last_name,
+                applicants.applicant_first_name,
+                applicants.new_exam_level,
+                payments.paid_date,
+                payments.price
+
+            FROM applicants
+
+            JOIN payments
+            ON payments.applicant_id = applicants.id
+
+            WHERE payments.paid_date != '0000-00-00'
+                    AND payments.paid_date BETWEEN '2014-07-02' AND '2014-07-22'
+            */
+
+            $results = DB::table('applicants')
+                        ->join('payments', 'payments.applicant_id', '=', 'applicants.id')
+                        ->where('payments.paid_date', '!=', '0000-00-00')
+                        ->whereBetween('payments.paid_date', [$dateStart, $dateEnd])
+                        ->select(
+                            'applicants.applicant_last_name',
+                            'applicants.applicant_first_name',
+                            'applicants.new_exam_level',
+                            'payments.paid_date',
+                            'payments.price'
+                        )
+                        ->orderBy('payments.paid_date')
+                        ->get();
+
+            return Response::json($results);
+        }
     }
 
     public function loginPage()
