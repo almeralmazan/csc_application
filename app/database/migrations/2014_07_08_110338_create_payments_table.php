@@ -16,6 +16,7 @@ class CreatePaymentsTable extends Migration {
         {
             $table->increments('id');
             $table->integer('applicant_id');
+            $table->date('paid_date');
             $table->double('price', 5, 2);
             $table->timestamps();
         });

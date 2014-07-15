@@ -136,6 +136,7 @@ class HomeController extends BaseController {
 
             Payment::create([
                 'applicant_id'  =>  $lastInsertedId,
+                'paid_date'     =>  '0000-00-00',
                 'price'         =>  500.00
             ]);
 

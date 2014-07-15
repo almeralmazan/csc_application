@@ -35,6 +35,22 @@ class AdminController extends BaseController {
         return View::make('admin.reports', compact('title'));
     }
 
+    public function getAllReports($dateStart, $dateEnd)
+    {
+        return DB::table('applicants')
+                ->join('payments', 'payments.applicant_id', '=', 'applicants.id')
+                ->where('payments.paid_date', '!=', '0000-00-00')
+                ->whereBetween('payments.paid_date', array($dateStart, $dateEnd))
+                ->select(
+                    'applicants.applicant_last_name',
+                    'applicants.applicant_first_name',
+                    'applicants.new_exam_level',
+                    'payments.paid_date',
+                    'payments.price'
+                )
+                ->get();
+    }
+
     public function getAllApplicants()
     {
         return DB::table('applicants')

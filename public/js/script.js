@@ -20,6 +20,17 @@ app.controller('AdminViewController', ['$scope', '$http', function($scope, $http
     });
 }]);
 
+app.controller('AdminReportController', ['$scope', '$http', function($scope, $http) {
+    $scope.applicants = [];
+
+    $http({
+        url: baseUrl + '/admin/applicants',
+        method: 'GET'
+    }).success(function (data) {
+        $scope.applicants = data;
+    });
+}]);
+
 app.controller('AdminSearchController', ['$scope', '$http', function($scope, $http) {
     $scope.applicants = [];
 
