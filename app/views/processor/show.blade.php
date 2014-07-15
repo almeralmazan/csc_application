@@ -50,6 +50,7 @@
                             <div class="col-md-12">
                                 <div class="col-md-12 text-center">
                                     <h4>
+                                        <!-- Applicant Status -->
                                         @if ($applicant->applicant_status == 0)
                                             <span class="label label-danger">Disapprove</span>
                                         @elseif ($applicant->applicant_status == 1)
@@ -58,20 +59,21 @@
                                             <span class="label label-info">Not Verified</span>
                                         @endif
 
+                                        <!-- Paid Status -->
                                         @if ($applicant->paid_status == 1)
                                             <span class="label label-success">Paid</span>
                                         @else
                                             <span class="label label-danger">Not Paid</span>
                                         @endif
 
+                                        <!-- Exam Status -->
                                         @if ($applicant->exam_status == 0)
                                             <span class="label label-danger">Failed</span>
-                                        @elseif ($applicant->paid_status == 1)
+                                        @elseif ($applicant->exam_status == 1)
                                             <span class="label label-success">Passed</span>
                                         @else
                                             <span class="label label-info">Scheduled for exam</span>
                                         @endif
-
                                     </h4>
                                     <a href="{{ URL::to('processor/update/applicant/' . $applicant->id) }}" class="text-left"> Edit Status</a>
                                 </div>

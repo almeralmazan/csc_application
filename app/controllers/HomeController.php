@@ -100,6 +100,9 @@ class HomeController extends BaseController {
 
             $applicant = new Applicant;
             $applicant->controlno                 =  $control[0]->number;
+            $applicant->applicant_status          =  2;
+            $applicant->paid_status               =  0;
+            $applicant->exam_status               =  2;
             $applicant->applicant_last_name       =  Input::get('applicant_last_name');
             $applicant->applicant_first_name      =  Input::get('applicant_first_name');
             $applicant->applicant_middle_name     =  Input::get('applicant_middle_name');

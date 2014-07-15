@@ -72,6 +72,10 @@ class ProcessorController extends BaseController {
         $applicant->exam_status = Input::get('exam_status');
         $applicant->save();
 
+        $payment = Payment::find($applicant->id);
+        $payment->paid_date = date('Y-m-d');
+        $payment->save();
+
         return Redirect::back()->withMessage('Updated Successfully');
     }
     public function verifyLogin()
