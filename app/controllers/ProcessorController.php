@@ -64,9 +64,15 @@ class ProcessorController extends BaseController {
         return View::make('processor.update', compact('title', 'applicant'));
     }
 
-    public function updateStatus()
+    public function updateStatus($applicantId)
     {
+        $applicant = Applicant::find($applicantId);
+        $applicant->applicant_status = Input::get('applicant_status');
+        $applicant->paid_status = Input::get('paid_status');
+        $applicant->exam_status = Input::get('exam_status');
+        $applicant->save();
 
+        return Redirect::back()->withMessage('Updated Successfully');
     }
     public function verifyLogin()
     {

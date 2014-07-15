@@ -25,6 +25,7 @@ Route::group(['before' => 'processor', 'prefix' => 'processor'], function() {
     Route::get('paid-applicants', 'ProcessorController@getAllPaidApplicants');
     Route::get('reserved-applicants', 'ProcessorController@getAllReservedApplicants');
     Route::get('update/applicant/{applicantId}', 'ProcessorController@updatePage');
+    Route::post('update/applicant/{applicantId}', 'ProcessorController@updateStatus');
     Route::get('logout', 'ProcessorController@logout');
 });
 

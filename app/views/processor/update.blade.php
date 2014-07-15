@@ -13,6 +13,7 @@
         <div class="col-md-4 col-md-offset-4">
             <div class="panel panel-info">
                 <div class="panel-heading">Edit Status</div>
+                {{ Form::open(['url' => 'processor/update/applicant/' . $applicant->id]) }}
                 <div class="panel-body text-left">
                     <div class="row">
                         <div class="col-md-5">
@@ -51,15 +52,26 @@
                     </div>
                     <div class="row margin-top">
                         <div class="col-md-6">
-                            <button class="btn btn-block btn-primary">Update</button>
+                            {{ Form::submit('Update', ['class' => 'btn btn-block btn-primary']) }}
                         </div>
                         <div class="col-md-6">
                             {{ HTML::link('processor/applicant/' . $applicant->id, 'Cancel', ['class' => 'btn btn-block btn-danger']) }}
                         </div>
                     </div>
                 </div>
+                {{ Form::close() }}
             </div>
         </div>
+
+        @if (Session::has('message'))
+        <div class="row">
+            <div class="col-md-4 col-md-offset-4">
+                <div class="alert alert-success" role="alert">
+                    {{ Session::get('message') }}
+                </div>
+            </div>
+        </div>
+        @endif
     </div>
 </div>
 @stop
