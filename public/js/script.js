@@ -66,3 +66,24 @@ app.controller('ProcessorReservedController', ['$scope', '$http', function($scop
         $scope.applicants = data;
     });
 }]);
+
+
+// Home Application
+var homeApp = angular.module('HomeApp', []);
+
+
+homeApp.config(['$interpolateProvider', function ($interpolateProvider) {
+    $interpolateProvider.startSymbol('{[');
+    $interpolateProvider.endSymbol(']}');
+}]);
+
+homeApp.controller('HomeSearchController', ['$scope', '$http', function($scope, $http) {
+    $scope.applicants = [];
+
+    $http({
+        url: baseUrl + '/passed-applicants',
+        method: 'GET'
+    }).success(function (data) {
+        $scope.applicants = data;
+    });
+}]);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" ng-app="HomeApp">
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -32,12 +32,13 @@
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!--    {{ HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') }}-->
     <!-- Include all compiled plugins (below), or include individual files as needed -->
-    {{ HTML::script('js/jquery.min.js') }}
-    {{ HTML::script('js/bootstrap.min.js') }}
-    {{ HTML::script('js/bootstrap-datetimepicker.js') }}
-    {{ HTML::script('js/moment.min.js') }}
-    {{ HTML::script('js/dataService.js') }}
-    {{ HTML::script('js/controllerPage.js') }}
-    {{ HTML::script('js/script.js') }}
+{{ HTML::script('js/jquery.min.js') }}
+{{ HTML::script('js/bootstrap.min.js') }}
+{{ HTML::script('js/bootstrap-datetimepicker.js') }}
+{{ HTML::script('js/angular.min.js') }}
+{{ HTML::script('js/moment.min.js') }}
+{{ HTML::script('js/dataService.js') }}
+{{ HTML::script('js/controllerPage.js') }}
+{{ HTML::script('js/script.js') }}
 </body>
 </html>

@@ -79,16 +79,7 @@ class AdminController extends BaseController {
 
     public function getAllPassedApplicants()
     {
-        return DB::table('applicants')
-                ->where('exam_status', 1)
-                ->select(
-                    'id',
-                    'controlno',
-                    'applicant_last_name',
-                    'applicant_first_name',
-                    'schedule_date_start',
-                    'new_exam_level'
-                )->get();
+        return Applicant::getAllPassedApplicants();
     }
 
     public function show($applicantId)
@@ -188,22 +179,6 @@ class AdminController extends BaseController {
         {
             $dateStart = Input::get('search_date_start');
             $dateEnd = Input::get('search_date_end');
-
-            /* SELECT
-                applicants.applicant_last_name,
-                applicants.applicant_first_name,
-                applicants.new_exam_level,
-                payments.paid_date,
-                payments.price
-
-            FROM applicants
-
-            JOIN payments
-            ON payments.applicant_id = applicants.id
-
-            WHERE payments.paid_date != '0000-00-00'
-                    AND payments.paid_date BETWEEN '2014-07-02' AND '2014-07-22'
-            */
 
             $results = DB::table('applicants')
                         ->join('payments', 'payments.applicant_id', '=', 'applicants.id')
