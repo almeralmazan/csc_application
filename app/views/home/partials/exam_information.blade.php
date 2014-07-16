@@ -31,8 +31,8 @@
             <div class="col-md-3 exam-level">
                 <select id="exam-level" name="new_exam_level" class="form-control">
                     <option value="empty" selected>-- Select Exam Level --</option>
-                    <option value="subpro">CSE - Sub professional</option>
-                    <option value="pro">CSE - Professional</option>
+                    <option value="Sub Pro">CSE - Sub professional</option>
+                    <option value="Professional">CSE - Professional</option>
                 </select>
                 <span class="alert-danger">{{ $errors->first('new_exam_level') }}</span>
             </div>
