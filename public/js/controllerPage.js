@@ -286,10 +286,23 @@ var controllerPage = function() {
 
                     var resultsContainer = $('#table-results');
                     var html = '';
+                    var totalPrice = 0;
+                    var totalSubPro = 0;
+                    var totalPro = 0;
 
                     resultsContainer.empty();
 
                     for (var i = 0; i < data.length; i++) {
+                        totalPrice += data[i].price;
+
+                        if (data[i].new_exam_level == 'Sub Pro') {
+                            totalSubPro++;
+                        }
+
+                        if (data[i].new_exam_level == 'Professional') {
+                            totalPro++;
+                        }
+
                         html += '<tr>';
                         html += '<td>' + data[i].paid_date + '</td>';
                         html += '<td>' + data[i].applicant_first_name + ' ' + data[i].applicant_last_name + '</td>';
@@ -297,6 +310,11 @@ var controllerPage = function() {
                         html += '<td>' + data[i].price + '</td>';
                         html += '</tr>';
                     }
+
+                    // Test
+                    console.log('Total Price: ' + totalPrice);
+                    console.log('Total Pro: ' + totalPro);
+                    console.log('Total SubPro: ' + totalSubPro);
 
                     resultsContainer.html(html);
                 })
