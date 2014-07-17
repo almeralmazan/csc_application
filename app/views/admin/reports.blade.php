@@ -50,4 +50,8 @@
         </tbody>
     </table>
 </div>
+
+<div class="row">
+    <div class="col-md-12 col-md-offset-1 summary-report"></div>
+</div>
 @stop

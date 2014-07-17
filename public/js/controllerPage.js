@@ -285,6 +285,7 @@ var controllerPage = function() {
                 .done(function(data) {
 
                     var resultsContainer = $('#table-results');
+                    var summaryReportContainer = $('.summary-report');
                     var html = '';
                     var totalPrice = 0;
                     var totalSubPro = 0;
@@ -311,10 +312,10 @@ var controllerPage = function() {
                         html += '</tr>';
                     }
 
-                    // Test
-                    console.log('Total Price: ' + totalPrice);
-                    console.log('Total Pro: ' + totalPro);
-                    console.log('Total SubPro: ' + totalSubPro);
+                    summaryReportContainer.html(
+                        '<div>Total Price: ' + totalPrice + '</div>' +
+                        '<div>Total Professional: ' + totalPro + '</div>' +
+                        '<div>Total Sub Professional: ' + totalSubPro + '</div>');
 
                     resultsContainer.html(html);
                 })
