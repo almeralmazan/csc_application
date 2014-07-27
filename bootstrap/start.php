@@ -23,7 +23,7 @@ $app = new Illuminate\Foundation\Application;
 | given environment, then we will automatically detect it for you.
 |
 */
-// putenv('ENV=production');
+ putenv('ENV=production');
 
 $env = $app->detectEnvironment(function() {
 	return getenv('ENV') ?: 'local';
