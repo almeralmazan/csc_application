@@ -20,11 +20,11 @@
                 <i class="fa fa-folder-open-o"></i><span class="glyphicon glyphicon-off"></span> Logout - {{ Auth::user()->username }}
             </a>
         @else
-            <a href="/admin/users" class="list-group-item {{ set_active('admin/users') }}">
-                <i class="fa fa-folder-open-o"></i><span class="glyphicon glyphicon-user"></span> Users
+            <a href="/processor" class="list-group-item {{ set_active('processor') }}">
+                <i class="fa fa-folder-open-o"></i><span class="glyphicon glyphicon-user"></span> Paid
             </a>
-            <a href="/admin/reports" class="list-group-item {{ set_active('admin/reports') }}">
-                <i class="fa fa-folder-open-o"></i><span class="glyphicon glyphicon-calendar"></span> Reports
+            <a href="/processor/reserved" class="list-group-item {{ set_active('processor/reserved') }}">
+                <i class="fa fa-folder-open-o"></i><span class="glyphicon glyphicon-calendar"></span> Reserved
             </a>
             <a href="/processor/logout" class="list-group-item {{ set_active('processor/logout') }}">
                 <i class="fa fa-folder-open-o"></i><span class="glyphicon glyphicon-off"></span> Logout - {{ Auth::user()->username }}
