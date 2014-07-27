@@ -1,36 +1,18 @@
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Civil Service Commission</a>
+
+    <div class="col-md-2 margin-top">
+        <div class="list-group side-nav">
+            <a href="/" class="list-group-item {{ set_active('/') }}">
+                <i class="fa fa-comment-o"></i><span class="glyphicon glyphicon-home"></span> Home
+            </a>
+            <a href="/application-form" class="list-group-item {{ set_active('application-form') }}">
+                <i class="fa fa-search"></i><span class="glyphicon glyphicon-pencil"></span>  Application
+            </a>
+            <a href="/list-of-passers" class="list-group-item {{ set_active('list-of-passers') }}">
+                <i class="fa fa-user"></i><span class="glyphicon glyphicon-list-alt"></span>  List of passers
+            </a>
+            <a href="/payment-status" class="list-group-item {{ set_active('payment-status') }}">
+                <i class="fa fa-folder-open-o"></i><span class="glyphicon glyphicon-usd"></span> Payment
+            </a>
         </div>
+    </div>
 
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-                <li class="{{ set_active('/') }}">
-                    {{ HTML::link('/', 'Home') }}
-                </li>
-                <li class="{{ set_active('application-form') }}">
-                    {{ HTML::link('application-form', 'Application Form') }}
-                </li>
-                <li class="{{ set_active('list-of-passers') }}">
-                    {{ HTML::link('list-of-passers', 'List of Passers') }}
-                </li>
-                <li class="{{ set_active('payment-status') }}">
-                    {{ HTML::link('payment-status', 'Payment Status') }}
-                </li>
-<!--                <li class="{{ set_active('payment') }}">-->
-<!--                    {{ HTML::link('payment', 'Payment') }}-->
-<!--                </li>-->
-            </ul>
-
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>

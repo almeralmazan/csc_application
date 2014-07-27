@@ -1,5 +1,4 @@
 
-<div class="container content">
 <hr class="divider-before-footer">
 <footer>
     <div class="row">
@@ -11,4 +10,3 @@
         </div>
     </div>
 </footer>
-</div>

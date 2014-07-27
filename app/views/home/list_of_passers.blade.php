@@ -5,7 +5,7 @@
 @stop
 
 @section('content')
-<div class="container content">
+<div class="col-md-10">
     <div class="row search-query">
         <div class="col-md-3">
             <input type="text" class="form-control" placeholder="Search here" ng-model="search_name">

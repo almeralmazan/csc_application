@@ -7,6 +7,11 @@
     margin-top: 60px;
 }
 
+.side-nav {
+    position: fixed;
+    width: 150px;
+}
+
 .margin-top {
     margin-top: 25px;
 }
@@ -245,6 +250,9 @@ div.admin-users-body{
     display: none;
 }
 
+/*Report's page*/
+.lead { font-size: 33px;margin-bottom:0px; }
+
 
 /*MEDIA QUERIES*/
 @media (max-width: 768px) {
@@ -354,4 +362,4 @@ div.admin-users-body{
     width: 250px;
     height: 100px
 }
-/* End carousel */
+/* End carousel

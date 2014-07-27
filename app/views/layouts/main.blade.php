@@ -22,12 +22,17 @@
     <![endif]-->
 </head>
 <body>
-    @yield('header')
 
-    @yield('content')
+    <div class="container content">
+        <div class="row">
+            @include('layouts.partials.header-nav')
 
-    @yield('footer')
-    @include('layouts.partials.footer')
+            @yield('content')
+
+            @include('layouts.partials.footer')
+        </div>
+    </div>
+
 
     <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
 <!--    {{ HTML::script('https://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js') }}-->
