@@ -55,9 +55,9 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => $_ENV['DB_NAME'],
-			'username'  => $_ENV['DB_USER'],
-			'password'  => $_ENV['DB_PASS'],
+			'database'  => 'forge',
+			'username'  => 'forge',
+			'password'  => 'fDrecx6E55fkuAf6LbAY',
 			'charset'   => 'utf8',
 			'collation' => 'utf8_unicode_ci',
 			'prefix'    => '',
