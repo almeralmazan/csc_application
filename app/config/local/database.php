@@ -23,7 +23,7 @@ return array(
 		'mysql' => array(
 			'driver'    => 'mysql',
 			'host'      => 'localhost',
-			'database'  => 'forge',
+			'database'  => 'csc_application_db',
 			'username'  => 'forge',
 			'password'  => 'fDrecx6E55fkuAf6LbAY',
 			'charset'   => 'utf8',
