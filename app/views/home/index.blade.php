@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
-@section('header')
-@include('layouts.partials.header-nav')
+@section('side-nav')
+    @include('layouts.partials.header-nav')
 @stop
 
 @section('content')

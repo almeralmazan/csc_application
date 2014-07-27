@@ -25,7 +25,8 @@
 
     <div class="container content">
         <div class="row">
-            @include('layouts.partials.header-nav')
+            @yield('side-nav')
+
 
             @yield('content')
 

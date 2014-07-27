@@ -1,6 +1,6 @@
 @extends('layouts.main')
 
-@section('header')
+@section('side-nav')
     @include('layouts.partials.header-nav')
 @stop
 
