@@ -132,12 +132,9 @@ var controllerPage = function() {
                 $("#time-end").val(time_end);
             });
 
-            $('#search-control-no-form').on('submit', function(e) {
+            $('#control-number-field').on('input', function(e) {
                 e.preventDefault();
-
-                var controlNumber = $('#control-number-field').val();
-
-                getApplicantStatus(controlNumber);
+                getApplicantStatus($('#control-number-field').val());
             });
 
             // delete schedule
