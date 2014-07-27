@@ -23,12 +23,15 @@
 </head>
 <body>
 
-    @if (Auth::check())
-        @include('layouts.partials.admin-processor-nav')
-    @endif
 
     <div class="container content">
-        @yield('content')
+        <div class="row">
+            @if (Auth::check())
+                @include('layouts.partials.admin-processor-nav')
+            @endif
+
+            @yield('content')
+        </div>
     </div>
 
 

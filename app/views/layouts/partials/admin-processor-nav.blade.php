@@ -1,54 +1,34 @@
-<nav class="navbar navbar-default navbar-fixed-top" role="navigation">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
-            <a class="navbar-brand" href="#">Civil Service Commission</a>
-        </div>
-
-        <!-- Collect the nav links, forms, and other content for toggling -->
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav">
-            @if (Auth::user()->role == 'admin')
-                <li class="{{ set_active('admin') }}">
-                    {{ HTML::link('admin', 'View Application') }}
-                </li>
-                <li class="{{ set_active('admin/list-of-passers') }}">
-                    {{ HTML::link('admin/list-of-passers', 'List of Passers') }}
-                </li>
-                <li class="{{ set_active('admin/schedules') }}">
-                    {{ HTML::link('admin/schedules', 'Schedules') }}
-                </li>
-                <li class="{{ set_active('admin/users') }}">
-                    {{ HTML::link('admin/users', 'Users') }}
-                </li>
-                <li class="{{ set_active('admin/reports') }}">
-                    {{ HTML::link('admin/reports', 'Reports') }}
-                </li>
-            @else
-                <li class="{{ set_active('processor') }}">
-                    {{ HTML::link('processor', 'Paid Applicants') }}
-                </li>
-                <li class="{{ set_active('processor/reserved') }}">
-                    {{ HTML::link('processor/reserved', 'Reserved Applicants') }}
-                </li>
-            @endif
-            </ul>
-            <ul class="nav navbar-nav navbar-right">
-                <li><p class="navbar-text">Welcome {{ Auth::user()->username }}</p></li>
-                <li>
-                @if (Auth::user()->role == 'admin')
-                    <a href="{{ URL::to('admin/logout') }}"><span class="glyphicon glyphicon-off"></span> Logout</a>
-                @else
-                    <a href="{{ URL::to('processor/logout') }}"><span class="glyphicon glyphicon-off"></span> Logout</a>
-                @endif
-                </li>
-            </ul>
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
-</nav>
+<div class="col-md-2 margin-top">
+    <div class="list-group side-nav">
+        @if (Auth::user()->role == 'admin')
+            <a href="/admin" class="list-group-item {{ set_active('admin') }}">
+                <i class="fa fa-comment-o"></i><span class="glyphicon glyphicon-home"></span> View Application
+            </a>
+            <a href="/admin/list-of-passers" class="list-group-item {{ set_active('admin/list-of-passers') }}">
+                <i class="fa fa-search"></i><span class="glyphicon glyphicon-pencil"></span>  List of Passers
+            </a>
+            <a href="/admin/schedules" class="list-group-item {{ set_active('admin/schedules') }}">
+                <i class="fa fa-user"></i><span class="glyphicon glyphicon-list-alt"></span>  Schedules
+            </a>
+            <a href="/admin/users" class="list-group-item {{ set_active('admin/users') }}">
+                <i class="fa fa-folder-open-o"></i><span class="glyphicon glyphicon-user"></span> Users
+            </a>
+            <a href="/admin/reports" class="list-group-item {{ set_active('admin/reports') }}">
+                <i class="fa fa-folder-open-o"></i><span class="glyphicon glyphicon-calendar"></span> Reports
+            </a>
+            <a href="/admin/logout" class="list-group-item {{ set_active('admin/logout') }}">
+                <i class="fa fa-folder-open-o"></i><span class="glyphicon glyphicon-off"></span> Logout - {{ Auth::user()->username }}
+            </a>
+        @else
+            <a href="/admin/users" class="list-group-item {{ set_active('admin/users') }}">
+                <i class="fa fa-folder-open-o"></i><span class="glyphicon glyphicon-user"></span> Users
+            </a>
+            <a href="/admin/reports" class="list-group-item {{ set_active('admin/reports') }}">
+                <i class="fa fa-folder-open-o"></i><span class="glyphicon glyphicon-calendar"></span> Reports
+            </a>
+            <a href="/processor/logout" class="list-group-item {{ set_active('processor/logout') }}">
+                <i class="fa fa-folder-open-o"></i><span class="glyphicon glyphicon-off"></span> Logout - {{ Auth::user()->username }}
+            </a>
+        @endif
+    </div>
+</div>
