@@ -5,6 +5,16 @@ var controllerPage = function() {
 
     var init = function() {
 
+            // restrict phone input
+            $('.phoneInput').keypress(function(key) {
+                if(key.charCode < 48 || key.charCode > 57) return false;
+            });
+
+            // restrict surname input
+            $('.surnameInput').keypress(function(key) {
+                if((key.charCode < 97 || key.charCode > 122) && (key.charCode < 65 || key.charCode > 90) && (key.charCode != 45)) return false;
+            });
+
             $('.form_date').datetimepicker({
                 language:  'en',
                 weekStart: 1,

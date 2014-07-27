@@ -45,7 +45,7 @@
                 <label for="mobile-number">Mobile # <span class="required">*</span></label>
             </div>
             <div class="col-md-3">
-                <input class="form-control" id="mobile-number" name="mobile_number" type="text" placeholder="Example format:  09439115188">
+                <input class="form-control phoneInput" maxlength="11" id="mobile-number" name="mobile_number phoneInput" type="text" placeholder="Example format:  09439115188">
                 <span class="alert-danger">{{ $errors->first('mobile_number') }}</span>
             </div>
         </div>
@@ -54,7 +54,7 @@
                 <label for="phone-number">Phone #</label>
             </div>
             <div class="col-md-3">
-                <input class="form-control" id="phone-number" name="phone_number" type="text" placeholder="(optional)">
+                <input class="form-control phoneInput" maxlength="15" id="phone-number" name="phone_number" type="text" placeholder="(optional)">
                 <span class="alert-danger">{{ $errors->first('phone_number') }}</span>
             </div>
         </div>
