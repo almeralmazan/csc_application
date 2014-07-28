@@ -142,8 +142,7 @@ var controllerPage = function() {
                 $("#time-end").val(time_end);
             });
 
-            $('#control-number-field').on('input', function(e) {
-                e.preventDefault();
+            $('#search-applicant-control-number').on('click', function() {
                 getApplicantStatus($('#control-number-field').val());
             });
 
@@ -249,11 +248,20 @@ var controllerPage = function() {
             dataService.getApplicantStatus(controlNumber)
                 .done( function(data) {
 
+                    var examStatus = data.message[0].exam_status;
                     var paidOrNotPaid = data.message[0].paid_status;
                     var fullName = data.message[0].applicant_first_name + ' ' +
                                     data.message[0].applicant_last_name;
 
                     if (data.success) {
+
+                        if (examStatus == 1) {
+                            $('#status-container #exam-status').text('Passed');
+                        } else if (examStatus == 2) {
+                            $('#status-container #exam-status').text('Standby');
+                        } else {
+                            $('#status-container #exam-status').text('Failed');
+                        }
 
                         if (paidOrNotPaid == 1) {
                             $('#status-container #status-paid').text('Paid');
@@ -267,6 +275,7 @@ var controllerPage = function() {
                                 .format('MMMM D, YYYY')
                         );
                     } else {
+                        $('#status-container #exam-status').text('No results');
                         $('#status-container #status-paid').text('No results');
                         $('#status-container #applicant-name').text('No results');
                         $('#status-container #schedule-date-start').text('No results');
