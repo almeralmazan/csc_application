@@ -249,7 +249,7 @@ var controllerPage = function() {
             dataService.getApplicantStatus(controlNumber)
                 .done( function(data) {
 
-                    var paidOrNotPaid = data.message[0].applicant_status;
+                    var paidOrNotPaid = data.message[0].paid_status;
                     var fullName = data.message[0].applicant_first_name + ' ' +
                                     data.message[0].applicant_last_name;
 
