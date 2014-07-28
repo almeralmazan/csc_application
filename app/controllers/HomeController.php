@@ -21,7 +21,7 @@ class HomeController extends BaseController {
     public function listOfPassers()
     {
         $title = 'List Of Passers';
-        return View::make('home.list_of_passers', compact('title'));
+        return View::make('home.list-of-passers', compact('title'));
     }
 
     public function getAllPassedApplicants()
