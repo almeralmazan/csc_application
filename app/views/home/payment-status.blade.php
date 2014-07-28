@@ -5,57 +5,45 @@
 @stop
 
 @section('content')
-<div class="container content">
-    <div class="row margin-top">
-        <div class="col-md-4 col-md-offset-4">
-            <div class="input-group">
-                <input id="control-number-field" class="form-control" placeholder="Type your control # here" name="control_number_field" type="text">
-
-                <span class="input-group-btn">
-                    <button type="button" class="button btn btn-default" name="subscribe" id="search-applicant-control-number">
-                        <span class="glyphicon glyphicon-search"></span>
-                    </button>
-                </span>
+<div class="col-md-10">
+    <div class="row search-query">
+        <div class="col-md-3">
+            <input type="text" class="form-control" placeholder="Search here" ng-model="search_name">
+        </div><!-- /.col-md-4 -->
+        <div class="col-md-3">
+            <div class="input-group date form_date col-md-12" data-date="" data-date-format="yyyy-mm-dd" data-link-field="dtp_input2" data-link-format="yyyy-mm-dd">
+                <input name="date" class="form-control" size="16" type="text" value="" readonly ng-model="search_date">
+                <span class="input-group-addon"><span class="glyphicon glyphicon-remove"></span></span>
+                <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
             </div>
-        </div><!-- /.col-md-6 -->
+            <input type="hidden" id="dtp_input2" value="" />
+        </div><!-- /.col-md-4 -->
+        <div class="col-md-3">
+            <select class="form-control" ng-model="exam_level">
+                <option value="Sub Pro" selected>CSE - Sub Professional</option>
+                <option value="Professional">CSE - Professional</option>
+            </select>
+        </div><!-- /.col-md-4 -->
     </div>
-    <div class="row margin-top">
-        <div class="col-md-4 col-md-offset-4" id="status-container">
-            <div class="well">
-                <div class="row">
-                    <div class="col-md-5">
-                        <h3><small>Exam Status:</small></h3>
-                    </div>
-                    <div class="col-md-7">
-                        <h3><span class="label label-success" id="exam-status"></span></h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <h3><small>Paid Status:</small></h3>
-                    </div>
-                    <div class="col-md-8">
-                        <h3><span class="label label-success" id="status-paid"></span></h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <h3><small>Name:</small></h3>
-                    </div>
-                    <div class="col-md-8">
-                        <h3 id="applicant-name"></h3>
-                    </div>
-                </div>
-                <div class="row">
-                    <div class="col-md-4">
-                        <h3><small>Exam date:</small></h3>
-                    </div>
-                    <div class="col-md-8">
-                        <h3 id="schedule-date-start"></h3>
-                    </div>
-                </div>
-            </div>
-        </div>
+    <div class="row table-container" ng-controller="HomeSearchController">
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Control number</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Date of Exam</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr ng-repeat="applicant in applicants | filter:search_name | filter:search_date | filter:exam_level">
+                <td>{[ applicant.controlno ]}</td>
+                <td>{[ applicant.applicant_first_name ]}</td>
+                <td>{[ applicant.applicant_last_name ]}</td>
+                <td>{[ applicant.schedule_date_start | date ]}</td>
+            </tr>
+            </tbody>
+        </table>
     </div>
 </div>
 @stop
