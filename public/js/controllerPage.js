@@ -300,40 +300,25 @@ var controllerPage = function() {
             dataService.filterResults()
                 .done(function(data) {
 
-                    var resultsContainer = $('#table-results');
-                    var summaryReportContainer = $('.summary-report');
-                    var html = '';
-                    var totalPrice = 0;
-                    var totalSubPro = 0;
-                    var totalPro = 0;
-
-                    resultsContainer.empty();
-
-                    for (var i = 0; i < data.length; i++) {
-                        totalPrice += data[i].price;
-
-                        if (data[i].new_exam_level == 'Sub Pro') {
-                            totalSubPro++;
-                        }
-
-                        if (data[i].new_exam_level == 'Professional') {
-                            totalPro++;
-                        }
-
-                        html += '<tr>';
-                        html += '<td>' + data[i].paid_date + '</td>';
-                        html += '<td>' + data[i].applicant_first_name + ' ' + data[i].applicant_last_name + '</td>';
-                        html += '<td>' + data[i].new_exam_level + '</td>';
-                        html += '<td>' + data[i].price + '</td>';
-                        html += '</tr>';
-                    }
+                    var summaryReportContainer = $('.summary-report'),
+                        totalProfit = data['profit'][0].total_profit,
+                        totalPro = data['professional'][0].total_pro,
+                        totalSubPro = data['subpro'][0].total_subpro,
+                        totalDisapproved = data['disapproved'][0].total_disapproved,
+                        totalApproved = data['approved'][0].total_approved,
+                        totalPaid = data['paid'][0].total_paid,
+                        totalReserved = data['reserved'][0].total_reserved;
 
                     summaryReportContainer.html(
-                        '<div>Total Price: ' + totalPrice + '</div>' +
-                        '<div>Total Professional: ' + totalPro + '</div>' +
-                        '<div>Total Sub Professional: ' + totalSubPro + '</div>');
+                        '<div>Profit: ' + totalProfit + '</div>' +
+                        '<div>Professional: ' + totalPro + '</div>' +
+                        '<div>Sub Professional: ' + totalSubPro + '</div>' +
+                        '<div>Disapproved: ' + totalDisapproved + '</div>' +
+                        '<div>Approved: ' + totalApproved + '</div>' +
+                        '<div>Reserved: ' + totalReserved + '</div>' +
+                        '<div>Paid: ' + totalPaid + '</div>'
+                    );
 
-                    resultsContainer.html(html);
                 })
                 .fail(function(jqXHR, textStatus, error) {
                     console.log(textStatus);

@@ -1,6 +1,7 @@
 <?php
 
-class AdminController extends BaseController {
+class AdminController extends BaseController
+{
 
     public function index()
     {
@@ -33,17 +34,17 @@ class AdminController extends BaseController {
     {
         $title = 'Reports Page';
         $applicants = DB::table('applicants')
-                        ->join('payments', 'payments.applicant_id', '=', 'applicants.id')
-                        ->where('paid_status', 1)
-                        ->select(
-                            'payments.paid_date',
-                            'applicants.applicant_last_name',
-                            'applicants.applicant_first_name',
-                            'applicants.new_exam_level',
-                            'payments.price'
-                        )
-                        ->orderBy('payments.paid_date')
-                        ->get();
+            ->join('payments', 'payments.applicant_id', '=', 'applicants.id')
+            ->where('paid_status', 1)
+            ->select(
+                'payments.paid_date',
+                'applicants.applicant_last_name',
+                'applicants.applicant_first_name',
+                'applicants.new_exam_level',
+                'payments.price'
+            )
+            ->orderBy('payments.paid_date')
+            ->get();
 
         return View::make('admin.reports', compact('title', 'applicants'));
     }
@@ -51,30 +52,30 @@ class AdminController extends BaseController {
     public function getAllReports($dateStart, $dateEnd)
     {
         return DB::table('applicants')
-                ->join('payments', 'payments.applicant_id', '=', 'applicants.id')
-                ->where('payments.paid_date', '!=', '0000-00-00')
-                ->whereBetween('payments.paid_date', array($dateStart, $dateEnd))
-                ->select(
-                    'applicants.applicant_last_name',
-                    'applicants.applicant_first_name',
-                    'applicants.new_exam_level',
-                    'payments.paid_date',
-                    'payments.price'
-                )
-                ->get();
+            ->join('payments', 'payments.applicant_id', '=', 'applicants.id')
+            ->where('payments.paid_date', '!=', '0000-00-00')
+            ->whereBetween('payments.paid_date', array($dateStart, $dateEnd))
+            ->select(
+                'applicants.applicant_last_name',
+                'applicants.applicant_first_name',
+                'applicants.new_exam_level',
+                'payments.paid_date',
+                'payments.price'
+            )
+            ->get();
     }
 
     public function getAllApplicants()
     {
         return DB::table('applicants')
-                ->select(
-                    'id',
-                    'controlno',
-                    'applicant_last_name',
-                    'applicant_first_name',
-                    'schedule_date_start',
-                    'new_exam_level'
-                )->get();
+            ->select(
+                'id',
+                'controlno',
+                'applicant_last_name',
+                'applicant_first_name',
+                'schedule_date_start',
+                'new_exam_level'
+            )->get();
     }
 
     public function getAllPassedApplicants()
@@ -92,26 +93,23 @@ class AdminController extends BaseController {
     public function addUser()
     {
         $rules = [
-            'name'                  =>  'required',
-            'username'              =>  'required',
-            'role'                  =>  'required|in:admin,processor',
-            'password'              =>  'required|confirmed',
-            'password_confirmation' =>  'required'
+            'name' => 'required',
+            'username' => 'required',
+            'role' => 'required|in:admin,processor',
+            'password' => 'required|confirmed',
+            'password_confirmation' => 'required'
         ];
 
         $validation = Validator::make(Input::all(), $rules);
 
-        if ($validation->fails())
-        {
+        if ($validation->fails()) {
             return Redirect::back()->withInput()->withErrors($validation->messages());
-        }
-        else
-        {
+        } else {
             User::create([
-                'name'      =>  Input::get('name'),
-                'username'  =>  Input::get('username'),
-                'role'      =>  Input::get('role'),
-                'password'  =>  Hash::make(Input::get('password'))
+                'name' => Input::get('name'),
+                'username' => Input::get('username'),
+                'role' => Input::get('role'),
+                'password' => Hash::make(Input::get('password'))
             ]);
 
             // Redirect with flash message
@@ -130,32 +128,29 @@ class AdminController extends BaseController {
     public function addSchedule()
     {
         $rules = [
-            'admin_add_testing_centers' =>  'not_in:empty',
-            'admin_add_date_start'      =>  'required',
-            'admin_add_time_start'      =>  'required',
-            'admin_add_time_end'        =>  'required',
+            'admin_add_testing_centers' => 'not_in:empty',
+            'admin_add_date_start' => 'required',
+            'admin_add_time_start' => 'required',
+            'admin_add_time_end' => 'required',
         ];
 
         $messages = [
-            'admin_add_testing_centers.not_in'  =>  'Location is required *',
-            'admin_add_date_start.required'     =>  'Required *',
-            'admin_add_time_start.required'     =>  'Required *',
-            'admin_add_time_end.required'       =>  'Required *',
+            'admin_add_testing_centers.not_in' => 'Location is required *',
+            'admin_add_date_start.required' => 'Required *',
+            'admin_add_time_start.required' => 'Required *',
+            'admin_add_time_end.required' => 'Required *',
         ];
 
         $validation = Validator::make(Input::all(), $rules, $messages);
 
-        if ($validation->fails())
-        {
+        if ($validation->fails()) {
             return Redirect::back()->withInput()->withErrors($validation->messages());
-        }
-        else
-        {
+        } else {
             Schedule::create([
-                'testing_center_id' =>  Input::get('admin_add_testing_centers'),
-                'date_start'        =>  Input::get('admin_add_date_start'),
-                'time_start'        =>  Input::get('admin_add_time_start'),
-                'time_end'          =>  Input::get('admin_add_time_end')
+                'testing_center_id' => Input::get('admin_add_testing_centers'),
+                'date_start' => Input::get('admin_add_date_start'),
+                'time_start' => Input::get('admin_add_time_start'),
+                'time_end' => Input::get('admin_add_time_end')
             ]);
 
             // Redirect with flash message
@@ -175,26 +170,95 @@ class AdminController extends BaseController {
 
     public function filterResults()
     {
-        if (Request::ajax())
-        {
+        if (Request::ajax()) {
             $dateStart = Input::get('search_date_start');
             $dateEnd = Input::get('search_date_end');
 
-            $results = DB::table('applicants')
-                        ->join('payments', 'payments.applicant_id', '=', 'applicants.id')
-                        ->where('payments.paid_date', '!=', '0000-00-00')
-                        ->whereBetween('payments.paid_date', [$dateStart, $dateEnd])
-                        ->select(
-                            'applicants.applicant_last_name',
-                            'applicants.applicant_first_name',
-                            'applicants.new_exam_level',
-                            'payments.paid_date',
-                            'payments.price'
-                        )
-                        ->orderBy('payments.paid_date')
-                        ->get();
 
-            return Response::json($results);
+            // Total Profit
+            $totalProfit = DB::select(
+                'SELECT SUM(payments.price) AS total_profit
+                  FROM payments
+                  WHERE payments.paid_date != ?
+                  AND payments.paid_date BETWEEN ? AND ?',
+                array('0000-00-00', $dateStart, $dateEnd)
+            );
+
+            // Total Pro
+            $totalPro = DB::select(
+                'SELECT COUNT(applicants.new_exam_level) AS total_pro
+                FROM applicants
+                JOIN payments
+                ON payments.applicant_id = applicants.id
+                WHERE applicants.new_exam_level = ?
+                AND payments.paid_date BETWEEN ? AND ?',
+                array('Professional', $dateStart, $dateEnd)
+            );
+
+            // Total Sub Professional
+            $totalSubPro = DB::select(
+                'SELECT COUNT(applicants.new_exam_level) AS total_subpro
+                FROM applicants
+                JOIN payments
+                ON payments.applicant_id = applicants.id
+                WHERE applicants.new_exam_level = ?
+                AND payments.paid_date BETWEEN ? AND ?',
+                array('Sub Pro', $dateStart, $dateEnd)
+            );
+
+            // Total Approved
+            $totalApproved = DB::select(
+                'SELECT COUNT(applicants.applicant_status) AS total_approved
+                FROM applicants
+                JOIN payments
+                ON payments.applicant_id = applicants.id
+                WHERE applicants.applicant_status = ?
+                AND payments.paid_date BETWEEN ? AND ?',
+                array(1, $dateStart, $dateEnd)
+            );
+
+            // Total Disapproved
+            $totalDisapproved = DB::select(
+                'SELECT COUNT(applicants.applicant_status) AS total_disapproved
+                FROM applicants
+                JOIN payments
+                ON payments.applicant_id = applicants.id
+                WHERE applicants.applicant_status = ?
+                AND payments.paid_date BETWEEN ? AND ?',
+                array(0, $dateStart, $dateEnd)
+            );
+
+            // Total Paid
+            $totalPaid = DB::select(
+                'SELECT COUNT(applicants.paid_status) AS total_paid
+                FROM applicants
+                JOIN payments
+                ON payments.applicant_id = applicants.id
+                WHERE applicants.paid_status = ?
+                AND payments.paid_date BETWEEN ? AND ?',
+                array(1, $dateStart, $dateEnd)
+            );
+
+            // Total Reserved
+            $totalReserved = DB::select(
+                'SELECT COUNT(applicants.paid_status) AS total_reserved
+                FROM applicants
+                JOIN payments
+                ON payments.applicant_id = applicants.id
+                WHERE applicants.paid_status = ?
+                AND payments.paid_date = ?',
+                array(0, '0000-00-00')
+            );
+
+            return Response::json([
+                'profit' => $totalProfit,
+                'professional' => $totalPro,
+                'subpro' => $totalSubPro,
+                'approved' => $totalApproved,
+                'disapproved' => $totalDisapproved,
+                'paid' => $totalPaid,
+                'reserved' => $totalReserved,
+            ]);
         }
     }
 
@@ -211,8 +275,7 @@ class AdminController extends BaseController {
             'password' => Input::get('password')
         ]);
 
-        if ( ! $credentials)
-        {
+        if (!$credentials) {
             return Response::json([
                 'success' => false,
                 'message' => 'Invalid user/password input'
