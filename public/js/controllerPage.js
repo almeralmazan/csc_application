@@ -255,7 +255,7 @@ var controllerPage = function() {
 
                     if (data.success) {
 
-                        if (paidOrNotPaid === 1) {
+                        if (paidOrNotPaid == 1) {
                             $('#status-container #status-paid').text('Paid');
                         } else {
                             $('#status-container #status-paid').text('Not Paid');
