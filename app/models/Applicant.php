@@ -83,6 +83,7 @@ class Applicant extends Eloquent {
         $result = DB::table('applicants')
                     ->where('controlno', '=', $controlNumber)
                     ->select(
+                        'exam_status',
                         'paid_status',
                         'applicant_last_name',
                         'applicant_first_name',
