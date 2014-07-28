@@ -27,32 +27,10 @@
         <!-- /.col-md-4 -->
 
         <div class="col-md-3">
-            {{ Form::submit('Filter', ['class' => 'btn btn-primary']) }}
+            {{ Form::submit('Generate Reports', ['class' => 'btn btn-primary']) }}
         </div>
 
         {{ Form::close() }}
-    </div>
-    <div class="row table-container">
-        <table class="table table-hover">
-            <thead>
-            <tr>
-                <th>Date Paid</th>
-                <th>Name</th>
-                <th>Exam Level</th>
-                <th>Price</th>
-            </tr>
-            </thead>
-            <tbody id="table-results">
-            @foreach ($applicants as $applicant)
-            <tr>
-                <td>{{ $applicant->paid_date }}</td>
-                <td>{{ $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name }}</td>
-                <td>{{ $applicant->new_exam_level }}</td>
-                <td>{{ $applicant->price }}</td>
-            </tr>
-            @endforeach
-            </tbody>
-        </table>
     </div>
 
     <div class="row">
