@@ -59,7 +59,11 @@
                                 </tr>
                                 <tr>
                                     <td>Email:</td>
-                                    <td><a href="mailto:{{ $applicant->email }}">{{ $applicant->email }}</a></td>
+                                    <td>
+                                        <a href="mailto:{{ $applicant->email }}" id="email-content">
+                                            {{ $applicant->email }}
+                                        </a>
+                                    </td>
                                 </tr>
                                 <tr>
                                     <td>Mobile:</td>
