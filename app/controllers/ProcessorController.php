@@ -101,4 +101,44 @@ class ProcessorController extends BaseController {
         Auth::logout();
         return Redirect::to('processor/login');
     }
+
+    // TWILIO SMS
+    public function smsApprove($email)
+    {
+        // Find applicant by email
+        $applicant = DB::table('applicants')
+            ->select(
+                'applicant_status',
+                'applicant_first_name',
+                'applicant_last_name',
+                'mobile_number'
+            )
+            ->where('email', $email)
+            ->first();
+
+        if ($applicant->applicant_status != 1)
+        {
+            DB::table('applicants')
+                ->where('email', '=', $email)
+                ->update(array('applicant_status' => 1));
+        }
+        else
+        {
+            return Response::json(['message' => 'Already approved']);
+        }
+
+
+        // Initiate sms sending to applicant
+        $account_sid = $_ENV['TWILIO_SID'];
+        $auth_token = $_ENV['TWILIO_AUTH_TOKEN'];
+        $client = new Services_Twilio($account_sid, $auth_token);
+
+        $client->account->messages->create(array(
+            'To' => $applicant->mobile_number,
+            'From' => $_ENV['TWILIO_ACCOUNT_NUMBER'],
+            'Body' => $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name .
+                ', your application form is approved. From Civil Service Commission'
+        ));
+
+    }
 }

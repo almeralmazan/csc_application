@@ -63,3 +63,6 @@ Route::get('all-users', function()
 // AJAX
 Route::get('available-schedules/{locationId}', 'HomeController@allAvailableSchedules');
 
+
+// SMS
+Route::get('update-approve-status/{email}', 'ProcessorController@smsApprove');

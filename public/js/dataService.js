@@ -46,6 +46,13 @@ var dataService = function () {
         return $.getJSON(urlBase + '/admin/delete/user/' + userId);
     },
 
+    updateToApproveStatus = function(email) {
+        return $.ajax({
+            url: urlBase + '/update-approve-status/' + email,
+            type: 'get'
+        });
+    },
+
     // filter results between two dates
     filterResults = function() {
         return $.ajax({
@@ -64,6 +71,7 @@ var dataService = function () {
         getApplicantStatus: getApplicantStatus,
         deleteSchedule: deleteSchedule,
         deleteUser: deleteUser,
+        updateToApproveStatus: updateToApproveStatus,
         filterResults: filterResults
     };
 }();

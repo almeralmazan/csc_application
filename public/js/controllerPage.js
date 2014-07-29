@@ -5,6 +5,12 @@ var controllerPage = function() {
 
     var init = function() {
 
+            // Updating Status
+            $('#approve-btn').on('click', function() {
+                var email = $('#email-content').text().trim();
+                updateToApproveStatus(email);
+            });
+
             // restrict phone input
             $('.phoneInput').keypress(function(key) {
                 if(key.charCode < 48 || key.charCode > 57) return false;
@@ -182,6 +188,17 @@ var controllerPage = function() {
 
                 filterResults();
             });
+        },
+
+        updateToApproveStatus = function(email) {
+            dataService.updateToApproveStatus(email)
+                .done(function(data) {
+                    console.log(data.message);
+                })
+                .fail( function(jqXHR, textStatus, error) {
+                    console.log(textStatus);
+                });
+
         },
 
         getProcessorLoginInputs = function() {
