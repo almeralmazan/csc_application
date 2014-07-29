@@ -72,11 +72,11 @@
 
                         <div class="col-md-12">
                             <div class="col-md-12 text-center">
-                                <button class="btn btn-success">Approve</button>
-                                <button class="btn btn-warning">Disapprove</button>
-                                <button class="btn btn-info">Paid</button>
-                                <button class="btn btn-success">Pass</button>
-                                <button class="btn btn-danger">Failed</button>
+                                <button id="approve-btn" class="btn btn-success">Approve</button>
+                                <button id="disapprove-btn" class="btn btn-warning">Disapprove</button>
+                                <button id="paid-btn" class="btn btn-info">Paid</button>
+                                <button id="passed-btn" class="btn btn-success">Passed</button>
+                                <button id="failed-btn" class="btn btn-danger">Failed</button>
                             </div>
                         </div>
                     </div>
