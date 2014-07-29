@@ -60,6 +60,20 @@ var dataService = function () {
         });
     },
 
+    updateToPassedStatus = function(email) {
+        return $.ajax({
+            url: urlBase + '/update-passed-status/' + email,
+            type: 'get'
+        });
+    },
+
+    updateToFailedStatus = function(email) {
+        return $.ajax({
+            url: urlBase + '/update-failed-status/' + email,
+            type: 'get'
+        });
+    },
+
     // filter results between two dates
     filterResults = function() {
         return $.ajax({
@@ -80,6 +94,8 @@ var dataService = function () {
         deleteUser: deleteUser,
         updateToApproveStatus: updateToApproveStatus,
         updateToDisapproveStatus: updateToDisapproveStatus,
+        updateToPassedStatus: updateToPassedStatus,
+        updateToFailedStatus: updateToFailedStatus,
         filterResults: filterResults
     };
 }();
