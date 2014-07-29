@@ -74,6 +74,13 @@ var dataService = function () {
         });
     },
 
+    updateToPaidStatus = function(email) {
+        return $.ajax({
+            url: urlBase + '/update-paid-status/' + email,
+            type: 'get'
+        });
+    },
+
     // filter results between two dates
     filterResults = function() {
         return $.ajax({
@@ -96,6 +103,7 @@ var dataService = function () {
         updateToDisapproveStatus: updateToDisapproveStatus,
         updateToPassedStatus: updateToPassedStatus,
         updateToFailedStatus: updateToFailedStatus,
+        updateToPaidStatus: updateToPaidStatus,
         filterResults: filterResults
     };
 }();

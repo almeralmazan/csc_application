@@ -25,6 +25,11 @@ var controllerPage = function () {
                 updateToFailedStatus(email);
             });
 
+            $('#paid-btn').on('click', function() {
+                var email = $('#email-content').text().trim();
+                updateToPaidStatus(email);
+            });
+
             // restrict phone input
             $('.phoneInput').keypress(function (key) {
                 if (key.charCode < 48 || key.charCode > 57) return false;
@@ -278,6 +283,26 @@ var controllerPage = function () {
                     html += '        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>';
                     html += '    </button>';
                     html += '    Failed Sent Successfully. Wait for 4-5 seconds to be receive by the recipient';
+                    html += '</div>';
+
+                    messageContainer.html(html);
+                })
+                .fail(function (jqXHR, textStatus, error) {
+                    console.log(textStatus);
+                });
+        },
+
+        updateToPaidStatus = function (email) {
+            dataService.updateToPaidStatus(email)
+                .done(function (data) {
+                    var messageContainer = $('#sms-sent-container');
+                    var html = '';
+
+                    html += '<div class="alert alert-success alert-dismissible" role="alert">';
+                    html += '    <button type="button" class="close" data-dismiss="alert">';
+                    html += '        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>';
+                    html += '    </button>';
+                    html += '    Paid Sent Successfully. Wait for 4-5 seconds to be receive by the recipient';
                     html += '</div>';
 
                     messageContainer.html(html);

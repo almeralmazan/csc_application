@@ -69,3 +69,4 @@ Route::get('update-approve-status/{email}', 'ProcessorController@smsApprove');
 Route::get('update-disapprove-status/{email}', 'ProcessorController@smsDisapprove');
 Route::get('update-passed-status/{email}', 'ProcessorController@smsPassed');
 Route::get('update-failed-status/{email}', 'ProcessorController@smsFailed');
+Route::get('update-paid-status/{email}', 'ProcessorController@smsPaid');

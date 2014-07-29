@@ -271,4 +271,46 @@ class ProcessorController extends BaseController {
             ));
         }
     }
+
+    public function smsPaid($email)
+    {
+        // Initiate sms sending to applicant
+        $account_sid = $_ENV['TWILIO_SID'];
+        $auth_token = $_ENV['TWILIO_AUTH_TOKEN'];
+        $client = new Services_Twilio($account_sid, $auth_token);
+
+        // Find applicant by email
+        $applicant = DB::table('applicants')
+            ->select(
+                'paid_status',
+                'applicant_first_name',
+                'applicant_last_name',
+                'mobile_number'
+            )
+            ->where('email', $email)
+            ->first();
+
+        if ($applicant->paid_status == 1)
+        {
+            $client->account->messages->create(array(
+                'To' => $applicant->mobile_number,
+                'From' => $_ENV['TWILIO_ACCOUNT_NUMBER'],
+                'Body' => $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name .
+                    ', you are paid for the examination. From Civil Service Commission'
+            ));
+        }
+        else
+        {
+            DB::table('applicants')
+                ->where('email', '=', $email)
+                ->update(array('paid_status' => 1));
+
+            $client->account->messages->create(array(
+                'To' => $applicant->mobile_number,
+                'From' => $_ENV['TWILIO_ACCOUNT_NUMBER'],
+                'Body' => $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name .
+                    ', you are paid for the examination. From Civil Service Commission'
+            ));
+        }
+    }
 }
