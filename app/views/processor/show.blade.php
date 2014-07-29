@@ -72,12 +72,11 @@
 
                         <div class="col-md-12">
                             <div class="col-md-12 text-center">
-                                <a href="#" class="btn btn-primary">Approve</a>
+                                <a href="#" class="btn btn-success">Approve</a>
                                 <a href="#" class="btn btn-warning">Disapprove</a>
                                 <a href="#" class="btn btn-info">Paid</a>
                                 <a href="#" class="btn btn-success">Pass</a>
                                 <a href="#" class="btn btn-danger">Failed</a>
-                                <!-- <a href="{{ URL::to('processor/update/applicant/' . $applicant->id) }}" class="text-left"> Edit Status</a>-->
                             </div>
                         </div>
                     </div>
