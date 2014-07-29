@@ -66,3 +66,4 @@ Route::get('available-schedules/{locationId}', 'HomeController@allAvailableSched
 
 // SMS
 Route::get('update-approve-status/{email}', 'ProcessorController@smsApprove');
+Route::get('update-disapprove-status/{email}', 'ProcessorController@smsDisapprove');

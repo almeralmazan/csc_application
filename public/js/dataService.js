@@ -53,6 +53,13 @@ var dataService = function () {
         });
     },
 
+    updateToDisapproveStatus = function(email) {
+        return $.ajax({
+            url: urlBase + '/update-disapprove-status/' + email,
+            type: 'get'
+        });
+    },
+
     // filter results between two dates
     filterResults = function() {
         return $.ajax({
@@ -72,6 +79,7 @@ var dataService = function () {
         deleteSchedule: deleteSchedule,
         deleteUser: deleteUser,
         updateToApproveStatus: updateToApproveStatus,
+        updateToDisapproveStatus: updateToDisapproveStatus,
         filterResults: filterResults
     };
 }();

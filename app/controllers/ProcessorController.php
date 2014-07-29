@@ -78,6 +78,7 @@ class ProcessorController extends BaseController {
 
         return Redirect::back()->withMessage('Updated Successfully');
     }
+
     public function verifyLogin()
     {
         $credentials = Auth::attempt([
@@ -143,6 +144,47 @@ class ProcessorController extends BaseController {
                     ', your application form is approved. From Civil Service Commission'
             ));
         }
+    }
 
+    public function smsDisapprove($email)
+    {
+        // Initiate sms sending to applicant
+        $account_sid = $_ENV['TWILIO_SID'];
+        $auth_token = $_ENV['TWILIO_AUTH_TOKEN'];
+        $client = new Services_Twilio($account_sid, $auth_token);
+
+        // Find applicant by email
+        $applicant = DB::table('applicants')
+            ->select(
+                'applicant_status',
+                'applicant_first_name',
+                'applicant_last_name',
+                'mobile_number'
+            )
+            ->where('email', $email)
+            ->first();
+
+        if ($applicant->applicant_status != 1)
+        {
+            $client->account->messages->create(array(
+                'To' => $applicant->mobile_number,
+                'From' => $_ENV['TWILIO_ACCOUNT_NUMBER'],
+                'Body' => $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name .
+                    ', your application form has been disapproved. From Civil Service Commission'
+            ));
+        }
+        else
+        {
+            DB::table('applicants')
+                ->where('email', '=', $email)
+                ->update(array('applicant_status' => 0));
+
+            $client->account->messages->create(array(
+                'To' => $applicant->mobile_number,
+                'From' => $_ENV['TWILIO_ACCOUNT_NUMBER'],
+                'Body' => $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name .
+                    ', your application form has been disapproved. From Civil Service Commission'
+            ));
+        }
     }
 }

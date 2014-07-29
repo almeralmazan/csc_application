@@ -4,10 +4,15 @@ var controllerPage = function () {
 
     var init = function () {
 
-            // Updating Status
+            // SMS TWILIO
             $('#approve-btn').on('click', function () {
                 var email = $('#email-content').text().trim();
                 updateToApproveStatus(email);
+            });
+
+            $('#disapprove-btn').on('click', function() {
+                var email = $('#email-content').text().trim();
+                updateToDisapproveStatus(email);
             });
 
             // restrict phone input
@@ -189,6 +194,9 @@ var controllerPage = function () {
             });
         },
 
+        // -------------------------------------------
+        //      SMS TWILIO
+        // -------------------------------------------
         updateToApproveStatus = function (email) {
             dataService.updateToApproveStatus(email)
                 .done(function (data) {
@@ -207,8 +215,28 @@ var controllerPage = function () {
                 .fail(function (jqXHR, textStatus, error) {
                     console.log(textStatus);
                 });
-
         },
+
+        updateToDisapproveStatus = function (email) {
+            dataService.updateToDisapproveStatus(email)
+                .done(function (data) {
+                    var messageContainer = $('#sms-sent-container');
+                    var html = '';
+
+                    html += '<div class="alert alert-success alert-dismissible" role="alert">';
+                    html += '    <button type="button" class="close" data-dismiss="alert">';
+                    html += '        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>';
+                    html += '    </button>';
+                    html += '    Disapprove Sent Successfully. Wait for 4-5 seconds to be receive by the recipient';
+                    html += '</div>';
+
+                    messageContainer.html(html);
+                })
+                .fail(function (jqXHR, textStatus, error) {
+                    console.log(textStatus);
+                });
+        },
+
 
         getProcessorLoginInputs = function () {
             dataService.processorLogin()
