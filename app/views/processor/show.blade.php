@@ -1,6 +1,9 @@
 @extends('layouts.admin-processor')
 
 @section('content')
+<!-- SMS Message Container-->
+<div id="sms-sent-container" class="col-md-8"></div>
+
 <div class="col-md-8 margin-top">
     <div class="panel panel-info">
         <div class="panel-heading">

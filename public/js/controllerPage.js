@@ -1,30 +1,29 @@
-
-var controllerPage = function() {
+var controllerPage = function () {
 
     var urlBase = window.location.origin;
 
-    var init = function() {
+    var init = function () {
 
             // Updating Status
-            $('#approve-btn').on('click', function() {
+            $('#approve-btn').on('click', function () {
                 var email = $('#email-content').text().trim();
                 updateToApproveStatus(email);
             });
 
             // restrict phone input
-            $('.phoneInput').keypress(function(key) {
-                if(key.charCode < 48 || key.charCode > 57) return false;
+            $('.phoneInput').keypress(function (key) {
+                if (key.charCode < 48 || key.charCode > 57) return false;
             });
 
             // restrict surname input
-            $('.surnameInput').keypress(function(key) {
-                if((key.charCode < 97 || key.charCode > 122) && (key.charCode < 65 || key.charCode > 90) && (key.charCode != 45)) return false;
+            $('.surnameInput').keypress(function (key) {
+                if ((key.charCode < 97 || key.charCode > 122) && (key.charCode < 65 || key.charCode > 90) && (key.charCode != 45)) return false;
             });
 
             $('.form_date').datetimepicker({
-                language:  'en',
+                language: 'en',
                 weekStart: 1,
-                todayBtn:  1,
+                todayBtn: 1,
                 autoclose: 1,
                 todayHighlight: 1,
                 startView: 2,
@@ -33,9 +32,9 @@ var controllerPage = function() {
             });
 
             $('.form_time').datetimepicker({
-                language:  'en',
+                language: 'en',
                 weekStart: 1,
-                todayBtn:  1,
+                todayBtn: 1,
                 autoclose: 1,
                 todayHighlight: 1,
                 startView: 1,
@@ -55,25 +54,25 @@ var controllerPage = function() {
              *
              * The important attributes are 'data-action="filter"' and 'data-filters="#table-selector"'
              */
-            (function(){
+            (function () {
                 'use strict';
                 var $ = jQuery;
                 $.fn.extend({
-                    filterTable: function(){
-                        return this.each(function(){
-                            $(this).on('keyup', function(e){
+                    filterTable: function () {
+                        return this.each(function () {
+                            $(this).on('keyup', function (e) {
                                 $('.filterTable_no_results').remove();
                                 var $this = $(this), search = $this.val().toLowerCase(), target = $this.attr('data-filters'), $target = $(target), $rows = $target.find('tbody tr');
-                                if(search == '') {
+                                if (search == '') {
                                     $rows.show();
                                 } else {
-                                    $rows.each(function(){
+                                    $rows.each(function () {
                                         var $this = $(this);
                                         $this.text().toLowerCase().indexOf(search) === -1 ? $this.hide() : $this.show();
                                     })
-                                    if($target.find('tbody tr:visible').size() === 0) {
+                                    if ($target.find('tbody tr:visible').size() === 0) {
                                         var col_count = $target.find('tr').first().find('td').size();
-                                        var no_results = $('<tr class="filterTable_no_results"><td colspan="'+col_count+'">No results found</td></tr>')
+                                        var no_results = $('<tr class="filterTable_no_results"><td colspan="' + col_count + '">No results found</td></tr>')
                                         $target.find('tbody').append(no_results);
                                     }
                                 }
@@ -84,16 +83,16 @@ var controllerPage = function() {
                 $('[data-action="filter"]').filterTable();
             })(jQuery);
 
-            $(function(){
+            $(function () {
                 // attach table filter plugin to inputs
                 $('[data-action="filter"]').filterTable();
 
-                $('.container').on('click', '.panel-heading span.filter', function(e){
+                $('.container').on('click', '.panel-heading span.filter', function (e) {
                     var $this = $(this),
                         $panel = $this.parents('.panel');
 
                     $panel.find('.panel-body').slideToggle();
-                    if($this.css('display') != 'none') {
+                    if ($this.css('display') != 'none') {
                         $panel.find('.panel-body input').focus();
                     }
                 });
@@ -102,40 +101,40 @@ var controllerPage = function() {
 
 
             // add schedule
-            $( "#choose-this" ).click(function() {
-                var date_start = $( "#picked-date-start" ).text();
-                var date_end = $( "#picked-date-end" ).text();
-                var time_start = $( "#picked-time-start" ).text();
-                var time_end = $( "#picked-time-end" ).text();
-                $( "#date-start" ).val( date_start );
-                $( "#date-end" ).val( date_end );
-                $( "#time-start" ).val( time_start );
-                $( "#time-end" ).val( time_end );
+            $("#choose-this").click(function () {
+                var date_start = $("#picked-date-start").text();
+                var date_end = $("#picked-date-end").text();
+                var time_start = $("#picked-time-start").text();
+                var time_end = $("#picked-time-end").text();
+                $("#date-start").val(date_start);
+                $("#date-end").val(date_end);
+                $("#time-start").val(time_start);
+                $("#time-end").val(time_end);
             });
 
 
-            $('#processor-form').on('submit', function(e) {
+            $('#processor-form').on('submit', function (e) {
                 e.preventDefault();
 
                 getProcessorLoginInputs();
             });
 
-            $('#admin-form').on('submit', function(e) {
+            $('#admin-form').on('submit', function (e) {
                 e.preventDefault();
 
                 getAdminLoginInputs();
             });
 
-            $('#btn-add-schedule').on('click', function() {
+            $('#btn-add-schedule').on('click', function () {
                 var locationId = $('#testing-center-location').val();
 
                 getAvailableScheduleForOneLocation(locationId);
             });
 
-            $(document).on('click', 'span.selected-schedule', function() {
+            $(document).on('click', 'span.selected-schedule', function () {
                 var scheduleId = $(this).attr('id');
 
-                var pickeDateStart = '#picked-date-start-'+ scheduleId;
+                var pickeDateStart = '#picked-date-start-' + scheduleId;
                 var pickeTimeStart = '#picked-time-start-' + scheduleId;
                 var pickeTimeEnd = '#picked-time-end-' + scheduleId;
 
@@ -148,18 +147,18 @@ var controllerPage = function() {
                 $("#time-end").val(time_end);
             });
 
-            $('#search-applicant-control-number').on('click', function() {
+            $('#search-applicant-control-number').on('click', function () {
                 getApplicantStatus($('#control-number-field').val());
             });
 
             // delete schedule
-            $('.delete-schedule').on('click', function() {
+            $('.delete-schedule').on('click', function () {
                 var scheduleId = $(this).data('schedule-id'),
                     testingCenterId = $(this).data('testing-center-id');
 
                 bootbox.confirm(
                     'Are you sure you want to delete this schedule?',
-                    function(accept) {
+                    function (accept) {
                         if (accept) {
                             location.href = '/admin/delete/schedule/' + scheduleId + '/test-center/' + testingCenterId;
                         }
@@ -168,13 +167,13 @@ var controllerPage = function() {
             });
 
             // delete user
-            $('.delete-user').on('click', function() {
+            $('.delete-user').on('click', function () {
                 var name = $(this).data('name'),
                     id = $(this).data('id');
 
                 bootbox.confirm(
                     'Are you sure you want to delete <strong>' + name + '</strong>?',
-                    function(accept) {
+                    function (accept) {
                         if (accept) {
                             location.href = '/admin/delete/user/' + id;
                         }
@@ -183,28 +182,38 @@ var controllerPage = function() {
             });
 
             // filter results between two dates
-            $('#results-form').on('submit', function(e) {
+            $('#results-form').on('submit', function (e) {
                 e.preventDefault();
 
                 filterResults();
             });
         },
 
-        updateToApproveStatus = function(email) {
+        updateToApproveStatus = function (email) {
             dataService.updateToApproveStatus(email)
-                .done(function(data) {
-                    console.log(data.message);
+                .done(function (data) {
+                    var messageContainer = $('#sms-sent-container');
+                    var html = '';
+
+                    html += '<div class="alert alert-success alert-dismissible" role="alert">';
+                    html += '    <button type="button" class="close" data-dismiss="alert">';
+                    html += '        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>';
+                    html += '    </button>';
+                    html += '    Approve Sent Successfully. Wait for 4-5 seconds to be receive by the recipient';
+                    html += '</div>';
+
+                    messageContainer.html(html);
                 })
-                .fail( function(jqXHR, textStatus, error) {
+                .fail(function (jqXHR, textStatus, error) {
                     console.log(textStatus);
                 });
 
         },
 
-        getProcessorLoginInputs = function() {
+        getProcessorLoginInputs = function () {
             dataService.processorLogin()
-                .done( function(data) {
-                    if ( ! data.success) {
+                .done(function (data) {
+                    if (!data.success) {
                         $('.login-error')
                             .addClass('alert alert-danger')
                             .text(data.message);
@@ -212,15 +221,15 @@ var controllerPage = function() {
                         window.location.href = urlBase + '/processor';
                     }
                 })
-                .fail( function(jqXHR, textStatus, error) {
+                .fail(function (jqXHR, textStatus, error) {
                     console.log(textStatus);
                 });
         },
 
-        getAdminLoginInputs = function() {
+        getAdminLoginInputs = function () {
             dataService.adminLogin()
-                .done( function(data) {
-                    if ( ! data.success) {
+                .done(function (data) {
+                    if (!data.success) {
                         $('.login-error')
                             .addClass('alert alert-danger')
                             .text(data.message);
@@ -228,14 +237,14 @@ var controllerPage = function() {
                         window.location.href = urlBase + '/admin';
                     }
                 })
-                .fail( function(jqXHR, textStatus, error) {
-                   console.log(textStatus);
+                .fail(function (jqXHR, textStatus, error) {
+                    console.log(textStatus);
                 });
         },
 
-        getAvailableScheduleForOneLocation = function(locationId) {
+        getAvailableScheduleForOneLocation = function (locationId) {
             dataService.getAvailableScheduleForOneLocation(locationId)
-                .done( function(data) {
+                .done(function (data) {
 
                     var container = $('table tbody');
                     var html = '';
@@ -256,19 +265,19 @@ var controllerPage = function() {
 
                     container.html(html);
                 })
-                .fail(function(jqXHR, textStatus, error) {
+                .fail(function (jqXHR, textStatus, error) {
                     console.log(textStatus);
                 });
         },
 
-        getApplicantStatus = function(controlNumber) {
+        getApplicantStatus = function (controlNumber) {
             dataService.getApplicantStatus(controlNumber)
-                .done( function(data) {
+                .done(function (data) {
 
                     var examStatus = data.message[0].exam_status;
                     var paidOrNotPaid = data.message[0].paid_status;
                     var fullName = data.message[0].applicant_first_name + ' ' +
-                                    data.message[0].applicant_last_name;
+                        data.message[0].applicant_last_name;
 
                     if (data.success) {
 
@@ -298,24 +307,24 @@ var controllerPage = function() {
                         $('#status-container #schedule-date-start').text('No results');
                     }
                 })
-                .fail( function(jqXHR, textStatus, error) {
+                .fail(function (jqXHR, textStatus, error) {
                     console.log(textStatus);
                 });
         },
 
-        deleteUser = function(userId) {
+        deleteUser = function (userId) {
             dataService.deleteUser(userId)
-                .done( function(data) {
+                .done(function (data) {
                     console.log('Deleted user successfully!');
                 })
-                .fail( function(jqXHR, textStatus, error) {
+                .fail(function (jqXHR, textStatus, error) {
                     console.log(textStatus);
                 });
         },
 
-        filterResults = function() {
+        filterResults = function () {
             dataService.filterResults()
-                .done(function(data) {
+                .done(function (data) {
 
                     var summaryReportContainer = $('.summary-report'),
                         totalProfit = data['profit'][0].total_profit,
@@ -328,16 +337,16 @@ var controllerPage = function() {
 
                     summaryReportContainer.html(
                         '<div>Profit: ' + totalProfit + '</div>' +
-                        '<div>Professional: ' + totalPro + '</div>' +
-                        '<div>Sub Professional: ' + totalSubPro + '</div>' +
-                        '<div>Disapproved: ' + totalDisapproved + '</div>' +
-                        '<div>Approved: ' + totalApproved + '</div>' +
-                        '<div>Reserved: ' + totalReserved + '</div>' +
-                        '<div>Paid: ' + totalPaid + '</div>'
+                            '<div>Professional: ' + totalPro + '</div>' +
+                            '<div>Sub Professional: ' + totalSubPro + '</div>' +
+                            '<div>Disapproved: ' + totalDisapproved + '</div>' +
+                            '<div>Approved: ' + totalApproved + '</div>' +
+                            '<div>Reserved: ' + totalReserved + '</div>' +
+                            '<div>Paid: ' + totalPaid + '</div>'
                     );
 
                 })
-                .fail(function(jqXHR, textStatus, error) {
+                .fail(function (jqXHR, textStatus, error) {
                     console.log(textStatus);
                 })
         };

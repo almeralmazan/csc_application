@@ -105,6 +105,11 @@ class ProcessorController extends BaseController {
     // TWILIO SMS
     public function smsApprove($email)
     {
+        // Initiate sms sending to applicant
+        $account_sid = $_ENV['TWILIO_SID'];
+        $auth_token = $_ENV['TWILIO_AUTH_TOKEN'];
+        $client = new Services_Twilio($account_sid, $auth_token);
+
         // Find applicant by email
         $applicant = DB::table('applicants')
             ->select(
@@ -121,24 +126,23 @@ class ProcessorController extends BaseController {
             DB::table('applicants')
                 ->where('email', '=', $email)
                 ->update(array('applicant_status' => 1));
+
+            $client->account->messages->create(array(
+                'To' => $applicant->mobile_number,
+                'From' => $_ENV['TWILIO_ACCOUNT_NUMBER'],
+                'Body' => $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name .
+                    ', your application form is approved. From Civil Service Commission'
+            ));
         }
         else
         {
-            return Response::json(['message' => 'Already approved']);
+            $client->account->messages->create(array(
+                'To' => $applicant->mobile_number,
+                'From' => $_ENV['TWILIO_ACCOUNT_NUMBER'],
+                'Body' => $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name .
+                    ', your application form is approved. From Civil Service Commission'
+            ));
         }
-
-
-        // Initiate sms sending to applicant
-        $account_sid = $_ENV['TWILIO_SID'];
-        $auth_token = $_ENV['TWILIO_AUTH_TOKEN'];
-        $client = new Services_Twilio($account_sid, $auth_token);
-
-        $client->account->messages->create(array(
-            'To' => $applicant->mobile_number,
-            'From' => $_ENV['TWILIO_ACCOUNT_NUMBER'],
-            'Body' => $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name .
-                ', your application form is approved. From Civil Service Commission'
-        ));
 
     }
 }
