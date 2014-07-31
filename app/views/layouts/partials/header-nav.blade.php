@@ -12,11 +12,11 @@
             <div id="collapseOne" class="panel-collapse collapse in">
                 <div class="panel-body">
                     <ul class="list-unstyled">
-                        <li><a href="/" class="link-active">News</a></li>
-                        <li><a href="/history">History</a></li>
-                        <li><a href="/mission-vision">Mission & Vision</a></li>
-                        <li><a href="/requirements">Requirements</a></li>
-                        <li><a href="/about-us">About Us</a></li>
+                        <li><a href="/" class="{{ set_active_accordion_link('/') }}">News</a></li>
+                        <li><a href="/history" class="{{ set_active_accordion_link('history') }}">History</a></li>
+                        <li><a href="/mission-vision" class="{{ set_active_accordion_link('mission-vision') }}">Mission & Vision</a></li>
+                        <li><a href="/requirements" class="{{ set_active_accordion_link('requirements') }}">Requirements</a></li>
+                        <li><a href="/about-us" class="{{ set_active_accordion_link('about-us') }}">About Us</a></li>
                     </ul>
                 </div>
             </div>
