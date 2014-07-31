@@ -1,18 +1,46 @@
 
-    <div class="col-md-2 margin-top">
-        <div class="list-group side-nav">
-            <a href="/" class="list-group-item {{ set_active('/') }}">
-                <i class="fa fa-comment-o"></i><span class="glyphicon glyphicon-home"></span> Home
-            </a>
-            <a href="/application-form" class="list-group-item {{ set_active('application-form') }}">
-                <i class="fa fa-search"></i><span class="glyphicon glyphicon-pencil"></span>  Application
-            </a>
-            <a href="/list-of-passers" class="list-group-item {{ set_active('list-of-passers') }}">
-                <i class="fa fa-folder-open-o"></i><span class="glyphicon glyphicon-list-alt"></span> List Of Passers
-            </a>
-            <a href="/payment-status" class="list-group-item {{ set_active('payment-status') }}">
-                <i class="fa fa-user"></i><span class="glyphicon glyphicon-usd"></span> Payment
-            </a>
+<div class="col-md-2">
+    <div class="panel-group" id="accordion">
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a class="{{ set_active('/') }}" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">
+                        Home
+                    </a>
+                </h4>
+            </div>
+            <div id="collapseOne" class="panel-collapse collapse in">
+                <div class="panel-body">
+                    <ul class="list-unstyled">
+                        <li><a href="/" class="link-active">News</a></li>
+                        <li><a href="/history">History</a></li>
+                        <li><a href="/mission-vision">Mission & Vision</a></li>
+                        <li><a href="/requirements">Requirements</a></li>
+                        <li><a href="/about-us">About Us</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a href="/application-form" class="{{ set_active('application-form') }}">Application</a>
+                </h4>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a href="/list-of-passers" class="{{ set_active('list-of-passers') }}">List Of Passers</a>
+                </h4>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a href="/payment-status" class="{{ set_active('payment-status') }}">Payment</a>
+                </h4>
+            </div>
         </div>
     </div>
-
+</div>
