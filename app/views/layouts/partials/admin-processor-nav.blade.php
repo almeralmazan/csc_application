@@ -1,4 +1,4 @@
-<div class="col-md-2 margin-top">
+<div class="col-md-2 margin-top hidden-print">
     <div class="list-group side-nav">
         @if (Auth::user()->role == 'admin')
             <a href="/admin" class="list-group-item {{ set_active('admin') }}">
