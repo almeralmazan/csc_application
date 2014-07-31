@@ -5,8 +5,32 @@ class HomeController extends BaseController {
 	public function home()
 	{
         $title = 'Home';
-		return View::make('home.index', compact('title'));
+		return View::make('home.news', compact('title'));
 	}
+
+    public function history()
+    {
+        $title = 'History';
+        return View::make('home.history', compact('title'));
+    }
+
+    public function missionVision()
+    {
+        $title = 'Mission & Vision';
+        return View::make('home.mission-vision', compact('title'));
+    }
+
+    public function requirements()
+    {
+        $title = 'Requirements';
+        return View::make('home.requirements', compact('title'));
+    }
+
+    public function aboutUs()
+    {
+        $title = 'About Us';
+        return View::make('home.about-us', compact('title'));
+    }
 
     public function applicationForm()
     {
