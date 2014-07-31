@@ -1,105 +1,66 @@
 @extends('layouts.main')
 
 @section('content')
-<div class="row">
-    <div class="well col-xs-10 col-sm-10 col-md-6 col-xs-offset-1 col-sm-offset-1 col-md-offset-3">
-        <div class="row">
-            <div class="col-xs-6 col-sm-6 col-md-6">
-                <address>
-                    <strong>Civil Services Commission</strong>
-                    <br>
-                    2135 Sunset Blvd
-                    <br>
-                    Los Angeles, CA 90026
-                    <br>
-                    <abbr title="Phone">Tel. #</abbr> 951-2578; 931-8163
-                </address>
-            </div>
-            <div class="col-xs-6 col-sm-6 col-md-6 text-right">
-                <p>
-                    <em>Date: July 7, 2014</em>
-                </p>
-                <p>
-                    <em>Control #: 34522677W</em>
-                </p>
+<div class="container margin-top ticket-container">
+    <div class="row">
+        <div class="row hidden-print">
+            <div class="col-md-8 col-md-offset-2">
+                <button class="btn btn-default" onclick="window.print()"> <span class="glyphicon glyphicon-print"></span> Print</button>
             </div>
         </div>
-        <div class="row">
-            <div class="col-xs-12 col-sm-3 col-md-3">
-                <p>Exam details:</p>
+        <div class="col-md-8 col-md-offset-2 margin-top" style="border: 1px solid #eee; margin-bottom: 50px;">
+            <div class="row">
+                <div class="col-md-12 text-right">
+                    <h1>Application # 000001</h1>
+                    <hr>
+                </div>
+                <div class="col-xs-6">
+                    <ul class="list-unstyled">
+                        <li><h4><strong>Exam details:</strong></h4></li>
+                        <li><h4>Sub Professional</h4></li>
+                        <li><h4>CSC-Office Taguig City</h4></li>
+                        <li><h4>10:00 AM - 12:00 PM</h4></li>
+                        <li><h4>July 23, 2014</h4></li>
+                    </ul>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <ul class="list-unstyled">
+                        <li><h4><strong>Billed to:</strong></h4></li>
+                        <li><h4>Jun Mar Farajdo</h4></li>
+                        <li><h4>July 31, 2014</h4></li>
+                    </ul>
+                </div>
+                <div class="col-xs-6 text-right">
+                    <ul class="list-unstyled">
+                        <li><h4><strong>Total Payment:</strong></h4></li>
+                        <li><h4>&#x20B1;500</h4></li>
+                    </ul>
+                </div>
             </div>
-            <div class="col-xs-12 col-sm-9 col-md-9">
-                <table class="table table-bordered">
-                    <thead>
-                    <tr>
-                        <th>Location</th>
-                        <th>Date Start</th>
-                        <th>Time Start</th>
-                        <th>Time End</th>
-                    </tr>
-                    </thead>
-                    <tbody>
-                    <tr>
-                        <td>Quezon City</td>
-                        <td>July 11, 2014</td>
-                        <td>8:00 AM</td>
-                        <td>2:30 PM</td>
-                    </tr>
-                    </tbody>
-                </table>
+            <div class="row margin-top">
+                <div class="col-md-12" style="margin-bottom: 50px; border-top: 1px dashed black;">
+                    <div class="row margin-top">
+                        <div class="col-xs-3">
+                            <img src="img/2x2.jpg" alt="">
+                        </div>
+                        <div class="col-md-8">
+                            <ul class="list-unstyled">
+                                <li><h4>Name: <strong> Jenary S. Madia</strong></h4></li>
+                                <li><h4>Sex: <strong> Male</strong></h4></li>
+                                <li><h4>Date of Birth: <strong> January 1, 1991</strong></h4></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row">
+                        <div class="col-md-12 margin-top text-center">
+                            <p>
+                                <strong>WARNING:</strong>
+                                The Civil Services Commission uses highly reliable system to detect cheats. Any form of cheating in any Civil Services Examination shall be considered a violation of <strong>Republic Act No. 9416 (Anti-Cheating Law),</strong> and any person found guilty shall be administratively and criminally liable
+                            </p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-        <div class="row">
-            <div class="text-center">
-                <h1>Reciept</h1>
-            </div>
-            </span>
-            <table class="table table-hover">
-                <thead>
-                <tr>
-                    <th class="text-center">Location</th>
-                    <th class="text-center">Date start</th>
-                    <th class="text-center">Time start</th>
-                    <th class="text-center">Time end</th>
-                </tr>
-                </thead>
-                <tbody>
-                <tr>
-                    <td class="col-md-2 text-center"> Quezon City </td>
-                    <td class="col-md-2 text-center"> July 4, 2014 </td>
-                    <td class="col-md-2 text-center"> 8:00 AM </td>
-                    <td class="col-md-2 text-center"> 4:30 PM </td>
-                </tr>
-                <tr>
-                    <td>   </td>
-                    <td>   </td>
-                    <td class="text-right">
-                        <p>
-                            <strong>Subtotal: </strong>
-                        </p>
-                        <p>
-                            <strong>Tax: </strong>
-                        </p>
-                    </td>
-                    <td class="text-center">
-                        <p>
-                            <strong>$6.94</strong>
-                        </p>
-                        <p>
-                            <strong>$6.94</strong>
-                        </p></td>
-                </tr>
-                <tr class="text-right">
-                    <td>   </td>
-                    <td>   </td>
-                    <td><strong>Total: </strong></td>
-                    <td class="text-center text-danger"><strong>$31.53</strong></td>
-                </tr>
-                </tbody>
-            </table>
-            <button type="button" class="btn btn-success btn-lg btn-block">
-                Pay Now   <span class="glyphicon glyphicon-chevron-right"></span>
-            </button></td>
         </div>
     </div>
 </div>
