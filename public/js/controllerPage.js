@@ -212,6 +212,7 @@ var controllerPage = function () {
         // -------------------------------------------
         //      SMS TWILIO
         // -------------------------------------------
+        // TODO: UI manipulation for buttons and alert before and after sending sms
         updateToApproveStatus = function (email) {
             dataService.updateToApproveStatus(email)
                 .done(function (data) {
