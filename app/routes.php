@@ -3,6 +3,11 @@
 
 // Public Pages
 Route::get('/', 'HomeController@home');
+Route::get('news', 'HomeController@news');
+Route::get('history', 'HomeController@history');
+Route::get('mission-vision', 'HomeController@missionVision');
+Route::get('requirements', 'HomeController@requirements');
+Route::get('about-us', 'HomeController@aboutUs');
 Route::get('application-form', 'HomeController@applicationForm');
 Route::get('payment-status', 'HomeController@paymentStatus');
 Route::get('passed-applicants', 'HomeController@getAllPassedApplicants');
