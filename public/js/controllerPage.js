@@ -427,26 +427,16 @@ var controllerPage = function () {
         filterResults = function () {
             dataService.filterResults()
                 .done(function (data) {
+                    var summaryReportContainer = $('#summary-report');
+                    summaryReportContainer.removeClass('hidden');
 
-                    var summaryReportContainer = $('.summary-report'),
-                        totalProfit = data['profit'][0].total_profit,
-                        totalPro = data['professional'][0].total_pro,
-                        totalSubPro = data['subpro'][0].total_subpro,
-                        totalDisapproved = data['disapproved'][0].total_disapproved,
-                        totalApproved = data['approved'][0].total_approved,
-                        totalPaid = data['paid'][0].total_paid,
-                        totalReserved = data['reserved'][0].total_reserved;
-
-                    summaryReportContainer.html(
-                        '<div>Profit: ' + totalProfit + '</div>' +
-                            '<div>Professional: ' + totalPro + '</div>' +
-                            '<div>Sub Professional: ' + totalSubPro + '</div>' +
-                            '<div>Disapproved: ' + totalDisapproved + '</div>' +
-                            '<div>Approved: ' + totalApproved + '</div>' +
-                            '<div>Reserved: ' + totalReserved + '</div>' +
-                            '<div>Paid: ' + totalPaid + '</div>'
-                    );
-
+                    $('#total-profit-container').text( data['profit'][0].total_profit );
+                    $('#pro-container').text( data['professional'][0].total_pro );
+                    $('#sub-pro-container').text( data['subpro'][0].total_subpro );
+                    $('#disapproved-container').text( data['disapproved'][0].total_disapproved );
+                    $('#approved-container').text( data['approved'][0].total_approved );
+                    $('#paid-container').text( data['paid'][0].total_paid );
+                    $('#reserved-container').text( data['reserved'][0].total_reserved );
                 })
                 .fail(function (jqXHR, textStatus, error) {
                     console.log(textStatus);
