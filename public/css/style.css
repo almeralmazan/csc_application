@@ -16,6 +16,14 @@
     margin-top: 25px;
 }
 
+.margin-top-mini {
+    margin-top: 5px;
+}
+
+.link-active {
+    text-decoration: underline;
+}
+
 span#welcome {
     margin-right: 10px;
 }
@@ -35,6 +43,22 @@ footer {
 
 img.logo {
     width: 100%;
+}
+
+/*News Tab*/
+
+.news-list {
+    float: left;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.news-list:first-child {
+    margin-top: 0;
+}
+
+.news-list>img {
+    float: left; margin-right: 10px;
 }
 
 /*applicant's Page*/
@@ -89,7 +113,7 @@ div.requirements-subtitle {
 
 div.search-query {
     max-width: 1000px;
-    margin: 50px auto 20px;
+    margin-top: 25px;
 }
 
 div.table-container,
