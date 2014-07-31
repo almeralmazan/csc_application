@@ -6,7 +6,7 @@
 
 @section('content')
 <div class="col-md-10" style="">
-    <div class="row">+
+    <div class="row">
         <div class="col-md-10 col-md-offset-1">
             <h2>Requirements for applying</h2>
             <h4>2x2 photo</h4>

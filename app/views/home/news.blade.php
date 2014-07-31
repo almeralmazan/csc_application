@@ -39,15 +39,24 @@
             <ul class="list-unstyled">
                 <li data-target="#carousel-example-generic" data-slide-to="0" class="news-list">
                     <img src="img/thumb-news-1.jpg" width="60" height="60">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, neque.</p>
+                    <p>{{ Str::limit("Civil Service Commission (CSC) Chairman Francisco T.
+                                Duque III disclosed that 67 government offices failed the
+                                frontline service survey in 2013.The evaluation of frontline
+                                services of government", 123, ' ...') }}</p>
                 </li>
                 <li data-target="#carousel-example-generic" data-slide-to="1" class="news-list">
                     <img src="img/thumb-news-2.jpg" width="60" height="60">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, neque.</p>
+                    <p>{{ Str::limit("The Civil Service Commission (CSC) invites government
+                                    choral groups to participate in the Government Choral
+                                    Competition.“The competition aims to showcase the musical
+                                    creativity of state workers", 125, ' ...') }}</p>
                 </li>
                 <li data-target="#carousel-example-generic" data-slide-to="2" class="news-list">
                     <img src="img/thumb-news-3.jpg" width="60" height="60">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Distinctio, neque.</p>
+                    <p>{{ Str::limit("The Contact Center ng Bayan (CCB), the government’s central
+                                        helpline against red tape, is expanding to accommodate
+                                        complaints on extortion (kotong)and bribery (suhol) from
+                                        micro, small, and medium", 125, ' ...') }}</p>
                 </li>
             </ul>
         </div>
