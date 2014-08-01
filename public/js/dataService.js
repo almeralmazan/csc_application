@@ -34,8 +34,8 @@ var dataService = function () {
         return $.getJSON(urlBase + '/list-of-passers/' + searchQuery + '/' + dateOfExam + '/' + examLevel);
     },
 
-    getApplicantStatus = function(controlNumber) {
-        return $.getJSON(urlBase + '/search-control-no/' + controlNumber);
+    getApplicantStatus = function(fullName) {
+        return $.getJSON(urlBase + '/search-full-name/' + fullName);
     },
 
     deleteSchedule = function(scheduleId, testingCenterId) {
