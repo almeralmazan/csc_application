@@ -16,7 +16,7 @@
                         <li><a href="/history" class="{{ set_active_accordion_link('history') }}">History</a></li>
                         <li><a href="/mission-vision" class="{{ set_active_accordion_link('mission-vision') }}">Mission & Vision</a></li>
                         <li><a href="/requirements" class="{{ set_active_accordion_link('requirements') }}">Requirements</a></li>
-                        <li><a href="/about-us" class="{{ set_active_accordion_link('about-us') }}">About Us</a></li>
+                        <li><a href="/sms-code" class="{{ set_active_accordion_link('sms-code') }}">SMS Code</a></li>
                     </ul>
                 </div>
             </div>

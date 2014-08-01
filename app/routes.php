@@ -7,7 +7,7 @@ Route::get('news', 'HomeController@news');
 Route::get('history', 'HomeController@history');
 Route::get('mission-vision', 'HomeController@missionVision');
 Route::get('requirements', 'HomeController@requirements');
-Route::get('about-us', 'HomeController@aboutUs');
+Route::get('sms-code', 'HomeController@smsCode');
 Route::get('application-form', 'HomeController@applicationForm');
 Route::get('payment-status', 'HomeController@paymentStatus');
 Route::get('passed-applicants', 'HomeController@getAllPassedApplicants');
@@ -27,6 +27,7 @@ Route::post('processor/login', 'ProcessorController@verifyLogin');
 Route::group(['before' => 'processor', 'prefix' => 'processor'], function() {
     Route::get('/', 'ProcessorController@index');
     Route::get('reserved', 'ProcessorController@reserved');
+    Route::get('list-of-passers', 'ProcessorController@listOfPassers');
     Route::get('applicant/{applicantId}', 'ProcessorController@show');
     Route::get('paid-applicants', 'ProcessorController@getAllPaidApplicants');
     Route::get('reserved-applicants', 'ProcessorController@getAllReservedApplicants');

@@ -16,6 +16,12 @@ class ProcessorController extends BaseController {
         return View::make('processor.reserved', compact('title', 'applicants'));
     }
 
+    public function listOfPassers()
+    {
+        $title = 'List Of Passers';
+        return View::make('processor.list-of-passers', compact('title'));
+    }
+
     public function getAllPaidApplicants()
     {
         return DB::table('applicants')

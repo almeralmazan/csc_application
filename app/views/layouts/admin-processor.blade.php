@@ -44,6 +44,7 @@
 {{ HTML::script('js/bootstrap-datetimepicker.js') }}
 {{ HTML::script('js/bootbox.min.js') }}
 {{ HTML::script('js/angular.min.js') }}
+{{ HTML::script('js/moment.min.js') }}
 {{ HTML::script('js/dataService.js') }}
 {{ HTML::script('js/controllerPage.js') }}
 {{ HTML::script('js/script.js') }}
