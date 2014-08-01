@@ -78,10 +78,15 @@ class Applicant extends Eloquent {
         return $result;
     }
 
-    public static function getApplicantStatus($controlNumber)
+    public static function getApplicantStatus($fullName)
     {
+        $name = explode(' ', $fullName);
+        $firstName = $name[0];
+        $lastName = $name[1];
+
         $result = DB::table('applicants')
-                    ->where('controlno', '=', $controlNumber)
+                    ->where('applicant_first_name', '=', $firstName)
+                    ->where('applicant_last_name', '=', $lastName)
                     ->select(
                         'exam_status',
                         'paid_status',
