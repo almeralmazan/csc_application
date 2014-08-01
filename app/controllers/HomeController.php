@@ -26,10 +26,10 @@ class HomeController extends BaseController {
         return View::make('home.requirements', compact('title'));
     }
 
-    public function aboutUs()
+    public function smsCode()
     {
-        $title = 'About Us';
-        return View::make('home.about-us', compact('title'));
+        $title = 'SMS Code';
+        return View::make('home.sms-code', compact('title'));
     }
 
     public function applicationForm()
