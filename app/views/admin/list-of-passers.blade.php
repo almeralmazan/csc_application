@@ -5,7 +5,7 @@
     <div class="row margin-top">
         <div class="col-md-6 col-md-offset-2">
             <div class="input-group">
-                <input id="control-number-field" class="form-control" placeholder="Type your control # here"
+                <input id="control-number-field" class="form-control" placeholder="Type your first and last name"
                        name="control_number_field" type="text">
 
                 <span class="input-group-btn">
