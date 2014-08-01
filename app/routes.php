@@ -16,7 +16,7 @@ Route::get('payment', 'HomeController@payment');
 Route::post('validate-inputs', 'HomeController@validateAllInputs');
 Route::get('reserved-page/{applicantId}', 'HomeController@reservedPage');
 Route::get('proceed-to-payment', 'HomeController@proceedToPayment');
-Route::get('search-control-no/{controlNumber}', 'HomeController@getApplicantStatus');
+Route::get('search-full-name/{fullName}', 'SharedController@searchFullName');
 Route::get('admin/login', 'AdminController@loginPage');
 Route::post('admin/login', 'AdminController@verifyLogin');
 Route::get('processor/login', 'ProcessorController@loginPage');
