@@ -12,10 +12,11 @@ class CreatePaymentsTable extends Migration {
 	 */
 	public function up()
 	{
-        Schema::create('payments', function($table)
+        Schema::create('payments', function(Blueprint $table)
         {
             $table->increments('id');
             $table->integer('applicant_id');
+            $table->date('reserved_date');
             $table->date('paid_date');
             $table->double('price', 5, 2);
             $table->timestamps();
