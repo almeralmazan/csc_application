@@ -27,6 +27,7 @@ Route::post('processor/login', 'ProcessorController@verifyLogin');
 Route::group(['before' => 'processor', 'prefix' => 'processor'], function() {
     Route::get('/', 'ProcessorController@index');
     Route::get('reserved', 'ProcessorController@reserved');
+    Route::get('list-of-passers', 'ProcessorController@listOfPassers');
     Route::get('applicant/{applicantId}', 'ProcessorController@show');
     Route::get('paid-applicants', 'ProcessorController@getAllPaidApplicants');
     Route::get('reserved-applicants', 'ProcessorController@getAllReservedApplicants');
