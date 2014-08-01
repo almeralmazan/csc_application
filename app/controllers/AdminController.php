@@ -246,8 +246,8 @@ class AdminController extends BaseController
                 JOIN payments
                 ON payments.applicant_id = applicants.id
                 WHERE applicants.paid_status = ?
-                AND payments.paid_date = ?',
-                array(0, '0000-00-00')
+                AND payments.reserved_date BETWEEN ? AND ?',
+                array(0, $dateStart, $dateEnd)
             );
 
             return Response::json([
