@@ -26,8 +26,11 @@
             <a href="/processor/reserved" class="list-group-item {{ set_active('processor/reserved') }}">
                 <i class="fa fa-folder-open-o"></i><span class="glyphicon glyphicon-calendar"></span> Reserved
             </a>
+            <a href="/processor/list-of-passers" class="list-group-item {{ set_active('processor/list-of-passers') }}">
+                <i class="fa fa-folder-open-o"></i><span class="glyphicon glyphicon-pencil"></span> List Of Passers
+            </a>
             <a href="/processor/logout" class="list-group-item {{ set_active('processor/logout') }}">
-                <i class="fa fa-folder-open-o"></i><span class="glyphicon glyphicon-off"></span> Logout - {{ Auth::user()->username }}
+                <i class="fa fa-folder-open-o"></i><span class="glyphicon glyphicon-off"></span> Logout {{ Auth::user()->username }}
             </a>
         @endif
     </div>
