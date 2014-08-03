@@ -6,7 +6,7 @@
 	"require": {
 		"laravel/framework": "4.2.*",
         "twilio/sdk": "3.12.4",
-        "ignited/laravel-omnipay": "1.*"
+        "omnipay/paypal": "~2.0"
 	},
 	"autoload": {
 		"classmap": [
