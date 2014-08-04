@@ -41,6 +41,13 @@
 
     <div id="summary-report" class="row margin-top hidden">
         <div class="col-md-6 col-md-offset-2">
+
+            <div class="row">
+                <div class="col-md-12 visible-print">
+                    <img src="{{ URL::to('img/csc-logo.png') }}" class="img-responsive center-block" alt="">
+                </div>
+            </div>
+
             <div class="row">
                 <h2>Summary Report</h2>
                 <table class="table table-bordered">

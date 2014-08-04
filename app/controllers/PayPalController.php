@@ -15,23 +15,29 @@ class PayPalController extends BaseController {
         $this->gateway->setTestMode(true);
     }
 
-    public function payment()
+    public function paymentCreditCard()
     {
-        $title = 'Payment Page';
-        return View::make('paypal.payment', compact('title'));
+        $title = 'Payment CreditCard Page';
+        return View::make('paypal.payment-creditcard', compact('title'));
+    }
+
+    public function paymentPayPal()
+    {
+        $title = 'Payment PayPal Page';
+        return View::make('paypal.payment-paypal', compact('title'));
     }
 
     public function buyWithPayPal()
     {
         $applicant = DB::table('applicants')
-                        ->select('applicants.id')
+                        ->select('applicants.id', 'applicants.new_exam_level')
                         ->where('controlno', Input::get('controlNumber'))
                         ->first();
 
         $response = $this->gateway->purchase([
             'cancelUrl'     =>  'http://dev.csc/cancel-payment',
-            'returnUrl'     =>  'http://dev.csc/success-payment/' . '1',
-            'description'   =>  'CSC - Professional Exam',
+            'returnUrl'     =>  'http://dev.csc/success-payment/' . $applicant->id,
+            'description'   =>  'CSC - ' . $applicant->new_exam_level . ' Exam',
             'amount'        =>  '500.00',
             'currency'      =>  'PHP'
         ])->send();
@@ -43,7 +49,7 @@ class PayPalController extends BaseController {
     {
         $controlNumber = Input::get('controlNumber');
 
-        $applicantId = DB::table('applicants')
+        $applicant = DB::table('applicants')
                         ->select('applicants.id')
                         ->where('controlno', $controlNumber)
                         ->first();
@@ -58,7 +64,7 @@ class PayPalController extends BaseController {
         ];
 
         $response = $this->gateway->purchase([
-            'returnUrl'     =>  'http://dev.csc/success-payment/' . $applicantId,
+            'returnUrl'     =>  'http://dev.csc/success-payment/' . $applicant->id,
             'description'   =>  'CSC - Professional Exam',
             'amount'        =>  '500.00',
             'currency'      =>  'PHP',
@@ -66,7 +72,6 @@ class PayPalController extends BaseController {
         ])->send();
 
         $response->redirect();
-
     }
 
     public function successPayment($applicantId)
@@ -75,30 +80,13 @@ class PayPalController extends BaseController {
         // Make this customize using DB::table('applicants')
         $applicant = Applicant::find($applicantId);
 
+        $testing = DB::table('testing_centers')
+                            ->select('testing_centers.location')
+                            ->where('testing_centers.id', $applicant->testing_centers_location_id)
+                            ->first();
+
         $title = 'Success Payment Page';
-        return View::make('paypal.success-payment', compact('title', 'transactionNumber', 'applicant'));
+        return View::make('paypal.success-payment', compact('title', 'transactionNumber', 'applicant', 'testing'));
     }
 
-//    public function successPayment()
-//    {
-//        $response = $this->gateway->purchase([
-//            'cancelUrl'     =>  'http://dev.csc/cancel-payment',
-//            'returnUrl'     =>  'http://dev.csc/success-payment',
-//            'description'   =>  'CSC - Professional Exam',
-//            'amount'        =>  500.00,
-//            'currency'      =>  'PHP'
-//        ])->send();
-//
-//        $data = $response->getData();
-//
-//        if ($data['ACK'] == 'Success')
-//        {
-//            echo 'Yehey';
-//        }
-//        else
-//        {
-//            echo 'Im sad';
-//        }
-//
-//    }
 }
