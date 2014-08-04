@@ -41,7 +41,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a href="/payment-status" class="{{ set_active('payment-status') }}">Payment</a>
+                    <a href="/payment" class="{{ set_active('payment') }}">Payment</a>
                 </h4>
             </div>
         </div>
