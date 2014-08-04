@@ -17,9 +17,14 @@ class PayPalController extends BaseController {
 
     public function buyWithPayPal()
     {
+        $applicant = DB::table('applicants')
+                        ->select('applicants.id')
+                        ->where('controlno', Input::get('controlNumber'))
+                        ->first();
+
         $response = $this->gateway->purchase([
             'cancelUrl'     =>  'http://dev.csc/cancel-payment',
-            'returnUrl'     =>  'http://dev.csc/success-payment',
+            'returnUrl'     =>  'http://dev.csc/success-payment/' . '1',
             'description'   =>  'CSC - Professional Exam',
             'amount'        =>  '500.00',
             'currency'      =>  'PHP'
@@ -32,6 +37,11 @@ class PayPalController extends BaseController {
     {
         $controlNumber = Input::get('controlNumber');
 
+        $applicantId = DB::table('applicants')
+                        ->select('applicants.id')
+                        ->where('controlno', $controlNumber)
+                        ->first();
+
         $formData = [
             'firstName'     =>  Input::get('firstName'),
             'lastName'      =>  Input::get('lastName'),
@@ -42,9 +52,9 @@ class PayPalController extends BaseController {
         ];
 
         $response = $this->gateway->purchase([
-            'returnUrl'     =>  'http://dev.csc/success-payment',
+            'returnUrl'     =>  'http://dev.csc/success-payment/' . $applicantId,
             'description'   =>  'CSC - Professional Exam',
-            'amount'        =>  500.00,
+            'amount'        =>  '500.00',
             'currency'      =>  'PHP',
             'card'          =>  $formData
         ])->send();
@@ -53,10 +63,14 @@ class PayPalController extends BaseController {
 
     }
 
-    public function successPayment()
+    public function successPayment($applicantId)
     {
+        $transactionNumber = Input::get('token');
+        // Make this customize using DB::table('applicants')
+        $applicant = Applicant::find($applicantId);
+
         $title = 'Success Payment Page';
-        return View::make('paypal.success-payment', compact('title'));
+        return View::make('paypal.success-payment', compact('title', 'transactionNumber', 'applicant'));
     }
 
 //    public function successPayment()
