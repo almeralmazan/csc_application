@@ -47,11 +47,9 @@ class PayPalController extends BaseController {
 
     public function buyWithCreditCard()
     {
-        $controlNumber = Input::get('controlNumber');
-
         $applicant = DB::table('applicants')
-                        ->select('applicants.id')
-                        ->where('controlno', $controlNumber)
+                        ->select('applicants.id', 'applicants.new_exam_level')
+                        ->where('controlno', Input::get('controlNumber'))
                         ->first();
 
         $formData = [
@@ -65,7 +63,7 @@ class PayPalController extends BaseController {
 
         $response = $this->gateway->purchase([
             'returnUrl'     =>  'http://dev.csc/success-payment/' . $applicant->id,
-            'description'   =>  'CSC - Professional Exam',
+            'description'   =>  'CSC - ' . $applicant->new_exam_level . ' Exam',
             'amount'        =>  '500.00',
             'currency'      =>  'PHP',
             'card'          =>  $formData
