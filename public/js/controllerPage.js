@@ -387,7 +387,7 @@ var controllerPage = function () {
                         if (examStatus == 1) {
                             $('#status-container #exam-status').text('Passed');
                         } else if (examStatus == 2) {
-                            $('#status-container #exam-status').text('Standby');
+                            $('#status-container #exam-status').text('Standby for Exam');
                         } else {
                             $('#status-container #exam-status').text('Failed');
                         }
