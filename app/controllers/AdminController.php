@@ -9,6 +9,20 @@ class AdminController extends BaseController
         return View::make('admin.view-application', compact('title'));
     }
 
+    public function paid()
+    {
+        $title = 'Paid Page';
+        $applicants = Applicant::getPaidStatus(1);
+        return View::make('admin.paid', compact('title', 'applicants'));
+    }
+
+    public function reserved()
+    {
+        $title = 'Reserved Page';
+        $applicants = Applicant::getPaidStatus(0);
+        return View::make('admin.reserved', compact('title', 'applicants'));
+    }
+
     public function listOfPassers()
     {
         $title = 'List of Passers Page';

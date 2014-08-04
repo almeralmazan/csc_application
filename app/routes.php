@@ -38,6 +38,8 @@ Route::group(['before' => 'processor', 'prefix' => 'processor'], function() {
 // Admin Pages
 Route::group(['before' => 'admin', 'prefix' => 'admin'], function() {
     Route::get('/', 'AdminController@index');
+    Route::get('paid-applicants', 'AdminController@paid');
+    Route::get('reserved-applicants', 'AdminController@reserved');
     Route::get('list-of-passers', 'AdminController@listOfPassers');
     Route::get('schedules', 'AdminController@schedules');
     Route::get('users', 'AdminController@users');
