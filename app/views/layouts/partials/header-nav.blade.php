@@ -4,9 +4,6 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-<!--                    <a class="{{ set_active('/') }}" data-toggle="collapse" data-parent="#accordion" href="#collapseOne">-->
-<!--                        Home-->
-<!--                    </a>-->
                     <a data-toggle="collapse" data-parent="#accordion" href="#collapseOne" class="{{ set_active('/') }} center-block">
                         Home <span class="caret" style="margin-left: 70px;"></span>
                     </a>
@@ -41,8 +38,18 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a href="/payment" class="{{ set_active('payment') }}">Payment</a>
+                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="{{ set_active('payment-creditcard') }} center-block">
+                        Payment <span class="caret" style="margin-left: 50px;"></span>
+                    </a>
                 </h4>
+            </div>
+            <div id="collapseTwo" class="panel-collapse collapse">
+                <div class="panel-body">
+                    <ul class="list-unstyled">
+                        <li><a href="/payment-creditcard" class="{{ set_active_accordion_link('payment-creditcard') }}">Credit Card</a></li>
+                        <li><a href="/payment-paypal" class="{{ set_active_accordion_link('payment-paypal') }}">PayPal</a></li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
