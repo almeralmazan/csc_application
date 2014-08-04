@@ -4,59 +4,99 @@
 <div class="container margin-top ticket-container">
     <div class="row">
         <div class="row hidden-print">
-            <div class="col-md-8 col-md-offset-2">
-                <button class="btn btn-default" onclick="window.print()"> <span class="glyphicon glyphicon-print"></span> Print</button>
+            <div class="col-md-10 col-md-offset-1">
+                <button class="btn btn-default" onclick="window.print()">
+                    <span class="glyphicon glyphicon-print"></span>
+                    Print
+                </button>
             </div>
         </div>
-        <div class="col-md-8 col-md-offset-2 margin-top" style="border: 1px solid #eee; margin-bottom: 50px;">
+        <div class="col-md-10 col-md-offset-1 margin-top voucher">
             <div class="row">
-                <div class="col-md-12 text-right">
-                    <h1>Application # {{ $transactionNumber }}</h1>
-                    <hr>
+                <div class="col-xs-3">
+                    <ul class="list-unstyled margin-top">
+                        <li>Date: <strong>{{ date('F j, Y') }}</strong></li>
+                        <li>O.R No. <strong>123654</strong></li>
+                        <li>Amount: <strong>500</strong></li>
+<!--                        <li>Collecting Officer: <strong>Jose panghe</strong></li>-->
+                    </ul>
                 </div>
                 <div class="col-xs-6">
-                    <ul class="list-unstyled">
-                        <li><h4><strong>Exam details:</strong></h4></li>
-                        <li><h4>Sub Professional</h4></li>
-                        <li><h4>CSC-Office Taguig City</h4></li>
-                        <li><h4>10:00 AM - 12:00 PM</h4></li>
-                        <li><h4>July 23, 2014</h4></li>
-                    </ul>
-                </div>
-                <div class="col-xs-6 text-right">
-                    <ul class="list-unstyled">
-                        <li><h4><strong>Billed to:</strong></h4></li>
-                        <li><h4>Jun Mar Farajdo</h4></li>
-                        <li><h4>July 31, 2014</h4></li>
-                    </ul>
-                </div>
-                <div class="col-xs-6 text-right">
-                    <ul class="list-unstyled">
-                        <li><h4><strong>Total Payment:</strong></h4></li>
-                        <li><h4>&#x20B1;500</h4></li>
-                    </ul>
-                </div>
-            </div>
-            <div class="row margin-top">
-                <div class="col-md-12" style="margin-bottom: 50px; border-top: 1px dashed black;">
-                    <div class="row margin-top">
-                        <div class="col-xs-3">
-                            <img src="{{ URL::to('img/2x2.jpg') }}" alt="">
-                        </div>
-                        <div class="col-md-8">
-                            <ul class="list-unstyled">
-                                <li><h4>Name: <strong> Jenary S. Madia</strong></h4></li>
-                                <li><h4>Sex: <strong> Male</strong></h4></li>
-                                <li><h4>Date of Birth: <strong> January 1, 1991</strong></h4></li>
+                    <div class="row">
+                        <div class="col-md-12">
+                            <h2 class="text-center">Application Receipt</h2>
+                            <h4 class="text-center">Exam Applied for</h4>
+                            <ul class="list-inline text-center">
+                                @if ($applicant->new_exam_mode == 'ppt')
+                                    <li>
+                                        <input type="checkbox" checked disabled>PPT
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" disabled>CAT
+                                    </li>
+                                @else
+                                    <li>
+                                        <input type="checkbox" disabled>PPT
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" checked disabled>CAT
+                                    </li>
+                                @endif
+
+                                @if ($applicant->new_exam_level == 'Professional')
+                                    <li>
+                                        <input type="checkbox" checked disabled>Professional
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" disabled>Sub Professional
+                                    </li>
+                                @else
+                                    <li>
+                                        <input type="checkbox" disabled>Professional
+                                    </li>
+                                    <li>
+                                        <input type="checkbox" checked disabled>Sub Professional
+                                    </li>
+                                @endif
                             </ul>
                         </div>
                     </div>
                     <div class="row">
-                        <div class="col-md-12 margin-top text-center">
-                            <p>
-                                <strong>WARNING:</strong>
-                                The Civil Services Commission uses highly reliable system to detect cheats. Any form of cheating in any Civil Services Examination shall be considered a violation of <strong>Republic Act No. 9416 (Anti-Cheating Law),</strong> and any person found guilty shall be administratively and criminally liable
-                            </p>
+                        <div class="col-md-12">
+                            <ul class="list-inline text-center">
+                                <li>Date: <strong>{{ date('F j, Y', strtotime($applicant->schedule_date_start)) }}</strong></li>
+                                <li>Time: <strong>{{ date('g:i a', strtotime($applicant->schedule_time_start)) . ' to ' . date('g:i a', strtotime($applicant->schedule_time_end)) }}</strong></li>
+                                <li>Place: <strong>{{ $testing->location }}</strong></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-xs-5 text-center signature">
+                            <p>Signature over Printed Name of Processor</p>
+                        </div>
+                        <div class="col-xs-2 text-center">
+                        </div>
+                        <div class="col-xs-5 text-center signature">
+                            <p>Date Recieved/Processed</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xs-3">
+                    <h2 class="text-center"><small>Transaction #</small></h2>
+                    <h5 style="margin-left: 20px"><strong>{{ $transactionNumber }}</strong></h5>
+                </div>
+                <div class="col-xs-3">
+                    <img src="{{ URL::to('img/applicants', [$applicant->applicant_picture]) }}" class="center-block img-responsive" alt="">
+                </div>
+                <div class="col-xs-12">
+                    <ul class="list-inline text-center">
+                        <li>Applicant's Name: <strong>{{ $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name }}</strong></li>
+                        <li>Sex: <strong>{{ $applicant->gender }}</strong></li>
+                        <li>Date of Birth: <strong>{{ date('F j, Y', strtotime($applicant->date_of_birth)) }}</strong></li>
+                    </ul>
+                    <div class="row margin-top">
+                        <div class="col-xs-2 col-xs-offset-5 signature">
+                            <h5 class="text-center">Signature</h5>
                         </div>
                     </div>
                 </div>
