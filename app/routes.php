@@ -82,4 +82,4 @@ Route::post('incoming-sms-listener', 'SmsController@incomingMessagesFromApplican
 
 // Paypal
 Route::get('paypal-buy', 'PayPalController@buyWithPayPal');
-Route::get('success-payment', 'PayPalController@successPayment');
+Route::get('success-payment/{applicantId}', 'PayPalController@successPayment');
