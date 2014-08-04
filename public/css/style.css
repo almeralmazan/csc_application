@@ -129,6 +129,14 @@ div.jumbo-reserved h1, p.btn-continue {
 }
 
 
+/*Voucher */
+.voucher {
+    border: 1px solid #eee; margin-bottom: 50px;
+}
+.signature {
+    border-top: 1px solid black;
+}
+
 /*-------------------PROCESSORS PAGE-------------------------*/
 
 /*Login*/
