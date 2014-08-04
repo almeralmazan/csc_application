@@ -15,6 +15,12 @@ class PayPalController extends BaseController {
         $this->gateway->setTestMode(true);
     }
 
+    public function payment()
+    {
+        $title = 'Payment Page';
+        return View::make('paypal.payment', compact('title'));
+    }
+
     public function buyWithPayPal()
     {
         $applicant = DB::table('applicants')

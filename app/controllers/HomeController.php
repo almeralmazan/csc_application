@@ -53,12 +53,6 @@ class HomeController extends BaseController {
         return Applicant::getAllPassedApplicants();
     }
 
-    public function paymentStatus()
-    {
-        $title = 'Payment Status';
-        return View::make('home.payment-status', compact('title'));
-    }
-
     public function payment()
     {
         $title = 'Payment';

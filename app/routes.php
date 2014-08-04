@@ -9,7 +9,6 @@ Route::get('mission-vision', 'HomeController@missionVision');
 Route::get('requirements', 'HomeController@requirements');
 Route::get('sms-code', 'HomeController@smsCode');
 Route::get('application-form', 'HomeController@applicationForm');
-Route::get('payment-status', 'HomeController@paymentStatus');
 Route::get('passed-applicants', 'HomeController@getAllPassedApplicants');
 Route::get('list-of-passers', 'HomeController@listOfPassers');
 Route::get('payment', 'HomeController@payment');
@@ -81,5 +80,6 @@ Route::post('incoming-sms-listener', 'SmsController@incomingMessagesFromApplican
 
 
 // Paypal
+Route::get('payment', 'PayPalController@payment');
 Route::get('paypal-buy', 'PayPalController@buyWithPayPal');
 Route::get('success-payment/{applicantId}', 'PayPalController@successPayment');
