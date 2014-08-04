@@ -31,7 +31,7 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a href="/list-of-passers" class="{{ set_active('list-of-passers') }}">List Of Passers</a>
+                    <a href="/list-of-passers" class="{{ set_active('list-of-passers') }}">Search Status</a>
                 </h4>
             </div>
         </div>
