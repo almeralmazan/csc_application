@@ -11,7 +11,7 @@
         <div class="col-md-8 col-md-offset-2 margin-top" style="border: 1px solid #eee; margin-bottom: 50px;">
             <div class="row">
                 <div class="col-md-12 text-right">
-                    <h1>Application # 000001</h1>
+                    <h1>Application # {{ $transactionNumber }}</h1>
                     <hr>
                 </div>
                 <div class="col-xs-6">
@@ -41,7 +41,7 @@
                 <div class="col-md-12" style="margin-bottom: 50px; border-top: 1px dashed black;">
                     <div class="row margin-top">
                         <div class="col-xs-3">
-                            <img src="img/2x2.jpg" alt="">
+                            <img src="{{ URL::to('img/2x2.jpg') }}" alt="">
                         </div>
                         <div class="col-md-8">
                             <ul class="list-unstyled">
