@@ -186,9 +186,4 @@ class HomeController extends BaseController {
         return View::make('home.reserved-page', compact('title', 'applicant', 'payment', 'testingCenter'));
     }
 
-    public function proceedToPayment()
-    {
-        $title = 'Proceed To Payment Page';
-        return View::make('home.proceed-to-payment', compact('title'));
-    }
 }
