@@ -72,7 +72,6 @@ class PayPalController extends BaseController {
         ])->send();
 
         $response->redirect();
-
     }
 
     public function successPayment($applicantId)
@@ -81,30 +80,13 @@ class PayPalController extends BaseController {
         // Make this customize using DB::table('applicants')
         $applicant = Applicant::find($applicantId);
 
+        $testing = DB::table('testing_centers')
+                            ->select('testing_centers.location')
+                            ->where('testing_centers.id', $applicant->testing_centers_location_id)
+                            ->first();
+
         $title = 'Success Payment Page';
-        return View::make('paypal.success-payment', compact('title', 'transactionNumber', 'applicant'));
+        return View::make('paypal.success-payment', compact('title', 'transactionNumber', 'applicant', 'testing'));
     }
 
-//    public function successPayment()
-//    {
-//        $response = $this->gateway->purchase([
-//            'cancelUrl'     =>  'http://dev.csc/cancel-payment',
-//            'returnUrl'     =>  'http://dev.csc/success-payment',
-//            'description'   =>  'CSC - Professional Exam',
-//            'amount'        =>  500.00,
-//            'currency'      =>  'PHP'
-//        ])->send();
-//
-//        $data = $response->getData();
-//
-//        if ($data['ACK'] == 'Success')
-//        {
-//            echo 'Yehey';
-//        }
-//        else
-//        {
-//            echo 'Im sad';
-//        }
-//
-//    }
 }
