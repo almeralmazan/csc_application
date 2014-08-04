@@ -62,6 +62,7 @@ class PayPalController extends BaseController {
         ];
 
         $response = $this->gateway->purchase([
+            'cancelUrl'     =>  'http://dev.csc/cancel-payment',
             'returnUrl'     =>  'http://dev.csc/success-payment/' . $applicant->id,
             'description'   =>  'CSC - ' . $applicant->new_exam_level . ' Exam',
             'amount'        =>  '500.00',
