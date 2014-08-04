@@ -12,7 +12,7 @@
                 <div class="form-group">
                     <label class="col-sm-4 control-label" for="controlNumber">Control No.</label>
                     <div class="col-sm-8">
-                        <input type="text" class="form-control" name="controlNumber" id="card-holder-name" placeholder="Card Holder's Name">
+                        <input type="text" class="form-control" name="controlNumber" placeholder="Control Number">
                     </div>
                 </div>
                 <hr>
