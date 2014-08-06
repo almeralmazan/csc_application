@@ -10,7 +10,7 @@
     </div>
     <div class="row search-query">
         <div class="col-md-3">
-            <input type="text" class="form-control" placeholder="Search name here" ng-model="search_name">
+            <input type="text" class="form-control" placeholder="Search transaction no." ng-model="search_name.controlno">
         </div>
         <!-- /.col-md-4 -->
         <div class="col-md-3">
@@ -25,7 +25,7 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>Control number</th>
+                <th>Transaction Number</th>
                 <th>Name</th>
                 <th>Schedule</th>
                 <th>Exam Level</th>
