@@ -4,14 +4,14 @@ class ProcessorController extends BaseController {
 
     public function index()
     {
-        $title = 'View Application Page';
+        $title = 'Paid Applicants Page';
         $applicants = Applicant::getPaidStatus(1);
         return View::make('processor.index', compact('title', 'applicants'));
     }
 
     public function reserved()
     {
-        $title = 'Reserved Page';
+        $title = 'Reserved Applicants Page';
         $applicants = Applicant::getPaidStatus(0);
         return View::make('processor.reserved', compact('title', 'applicants'));
     }
