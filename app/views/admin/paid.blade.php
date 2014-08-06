@@ -25,7 +25,7 @@
         <table class="table table-hover">
             <thead>
             <tr>
-                <th>Control number</th>
+                <th>Transaction #</th>
                 <th>Name</th>
                 <th>Schedule</th>
                 <th>Exam Level</th>
