@@ -10,7 +10,7 @@
     </div>
     <div class="row search-query">
         <div class="col-md-3">
-            <input type="text" class="form-control" placeholder="Search name here" ng-model="search_name">
+            <input type="text" class="form-control" placeholder="Search Transaction #" ng-model="search_tr_no.transaction_number">
         </div>
         <!-- /.col-md-4 -->
         <div class="col-md-3">
@@ -32,8 +32,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr ng-repeat="applicant in applicants | filter:exam_level | filter:search_name">
-                <td>{[ applicant.controlno ]}</td>
+            <tr ng-repeat="applicant in applicants | filter:exam_level | filter:search_tr_no">
+                <td>{[ applicant.transaction_number ]}</td>
                 <td>
                     <a href="{[ window.location.origin + '/processor/applicant/' + applicant.id ]}">
                         {[ applicant.applicant_first_name + ' ' + applicant.applicant_last_name ]}
