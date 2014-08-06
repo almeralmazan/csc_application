@@ -16,6 +16,7 @@ class CreatePaymentsTable extends Migration {
         {
             $table->increments('id');
             $table->integer('applicant_id');
+            $table->string('transaction_number', 30);
             $table->date('reserved_date');
             $table->date('paid_date');
             $table->double('price', 5, 2);

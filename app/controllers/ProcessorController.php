@@ -25,15 +25,17 @@ class ProcessorController extends BaseController {
     public function getAllPaidApplicants()
     {
         return DB::table('applicants')
-                ->where('paid_status', 1)
                 ->select(
-                    'id',
-                    'controlno',
-                    'applicant_last_name',
-                    'applicant_first_name',
-                    'schedule_date_start',
-                    'new_exam_level'
-                )->get();
+                    'applicants.id',
+                    'payments.transaction_number',
+                    'applicants.applicant_last_name',
+                    'applicants.applicant_first_name',
+                    'applicants.schedule_date_start',
+                    'applicants.new_exam_level'
+                )
+                ->join('payments', 'payments.applicant_id', '=', 'applicants.id')
+                ->where('paid_status', 1)
+                ->get();
     }
 
     public function getAllReservedApplicants()
