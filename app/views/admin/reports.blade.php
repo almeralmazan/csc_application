@@ -84,6 +84,22 @@
                         </tr>
                     </tbody>
                 </table>
+                <div class="col-xs-12 visible-print">
+                    <div class="row">
+                        <div class="col-xs-8"></div>
+                        <div class="col-xs-4 text-center"><h4>Approved by: John Doe</h4></div>
+                    </div>
+                    <div class="row margin-top">
+                        <div class="col-xs-8"></div>
+                        <div class="col-xs-4 text-center"><h4>Dr. Sing Deco</h4></div>
+                    </div>
+                    <div class="row">
+                        <div class="col-xs-8"></div>
+                        <div class="col-xs-4 text-center signature">
+                            <h4>Dir. QC/UP Field</h4>
+                        </div>
+                    </div>
+                </div>
                 <button class="btn btn-default hidden-print" onclick="window.print()">
                     Print <span class="glyphicon glyphicon-print"></span>
                 </button>
