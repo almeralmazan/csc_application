@@ -67,13 +67,16 @@ class Applicant extends Eloquent {
     public static function getPaidStatus($status)
     {
         $result = DB::table('applicants')
+                    ->select(
+                        'applicants.id',
+                        'payments.transaction_number',
+                        'applicants.applicant_last_name',
+                        'applicants.applicant_first_name',
+                        'applicants.schedule_date_start'
+                    )
+                    ->join('payments', 'payments.applicant_id', '=', 'applicants.id')
                     ->where('paid_status', $status)
-                    ->select('id',
-                            'controlno',
-                            'applicant_last_name',
-                            'applicant_first_name',
-                            'schedule_date_start'
-                    )->get();
+                    ->get();
 
         return $result;
     }
