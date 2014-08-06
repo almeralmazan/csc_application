@@ -36,7 +36,7 @@
                 <i class="fa fa-folder-open-o"></i><span class="glyphicon glyphicon-search"></span> Search Status
             </a>
             <a href="/processor/logout" class="list-group-item {{ set_active('processor/logout') }}">
-                <i class="fa fa-folder-open-o"></i><span class="glyphicon glyphicon-off"></span> Logout {{ Auth::user()->username }}
+                <i class="fa fa-folder-open-o"></i><span class="glyphicon glyphicon-off"></span> Logout
             </a>
         @endif
     </div>
