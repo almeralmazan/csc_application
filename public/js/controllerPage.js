@@ -10,10 +10,10 @@ var controllerPage = function () {
                 updateToApproveStatus(email);
             });
 
-            $('#disapprove-btn').on('click', function() {
-                var email = $('#email-content').text().trim();
-                updateToDisapproveStatus(email);
-            });
+//            $('#disapprove-btn').on('click', function() {
+//                var email = $('#email-content').text().trim();
+//                updateToDisapproveStatus(email);
+//            });
 
             $('#passed-btn').on('click', function() {
                 var email = $('#email-content').text().trim();
@@ -38,6 +38,13 @@ var controllerPage = function () {
             // restrict surname input
             $('.surnameInput').keypress(function (key) {
                 if ((key.charCode < 97 || key.charCode > 122) && (key.charCode < 65 || key.charCode > 90) && (key.charCode != 45)) return false;
+            });
+
+            $('.paid_reserved_date').datetimepicker({
+                format: "MM yyyy",
+                startView: "year",
+                minView: "year",
+                maxView: "decade"
             });
 
             $('.form_date').datetimepicker({
