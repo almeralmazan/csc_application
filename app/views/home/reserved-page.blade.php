@@ -83,7 +83,10 @@
                     </p>
                 </div>
                 <div class="col-md-6">
-                    {{ HTML::link('proceed-to-payment', 'Save and Proceed to Payment' ,['class' => 'btn btn-primary btn-lg btn-block']) }}
+                    {{ Form::open(['url' => 'buy-with-paypal', 'method' => 'GET']) }}
+                        {{ Form::hidden('controlNumber', $applicant->controlno) }}
+                        {{ Form::submit('Save and Proceed to Payment', ['class' => 'btn btn-primary btn-lg btn-block']) }}
+                    {{ Form::close() }}
                 </div>
             </div>
         </div>
