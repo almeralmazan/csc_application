@@ -38,18 +38,8 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
-                    <a data-toggle="collapse" data-parent="#accordion" href="#collapseTwo" class="{{ set_active('payment-creditcard') }} center-block">
-                        Payment <span class="caret" style="margin-left: 50px;"></span>
-                    </a>
+                    <a href="/payment-paypal" class="{{ set_active_accordion_link('payment-paypal') }}">PayPal</a>
                 </h4>
-            </div>
-            <div id="collapseTwo" class="panel-collapse collapse">
-                <div class="panel-body">
-                    <ul class="list-unstyled">
-                        <li><a href="/payment-creditcard" class="{{ set_active_accordion_link('payment-creditcard') }}">Credit Card</a></li>
-                        <li><a href="/payment-paypal" class="{{ set_active_accordion_link('payment-paypal') }}">PayPal</a></li>
-                    </ul>
-                </div>
             </div>
         </div>
     </div>
