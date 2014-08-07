@@ -80,11 +80,15 @@
                         <div class="col-md-12">
                             <div class="col-md-12 text-center">
                                 <button id="approve-btn" class="btn btn-success">Approve</button>
-                                <button id="disapprove-btn" class="btn btn-warning">Disapprove</button>
+                                <button id="disapprove-btn" class="btn btn-warning" data-toggle="modal" data-target="#myModal-disapproved">
+                                    Disapprove
+                                </button>
                                 <button id="paid-btn" class="btn btn-info">Paid</button>
                                 <button id="passed-btn" class="btn btn-success">Passed</button>
                                 <button id="failed-btn" class="btn btn-danger">Failed</button>
                             </div>
+
+                            @include('processor.partials.disapprove-modal')
                         </div>
                     </div>
 
