@@ -86,6 +86,13 @@ class PayPalController extends BaseController {
         $transactionNumber = Input::get('token');
         // Make this customize using DB::table('applicants')
         $applicant = Applicant::find($applicantId);
+        $applicant->paid_status = 1;
+        $applicant->save();
+
+        $payment = Payment::find($applicantId);
+        $payment->transaction_number = $transactionNumber;
+        $payment->paid_date = date('Y-m-d');
+        $payment->save();
 
         $testing = DB::table('testing_centers')
                             ->select('testing_centers.location')
