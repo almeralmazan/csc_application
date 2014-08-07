@@ -30,19 +30,27 @@ class PayPalController extends BaseController {
     public function buyWithPayPal()
     {
         $applicant = DB::table('applicants')
-                        ->select('applicants.id', 'applicants.new_exam_level')
+                        ->select('applicants.id', 'applicants.new_exam_level', 'applicants.controlno')
                         ->where('controlno', Input::get('controlNumber'))
                         ->first();
 
-        $response = $this->gateway->purchase([
-            'cancelUrl'     =>  'http://dev.csc/cancel-payment',
-            'returnUrl'     =>  'http://dev.csc/success-payment/' . $applicant->id,
-            'description'   =>  'CSC - ' . $applicant->new_exam_level . ' Exam',
-            'amount'        =>  '500.00',
-            'currency'      =>  'PHP'
-        ])->send();
+        if ( isset($applicant) )
+        {
+            $response = $this->gateway->purchase([
+                'cancelUrl'     =>  'http://dev.csc/cancel-payment',
+                'returnUrl'     =>  'http://dev.csc/success-payment/' . $applicant->id,
+                'description'   =>  'CSC - ' . $applicant->new_exam_level . ' Exam',
+                'amount'        =>  '500.00',
+                'currency'      =>  'PHP'
+            ])->send();
 
-        $response->redirect();
+            $response->redirect();
+        }
+        else
+        {
+            return Redirect::back()->withMessage('Control # does not exist. Try again.');
+        }
+
     }
 
     public function buyWithCreditCard()

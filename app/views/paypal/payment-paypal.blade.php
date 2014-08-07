@@ -5,29 +5,23 @@
 @stop
 
 @section('content')
-<div class="col-md-10">
+<div class="col-md-10" style="min-height: 500px">
     <div class="row">
-        <div class="col-md-5 col-md-offset-3 well">
-            <form class="form-horizontal" action="{{ URL::to('buy-with-paypal') }}" role="form">
+        <div class="col-md-6 col-md-offset-3 well margin-top">
+            <form class="form-inline" action="{{ URL::to('buy-with-paypal') }}" role="form">
                 <div class="form-group">
-                    <label class="col-sm-4 control-label" for="controlNumber">Control No.</label>
-                    <div class="col-sm-8">
-                        <input type="text" class="form-control" required name="controlNumber" placeholder="Control Number">
-                    </div>
+                    <input type="text" class="form-control phoneInput" name="controlNumber" maxlength="7" placeholder="Type Control Number" style="width: 235px;">
                 </div>
-                <hr>
-                <div class="form-group">
-                    <div class="col-sm-12 margin-top text-center">
-                        <div class="row">
-                            <div class="col-md-3"></div>
-                            <div class="col-md-2">
-                                <button type="submit" class="btn btn-primary">Pay thru PayPal</button>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+                <button type="submit" class="btn btn-primary">Pay thru PayPal/CreditCard</button>
             </form>
         </div>
     </div>
+    @if (Session::has('message'))
+    <div class="row">
+        <div class="col-md-6 col-md-offset-3 alert alert-danger" role="alert">
+            {{ Session::get('message') }}
+        </div>
+    </div>
+    @endif
 </div>
 @stop
