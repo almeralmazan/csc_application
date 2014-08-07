@@ -156,6 +156,10 @@ class ProcessorController extends BaseController {
 
     public function smsDisapprove($email)
     {
+        $inappropriatePicture = Input::get('inappropriate_picture');
+        $lack_of_requirements = Input::get('lack_of_requirements');
+        $invalid_id = Input::get('invalid_id');
+
         // Initiate sms sending to applicant
         $account_sid = $_ENV['TWILIO_SID'];
         $auth_token = $_ENV['TWILIO_AUTH_TOKEN'];
@@ -163,37 +167,50 @@ class ProcessorController extends BaseController {
 
         // Find applicant by email
         $applicant = DB::table('applicants')
-            ->select(
-                'applicant_status',
-                'applicant_first_name',
-                'applicant_last_name',
-                'mobile_number'
-            )
-            ->where('email', $email)
-            ->first();
+                        ->select(
+                            'id',
+                            'applicant_status',
+                            'applicant_first_name',
+                            'applicant_last_name',
+                            'mobile_number'
+                        )
+                        ->where('email', $email)
+                        ->first();
 
-        if ($applicant->applicant_status != 1)
-        {
-            $client->account->messages->create(array(
-                'To' => $applicant->mobile_number,
-                'From' => $_ENV['TWILIO_ACCOUNT_NUMBER'],
-                'Body' => $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name .
-                    ', your application form has been disapproved. From Civil Service Commission'
-            ));
-        }
-        else
-        {
-            DB::table('applicants')
-                ->where('email', '=', $email)
-                ->update(array('applicant_status' => 0));
+        // Delete applicant
+        DB::table('applicants')->where('id', $applicant->id)->delete();
 
-            $client->account->messages->create(array(
-                'To' => $applicant->mobile_number,
-                'From' => $_ENV['TWILIO_ACCOUNT_NUMBER'],
-                'Body' => $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name .
-                    ', your application form has been disapproved. From Civil Service Commission'
-            ));
+        // Delete payments of applicant
+        DB::table('payments')->where('applicant_id', $applicant->id)->delete();
+
+
+        $reasons = '';
+
+        if ( isset($inappropriatePicture) )
+        {
+            $reasons .= $inappropriatePicture . "\n";
         }
+
+        if ( isset($lack_of_requirements) )
+        {
+            $reasons .= $lack_of_requirements . "\n";
+        }
+
+        if ( isset($invalid_id) )
+        {
+            $reasons .= $invalid_id;
+        }
+
+        $client->account->messages->create(array(
+            'To' => $applicant->mobile_number,
+            'From' => $_ENV['TWILIO_ACCOUNT_NUMBER'],
+            'Body' => $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name .
+                ', your application form has been disapproved.' . "\nReasons:\n" . $reasons
+        ));
+
+        return Redirect::back()->withMessage(
+            $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name . ' has been deleted in the database'
+        );
     }
 
     public function smsPassed($email)
