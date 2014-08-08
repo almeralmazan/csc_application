@@ -208,8 +208,9 @@ class ProcessorController extends BaseController {
                 ', your application form has been disapproved.' . "\nReasons:\n" . $reasons
         ));
 
-        return Redirect::back()->withMessage(
-            $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name . ' has been deleted in the database'
+        return Redirect::to('processor')->withMessage(
+            $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name .
+            ' has been deleted successfully in the database.'
         );
     }
 

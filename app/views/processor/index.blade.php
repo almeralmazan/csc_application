@@ -1,13 +1,29 @@
 @extends('layouts.admin-processor')
 
 @section('content')
+
 <div class="col-md-10">
+    @if (Session::has('message'))
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                {{ Session::get('message') }}
+            </div>
+        </div>
+    </div>
+    @endif
+
     <div class="row">
         <div class="col-md-12">
             <h2>List of Paid Applicants</h2>
             <hr>
         </div>
     </div>
+
     <div class="row search-query">
         <div class="col-md-3">
             <input type="text" class="form-control" placeholder="Search transaction no." ng-model="search_trno.transaction_number">
