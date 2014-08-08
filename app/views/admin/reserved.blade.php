@@ -35,7 +35,7 @@
             <tr ng-repeat="applicant in applicants | filter:exam_level | filter:search_ctrl_no">
                 <td>{[ applicant.controlno ]}</td>
                 <td>
-                    <a href="{[ window.location.origin + '/processor/applicant/' + applicant.id ]}">
+                    <a href="{[ window.location.origin + '/admin/applicant/' + applicant.id ]}">
                         {[ applicant.applicant_first_name + ' ' + applicant.applicant_last_name ]}
                     </a>
                 </td>

@@ -390,8 +390,7 @@ class AdminController extends BaseController
         }
 
         $client->account->messages->create(array(
-//            'To' => $applicant->mobile_number,
-            'To' => '+639236923431',
+            'To' => $applicant->mobile_number,
             'From' => $_ENV['TWILIO_ACCOUNT_NUMBER'],
             'Body' => $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name .
                 ', your application form has been disapproved.' . "\nReasons:\n" . $reasons
