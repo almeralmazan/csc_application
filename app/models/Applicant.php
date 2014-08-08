@@ -37,7 +37,7 @@ class Applicant extends Eloquent {
         'maiden_first_name'         =>  'required',
         'maiden_middle_name'        =>  'required',
         'address'                   =>  'required',
-        'mobile_number'             =>  'required|regex:/^(09)([0-9]{9})$/',
+//        'mobile_number'             =>  'required|regex:/^(09)([0-9]{9})$/',
         'email'                     =>  'required|email|unique:applicants',
         'testing_centers_location'  =>  'not_in:empty',
         'schedule_date_start'       =>  'required',
