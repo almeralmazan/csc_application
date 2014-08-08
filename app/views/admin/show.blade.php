@@ -79,13 +79,18 @@
 
                         <div class="col-md-12">
                             <div class="col-md-12 text-center">
-                                <button id="approve-btn" class="btn btn-success">Approve</button>
-                                <button id="disapprove-btn" class="btn btn-warning">Disapprove</button>
-                                <button id="paid-btn" class="btn btn-info">Paid</button>
-                                <button id="passed-btn" class="btn btn-success">Passed</button>
-                                <button id="failed-btn" class="btn btn-danger">Failed</button>
+                                <button id="admin-approve-btn" class="btn btn-success">Approve</button>
+                                <button id="admin-disapprove-btn" class="btn btn-warning"  data-toggle="modal" data-target="#adminModal-disapproved">
+                                    Disapprove
+                                </button>
+                                <button id="admin-paid-btn" class="btn btn-info">Paid</button>
+                                <button id="admin-passed-btn" class="btn btn-success">Passed</button>
+                                <button id="admin-failed-btn" class="btn btn-danger">Failed</button>
                             </div>
                         </div>
+
+                        @include('admin.partials.disapprove-modal')
+
                     </div>
 
                 </div>

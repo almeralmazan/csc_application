@@ -299,6 +299,236 @@ class AdminController extends BaseController
         return Response::json(['success' => true]);
     }
 
+    // TWILIO SMS
+    public function smsApprove($email)
+    {
+        // Initiate sms sending to applicant
+        $account_sid = $_ENV['TWILIO_SID'];
+        $auth_token = $_ENV['TWILIO_AUTH_TOKEN'];
+        $client = new Services_Twilio($account_sid, $auth_token);
+
+        // Find applicant by email
+        $applicant = DB::table('applicants')
+            ->select(
+                'applicant_status',
+                'applicant_first_name',
+                'applicant_last_name',
+                'mobile_number'
+            )
+            ->where('email', $email)
+            ->first();
+
+        if ($applicant->applicant_status != 1)
+        {
+            DB::table('applicants')
+                ->where('email', '=', $email)
+                ->update(array('applicant_status' => 1));
+
+            $client->account->messages->create(array(
+                'To' => $applicant->mobile_number,
+                'From' => $_ENV['TWILIO_ACCOUNT_NUMBER'],
+                'Body' => $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name .
+                    ', your application form is approved. From Civil Service Commission'
+            ));
+        }
+        else
+        {
+            $client->account->messages->create(array(
+                'To' => $applicant->mobile_number,
+                'From' => $_ENV['TWILIO_ACCOUNT_NUMBER'],
+                'Body' => $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name .
+                    ', your application form is approved. From Civil Service Commission'
+            ));
+        }
+    }
+
+    public function smsDisapprove($email)
+    {
+        $inappropriatePicture = Input::get('inappropriate_picture');
+        $lack_of_requirements = Input::get('lack_of_requirements');
+        $invalid_id = Input::get('invalid_id');
+
+        // Initiate sms sending to applicant
+        $account_sid = $_ENV['TWILIO_SID'];
+        $auth_token = $_ENV['TWILIO_AUTH_TOKEN'];
+        $client = new Services_Twilio($account_sid, $auth_token);
+
+        // Find applicant by email
+        $applicant = DB::table('applicants')
+            ->select(
+                'id',
+                'applicant_status',
+                'applicant_first_name',
+                'applicant_last_name',
+                'mobile_number'
+            )
+            ->where('email', $email)
+            ->first();
+
+        // Delete applicant
+        DB::table('applicants')->where('id', $applicant->id)->delete();
+
+        // Delete payments of applicant
+        DB::table('payments')->where('applicant_id', $applicant->id)->delete();
+
+
+        $reasons = '';
+
+        if ( isset($inappropriatePicture) )
+        {
+            $reasons .= $inappropriatePicture . "\n";
+        }
+
+        if ( isset($lack_of_requirements) )
+        {
+            $reasons .= $lack_of_requirements . "\n";
+        }
+
+        if ( isset($invalid_id) )
+        {
+            $reasons .= $invalid_id;
+        }
+
+        $client->account->messages->create(array(
+//            'To' => $applicant->mobile_number,
+            'To' => '+639236923431',
+            'From' => $_ENV['TWILIO_ACCOUNT_NUMBER'],
+            'Body' => $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name .
+                ', your application form has been disapproved.' . "\nReasons:\n" . $reasons
+        ));
+
+        return Redirect::to('admin/paid-applicants')->withMessage(
+            $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name .
+            ' has been deleted successfully in the database.'
+        );
+    }
+
+    public function smsPassed($email)
+    {
+        // Initiate sms sending to applicant
+        $account_sid = $_ENV['TWILIO_SID'];
+        $auth_token = $_ENV['TWILIO_AUTH_TOKEN'];
+        $client = new Services_Twilio($account_sid, $auth_token);
+
+        // Find applicant by email
+        $applicant = DB::table('applicants')
+            ->select(
+                'exam_status',
+                'applicant_first_name',
+                'applicant_last_name',
+                'mobile_number'
+            )
+            ->where('email', $email)
+            ->first();
+
+        if ($applicant->exam_status == 0)
+        {
+            DB::table('applicants')
+                ->where('email', '=', $email)
+                ->update(array('exam_status' => 1));
+
+            $client->account->messages->create(array(
+                'To' => $applicant->mobile_number,
+                'From' => $_ENV['TWILIO_ACCOUNT_NUMBER'],
+                'Body' => $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name .
+                    ', you passed in examination. From Civil Service Commission'
+            ));
+        }
+        else
+        {
+            $client->account->messages->create(array(
+                'To' => $applicant->mobile_number,
+                'From' => $_ENV['TWILIO_ACCOUNT_NUMBER'],
+                'Body' => $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name .
+                    ', you passed in examination. From Civil Service Commission'
+            ));
+        }
+    }
+
+    public function smsFailed($email)
+    {
+        // Initiate sms sending to applicant
+        $account_sid = $_ENV['TWILIO_SID'];
+        $auth_token = $_ENV['TWILIO_AUTH_TOKEN'];
+        $client = new Services_Twilio($account_sid, $auth_token);
+
+        // Find applicant by email
+        $applicant = DB::table('applicants')
+            ->select(
+                'exam_status',
+                'applicant_first_name',
+                'applicant_last_name',
+                'mobile_number'
+            )
+            ->where('email', $email)
+            ->first();
+
+        if ($applicant->exam_status == 0)
+        {
+            $client->account->messages->create(array(
+                'To' => $applicant->mobile_number,
+                'From' => $_ENV['TWILIO_ACCOUNT_NUMBER'],
+                'Body' => $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name .
+                    ', you failed in examination. From Civil Service Commission'
+            ));
+        }
+        else
+        {
+            DB::table('applicants')
+                ->where('email', '=', $email)
+                ->update(array('exam_status' => 0));
+
+            $client->account->messages->create(array(
+                'To' => $applicant->mobile_number,
+                'From' => $_ENV['TWILIO_ACCOUNT_NUMBER'],
+                'Body' => $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name .
+                    ', you failed in examination. From Civil Service Commission'
+            ));
+        }
+    }
+
+    public function smsPaid($email)
+    {
+        // Initiate sms sending to applicant
+        $account_sid = $_ENV['TWILIO_SID'];
+        $auth_token = $_ENV['TWILIO_AUTH_TOKEN'];
+        $client = new Services_Twilio($account_sid, $auth_token);
+
+        // Find applicant by email
+        $applicant = DB::table('applicants')
+            ->select(
+                'paid_status',
+                'applicant_first_name',
+                'applicant_last_name',
+                'mobile_number'
+            )
+            ->where('email', $email)
+            ->first();
+
+        if ($applicant->paid_status == 1)
+        {
+            $client->account->messages->create(array(
+                'To' => $applicant->mobile_number,
+                'From' => $_ENV['TWILIO_ACCOUNT_NUMBER'],
+                'Body' => $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name .
+                    ', you are paid for the examination. From Civil Service Commission'
+            ));
+        }
+        else
+        {
+            DB::table('applicants')
+                ->where('email', '=', $email)
+                ->update(array('paid_status' => 1));
+
+            $client->account->messages->create(array(
+                'To' => $applicant->mobile_number,
+                'From' => $_ENV['TWILIO_ACCOUNT_NUMBER'],
+                'Body' => $applicant->applicant_first_name . ' ' . $applicant->applicant_last_name .
+                    ', you are paid for the examination. From Civil Service Commission'
+            ));
+        }
+    }
+
     public function logout()
     {
         Auth::logout();

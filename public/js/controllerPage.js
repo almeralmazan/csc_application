@@ -4,16 +4,11 @@ var controllerPage = function () {
 
     var init = function () {
 
-            // SMS TWILIO
+            // Processor SMS TWILIO
             $('#approve-btn').on('click', function () {
                 var email = $('#email-content').text().trim();
                 updateToApproveStatus(email);
             });
-
-//            $('#disapprove-btn').on('click', function() {
-//                var email = $('#email-content').text().trim();
-//                updateToDisapproveStatus(email);
-//            });
 
             $('#passed-btn').on('click', function() {
                 var email = $('#email-content').text().trim();
@@ -28,6 +23,27 @@ var controllerPage = function () {
             $('#paid-btn').on('click', function() {
                 var email = $('#email-content').text().trim();
                 updateToPaidStatus(email);
+            });
+
+            // Admin SMS TWILIO
+            $('#admin-approve-btn').on('click', function () {
+                var email = $('#email-content').text().trim();
+                adminUpdateToApproveStatus(email);
+            });
+
+            $('#admin-passed-btn').on('click', function() {
+                var email = $('#email-content').text().trim();
+                adminUpdateToPassedStatus(email);
+            });
+
+            $('#admin-failed-btn').on('click', function() {
+                var email = $('#email-content').text().trim();
+                adminUpdateToFailedStatus(email);
+            });
+
+            $('#admin-paid-btn').on('click', function() {
+                var email = $('#email-content').text().trim();
+                adminUpdateToPaidStatus(email);
             });
 
             // restrict phone input
@@ -240,6 +256,26 @@ var controllerPage = function () {
                 });
         },
 
+        adminUpdateToApproveStatus = function (email) {
+            dataService.adminUpdateToApproveStatus(email)
+                .done(function (data) {
+                    var messageContainer = $('#sms-sent-container');
+                    var html = '';
+
+                    html += '<div class="alert alert-success alert-dismissible" role="alert">';
+                    html += '    <button type="button" class="close" data-dismiss="alert">';
+                    html += '        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>';
+                    html += '    </button>';
+                    html += '    Approve Sent Successfully. Wait for 4-5 seconds to be receive by the recipient';
+                    html += '</div>';
+
+                    messageContainer.html(html);
+                })
+                .fail(function (jqXHR, textStatus, error) {
+                    console.log(textStatus);
+                });
+        },
+
         updateToDisapproveStatus = function (email) {
             dataService.updateToDisapproveStatus(email)
                 .done(function (data) {
@@ -280,6 +316,26 @@ var controllerPage = function () {
                 });
         },
 
+        adminUpdateToPassedStatus = function (email) {
+            dataService.adminUpdateToPassedStatus(email)
+                .done(function (data) {
+                    var messageContainer = $('#sms-sent-container');
+                    var html = '';
+
+                    html += '<div class="alert alert-success alert-dismissible" role="alert">';
+                    html += '    <button type="button" class="close" data-dismiss="alert">';
+                    html += '        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>';
+                    html += '    </button>';
+                    html += '    Passed Sent Successfully. Wait for 4-5 seconds to be receive by the recipient';
+                    html += '</div>';
+
+                    messageContainer.html(html);
+                })
+                .fail(function (jqXHR, textStatus, error) {
+                    console.log(textStatus);
+                });
+        },
+
         updateToFailedStatus = function (email) {
             dataService.updateToFailedStatus(email)
                 .done(function (data) {
@@ -300,8 +356,48 @@ var controllerPage = function () {
                 });
         },
 
+        adminUpdateToFailedStatus = function (email) {
+            dataService.adminUpdateToFailedStatus(email)
+                .done(function (data) {
+                    var messageContainer = $('#sms-sent-container');
+                    var html = '';
+
+                    html += '<div class="alert alert-success alert-dismissible" role="alert">';
+                    html += '    <button type="button" class="close" data-dismiss="alert">';
+                    html += '        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>';
+                    html += '    </button>';
+                    html += '    Failed Sent Successfully. Wait for 4-5 seconds to be receive by the recipient';
+                    html += '</div>';
+
+                    messageContainer.html(html);
+                })
+                .fail(function (jqXHR, textStatus, error) {
+                    console.log(textStatus);
+                });
+        },
+
         updateToPaidStatus = function (email) {
             dataService.updateToPaidStatus(email)
+                .done(function (data) {
+                    var messageContainer = $('#sms-sent-container');
+                    var html = '';
+
+                    html += '<div class="alert alert-success alert-dismissible" role="alert">';
+                    html += '    <button type="button" class="close" data-dismiss="alert">';
+                    html += '        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>';
+                    html += '    </button>';
+                    html += '    Paid Sent Successfully. Wait for 4-5 seconds to be receive by the recipient';
+                    html += '</div>';
+
+                    messageContainer.html(html);
+                })
+                .fail(function (jqXHR, textStatus, error) {
+                    console.log(textStatus);
+                });
+        },
+
+        adminUpdateToPaidStatus = function (email) {
+            dataService.adminUpdateToPaidStatus(email)
                 .done(function (data) {
                     var messageContainer = $('#sms-sent-container');
                     var html = '';
