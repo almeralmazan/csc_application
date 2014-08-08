@@ -70,12 +70,20 @@ Route::get('all-users', function()
 Route::get('available-schedules/{locationId}', 'HomeController@allAvailableSchedules');
 
 
-// SMS
+// SMS Processor
 Route::get('update-approve-status/{email}', 'ProcessorController@smsApprove');
 Route::post('disapprove/{email}', 'ProcessorController@smsDisapprove');
 Route::get('update-passed-status/{email}', 'ProcessorController@smsPassed');
 Route::get('update-failed-status/{email}', 'ProcessorController@smsFailed');
 Route::get('update-paid-status/{email}', 'ProcessorController@smsPaid');
+
+// SMS Admin
+Route::get('admin-update-approve-status/{email}', 'AdminController@smsApprove');
+Route::post('admin-disapprove/{email}', 'AdminController@smsDisapprove');
+Route::get('admin-update-passed-status/{email}', 'AdminController@smsPassed');
+Route::get('admin-update-failed-status/{email}', 'AdminController@smsFailed');
+Route::get('admin-update-paid-status/{email}', 'AdminController@smsPaid');
+
 
 // Incoming SMS
 Route::post('incoming-sms-listener', 'SmsController@incomingMessagesFromApplicant');

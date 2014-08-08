@@ -2,6 +2,21 @@
 
 @section('content')
 <div class="col-md-10">
+
+    @if (Session::has('message'))
+    <div class="row">
+        <div class="col-md-12">
+            <div class="alert alert-success alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert">
+                    <span aria-hidden="true">&times;</span>
+                    <span class="sr-only">Close</span>
+                </button>
+                {{ Session::get('message') }}
+            </div>
+        </div>
+    </div>
+    @endif
+
     <div class="row">
         <div class="col-md-12">
             <h2>List of Paid Applicants</h2>
@@ -35,7 +50,7 @@
             <tr ng-repeat="applicant in applicants | filter:exam_level | filter:search_tr_no">
                 <td>{[ applicant.transaction_number ]}</td>
                 <td>
-                    <a href="{[ window.location.origin + '/processor/applicant/' + applicant.id ]}">
+                    <a href="{[ window.location.origin + '/admin/applicant/' + applicant.id ]}">
                         {[ applicant.applicant_first_name + ' ' + applicant.applicant_last_name ]}
                     </a>
                 </td>

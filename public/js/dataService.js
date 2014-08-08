@@ -53,9 +53,23 @@ var dataService = function () {
         });
     },
 
+    adminUpdateToApproveStatus = function(email) {
+        return $.ajax({
+            url: urlBase + '/admin-update-approve-status/' + email,
+            type: 'get'
+        });
+    },
+
     updateToDisapproveStatus = function(email) {
         return $.ajax({
             url: urlBase + '/update-disapprove-status/' + email,
+            type: 'get'
+        });
+    },
+
+    adminUpdateToDisapproveStatus = function(email) {
+        return $.ajax({
+            url: urlBase + '/admin-disapprove-status/' + email,
             type: 'get'
         });
     },
@@ -67,6 +81,13 @@ var dataService = function () {
         });
     },
 
+    adminUpdateToPassedStatus = function(email) {
+        return $.ajax({
+            url: urlBase + '/admin-update-passed-status/' + email,
+            type: 'get'
+        });
+    },
+
     updateToFailedStatus = function(email) {
         return $.ajax({
             url: urlBase + '/update-failed-status/' + email,
@@ -74,9 +95,23 @@ var dataService = function () {
         });
     },
 
+    adminUpdateToFailedStatus = function(email) {
+        return $.ajax({
+            url: urlBase + '/admin-update-failed-status/' + email,
+            type: 'get'
+        });
+    },
+
     updateToPaidStatus = function(email) {
         return $.ajax({
             url: urlBase + '/update-paid-status/' + email,
+            type: 'get'
+        });
+    },
+
+    adminUpdateToPaidStatus = function(email) {
+        return $.ajax({
+            url: urlBase + '/admin-update-paid-status/' + email,
             type: 'get'
         });
     },
@@ -100,10 +135,15 @@ var dataService = function () {
         deleteSchedule: deleteSchedule,
         deleteUser: deleteUser,
         updateToApproveStatus: updateToApproveStatus,
+        adminUpdateToApproveStatus: adminUpdateToApproveStatus,
         updateToDisapproveStatus: updateToDisapproveStatus,
+        adminUpdateToDisapproveStatus: adminUpdateToDisapproveStatus,
         updateToPassedStatus: updateToPassedStatus,
+        adminUpdateToPassedStatus: adminUpdateToPassedStatus,
         updateToFailedStatus: updateToFailedStatus,
+        adminUpdateToFailedStatus: adminUpdateToFailedStatus,
         updateToPaidStatus: updateToPaidStatus,
+        adminUpdateToPaidStatus: adminUpdateToPaidStatus,
         filterResults: filterResults
     };
 }();
