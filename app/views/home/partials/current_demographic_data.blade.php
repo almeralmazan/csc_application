@@ -45,7 +45,13 @@
                 <label for="mobile-number">Mobile # <span class="required">*</span></label>
             </div>
             <div class="col-md-3">
-                <input class="form-control phoneInput" maxlength="11" id="mobile-number" name="mobile_number phoneInput" type="text" placeholder="Ex. format:  09439115188">
+                <input class="form-control phoneInput"
+                       maxlength="11"
+                       id="mobile-number"
+                       name="mobile_number phoneInput"
+                       type="text"
+                       placeholder="Ex. format:  09439115188"
+                       required>
                 <span class="alert-danger">{{ $errors->first('mobile_number') }}</span>
             </div>
         </div>
