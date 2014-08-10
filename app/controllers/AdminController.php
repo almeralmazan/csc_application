@@ -496,6 +496,7 @@ class AdminController extends BaseController
         // Find applicant by email
         $applicant = DB::table('applicants')
             ->select(
+                'id',
                 'paid_status',
                 'applicant_first_name',
                 'applicant_last_name',
@@ -518,6 +519,13 @@ class AdminController extends BaseController
             DB::table('applicants')
                 ->where('email', '=', $email)
                 ->update(array('paid_status' => 1));
+
+            DB::table('payments')
+                ->where('payments.applicant_id', $applicant->id)
+                ->update([
+                    'transaction_number'    =>  'LBP-' . Str::quickRandom(6),
+                    'paid_date'             =>  date('Y-m-d')
+                ]);
 
             $client->account->messages->create(array(
                 'To' => $applicant->mobile_number,
