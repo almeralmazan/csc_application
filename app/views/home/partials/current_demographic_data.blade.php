@@ -48,7 +48,7 @@
                 <input class="form-control phoneInput"
                        maxlength="11"
                        id="mobile-number"
-                       name="mobile_number phoneInput"
+                       name="mobile_number"
                        type="text"
                        placeholder="Ex. format:  09439115188"
                        required>
