@@ -9,9 +9,9 @@ class PayPalController extends BaseController {
     public function __construct()
     {
         $this->gateway = Omnipay::create('PayPal_Express');
-        $this->gateway->setUsername('probux0214-facilitator_api1.gmail.com');
-        $this->gateway->setPassword('1407047087');
-        $this->gateway->setSignature('AFcWxV21C7fd0v3bYYYRCpSSRl31AMmbxO2zNqoK5cDMjvwzQ6JGPQ6N');
+        $this->gateway->setUsername('csc_api1.csc-app.info');
+        $this->gateway->setPassword('1407734273');
+        $this->gateway->setSignature('A4iCcjpHlJ2GLA7UgerFhkvlf6GqATQIaHnfHdoppyhFVRDK-sVJz3K1');
         $this->gateway->setTestMode(true);
     }
 
