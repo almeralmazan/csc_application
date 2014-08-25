@@ -17,6 +17,7 @@ class ApplicantTableSeeder extends Seeder {
             'applicant_last_name'       => 'Doe',
             'applicant_first_name'      => 'John',
             'applicant_middle_name'     => 'Foo',
+            'applicant_middle_initial'  => 'F',
             'applicant_suffix'          => '',
 
             // Facts of Birth
@@ -65,6 +66,7 @@ class ApplicantTableSeeder extends Seeder {
             'applicant_last_name'       => 'Alvarez',
             'applicant_first_name'      => 'Mario',
             'applicant_middle_name'     => 'P',
+            'applicant_middle_initial'  => 'P',
             'applicant_suffix'          => '',
 
             // Facts of Birth
@@ -113,6 +115,7 @@ class ApplicantTableSeeder extends Seeder {
             'applicant_last_name'       => 'Villanueva',
             'applicant_first_name'      => 'Seizer',
             'applicant_middle_name'     => 'M',
+            'applicant_middle_initial'  => 'M',
             'applicant_suffix'          => 'Jr.',
 
             // Facts of Birth
@@ -161,6 +164,7 @@ class ApplicantTableSeeder extends Seeder {
             'applicant_last_name'       => 'Reyes',
             'applicant_first_name'      => 'Gem',
             'applicant_middle_name'     => 'Sahol',
+            'applicant_middle_initial'  => 'S',
             'applicant_suffix'          => '',
 
             // Facts of Birth
@@ -209,6 +213,7 @@ class ApplicantTableSeeder extends Seeder {
             'applicant_last_name'       => 'Balbuena',
             'applicant_first_name'      => 'Marie',
             'applicant_middle_name'     => 'Benitez',
+            'applicant_middle_initial'  => 'B',
             'applicant_suffix'          => '',
 
             // Facts of Birth

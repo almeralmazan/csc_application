@@ -13,8 +13,8 @@
                 <div class="panel-body">
                     <ul class="list-unstyled">
                         <li><a href="/" class="{{ set_active_accordion_link('/') }}">News</a></li>
-                        <li><a href="/history" class="{{ set_active_accordion_link('history') }}">History</a></li>
-                        <li><a href="/mission-vision" class="{{ set_active_accordion_link('mission-vision') }}">Mission & Vision</a></li>
+<!--                        <li><a href="/history" class="{{ set_active_accordion_link('history') }}">History</a></li>-->
+<!--                        <li><a href="/mission-vision" class="{{ set_active_accordion_link('mission-vision') }}">Mission & Vision</a></li>-->
                         <li><a href="/requirements" class="{{ set_active_accordion_link('requirements') }}">Requirements</a></li>
                         <li><a href="/sms-code" class="{{ set_active_accordion_link('sms-code') }}">SMS Code</a></li>
                     </ul>

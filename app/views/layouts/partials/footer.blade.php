@@ -3,7 +3,7 @@
 <footer>
     <div class="row">
         <div class="col-md-6">
-            <span>&copy; CSC Application form 2014</span>
+<!--            <span>&copy; CSC Application form 2014</span>-->
         </div>
         <div class="col-md-6">
             <!-- Icons here -->

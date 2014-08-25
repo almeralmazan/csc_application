@@ -24,6 +24,7 @@ class CreateApplicantsTable extends Migration {
             $table->string('applicant_last_name', 50)->nullable(false);
             $table->string('applicant_first_name', 50)->nullable(false);
             $table->string('applicant_middle_name', 50)->nullable(false);
+            $table->string('applicant_middle_initial', 10)->nullable(false);
             $table->string('applicant_suffix', 50)->default('');
 
             // Facts of Birth

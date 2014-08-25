@@ -6,9 +6,9 @@
 
 @section('content')
 <div class="col-md-10">
-    <div class="logo-app-form">
-        <center>{{ HTML::image('img/logo-app-form.png') }}</center>
-    </div>
+<!--    <div class="logo-app-form">-->
+<!--        <center>{{ HTML::image('img/logo-app-form.png') }}</center>-->
+<!--    </div>-->
 
     <!--<form class="form-horizontal" role="form">-->
     {{ Form::open(['url' => 'validate-inputs', 'files' => true, 'class' => 'form-horizontal', 'role' => 'form', 'id' => 'applicant-form']) }}

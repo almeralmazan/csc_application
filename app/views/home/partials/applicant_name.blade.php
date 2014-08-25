@@ -17,8 +17,14 @@
         <input type="text" class="form-control" name="applicant_middle_name" value="{{ e(Input::old('applicant_middle_name')) }}" placeholder="Middle Name">
         <span class="alert-danger">{{ $errors->first('applicant_middle_name') }}</span>
     </div>
-    <div class="col-md-3 applicant-name">
-        <input type="text" class="form-control" name="applicant_suffix" value="{{ e(Input::old('applicant_suffix')) }}" placeholder="Suffix ex. Jr, Sr (Optional)">
+
+    <div class="col-md-1 applicant-name">
+        <input type="text" class="form-control" name="applicant_middle_name" value="" placeholder="Mi">
+        <span class="alert-danger">{{ $errors->first('applicant_middle_initial') }}</span>
+    </div>
+
+    <div class="col-md-2 applicant-name">
+        <input type="text" class="form-control" name="applicant_suffix" value="{{ e(Input::old('applicant_suffix')) }}" placeholder="Suffix">
         <span class="alert-danger">{{ $errors->first('applicant_suffix') }}</span>
     </div>
 </div>
