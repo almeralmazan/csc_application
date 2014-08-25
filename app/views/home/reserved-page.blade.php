@@ -77,17 +77,31 @@
             </div>
 
             <div class="row margin-top">
-                <div class="col-md-6">
-                    <p class="btn-continue">
-                        {{ HTML::link('/', 'Go back to Main Website', ['class' => 'btn btn-success btn-block btn-lg', 'role' => 'button']) }}
-                    </p>
+
+                <div class="row">
+                    <div class="col-md-12 hidden-print">
+                        <p class="btn-continue">
+
+                            {{ Form::open(['url' => 'buy-with-paypal', 'method' => 'GET', 'class' => 'text-center']) }}
+                            {{ Form::hidden('controlNumber', $applicant->controlno) }}
+
+                            <a href="{{ URL::to('/') }}" class="btn btn-success btn-lg" role="button">
+                                Go back to Main Website
+                            </a>
+
+                            {{ Form::submit('Save and Proceed to Payment', ['class' => 'btn btn-primary btn-lg']) }}
+                            {{ Form::close() }}
+                        </p>
+
+                        <div class="text-center">
+                            <a class="btn btn-default btn-lg" role="button" onclick="window.print()">
+                                <span class="glyphicon glyphicon-print"></span> print
+                            </a>
+                        </div>
+
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    {{ Form::open(['url' => 'buy-with-paypal', 'method' => 'GET']) }}
-                        {{ Form::hidden('controlNumber', $applicant->controlno) }}
-                        {{ Form::submit('Save and Proceed to Payment', ['class' => 'btn btn-primary btn-lg btn-block']) }}
-                    {{ Form::close() }}
-                </div>
+
             </div>
         </div>
     </div>
