@@ -56,7 +56,13 @@ class HomeController extends BaseController {
     public function deniedApplicant()
     {
         $title = 'Denied Applicant Page';
-        return View::make('home.denied-applicant', compact('title'));
+
+        $cities_and_provinces = CityProvince::all();
+        $locations = TestingCenter::all();
+        $requirements = Requirement::all();
+
+        return View::make('home.denied-applicant',
+            compact('title', 'cities_and_provinces', 'locations', 'requirements'));
     }
 
     public function payment()
