@@ -53,6 +53,12 @@ class HomeController extends BaseController {
         return Applicant::getAllPassedApplicants();
     }
 
+    public function deniedApplicant()
+    {
+        $title = 'Denied Applicant Page';
+        return View::make('home.denied-applicant', compact('title'));
+    }
+
     public function payment()
     {
         $title = 'Payment';

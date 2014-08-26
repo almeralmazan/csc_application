@@ -38,6 +38,13 @@
         <div class="panel panel-default">
             <div class="panel-heading">
                 <h4 class="panel-title">
+                    <a href="/denied-applicant" class="{{ set_active('denied-applicant') }}">Denied Applicant</a>
+                </h4>
+            </div>
+        </div>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
                     <a href="/payment-paypal" class="{{ set_active_accordion_link('payment-paypal') }}">PayPal</a>
                 </h4>
             </div>

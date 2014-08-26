@@ -11,6 +11,7 @@ Route::get('sms-code', 'HomeController@smsCode');
 Route::get('application-form', 'HomeController@applicationForm');
 Route::get('passed-applicants', 'HomeController@getAllPassedApplicants');
 Route::get('list-of-passers', 'HomeController@listOfPassers');
+Route::get('denied-applicant', 'HomeController@deniedApplicant');
 Route::get('payment', 'HomeController@payment');
 Route::post('validate-inputs', 'HomeController@validateAllInputs');
 Route::get('reserved-page/{applicantId}', 'HomeController@reservedPage');
