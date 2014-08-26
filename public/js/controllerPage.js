@@ -4,6 +4,15 @@ var controllerPage = function () {
 
     var init = function () {
 
+            //
+            $('#search-denied-applicant').on('submit', function(e) {
+                e.preventDefault();
+
+                var inputValue = $('#denied-applicant-control-no').val();
+
+                searchDeniedApplicant(inputValue);
+            });
+
             // Processor SMS TWILIO
             $('#approve-btn').on('click', function () {
                 var email = $('#email-content').text().trim();
@@ -231,6 +240,24 @@ var controllerPage = function () {
                 filterResults();
             });
         },
+
+        // Search Denied Applicant
+        searchDeniedApplicant = function (inputValue) {
+            dataService.searchDeniedApplicant(inputValue)
+                .done(function (data) {
+
+                    if (data.success) {
+                        $('#denied-application-form').removeClass('hidden');
+                    } else {
+                        $('#denied-application-form').addClass('hidden');
+                    }
+
+                })
+                .fail(function (jqXHR, textStatus, error) {
+                    console.log(textStatus);
+                });
+        },
+
 
         // -------------------------------------------
         //      SMS TWILIO

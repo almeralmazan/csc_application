@@ -8,17 +8,22 @@
 <div class="col-md-10">
     <div class="row">
         <div class="col-md-5 col-md-offset-3 well margin-top">
-            <form class="form-inline" role="form">
+
+            {{ Form::open(['id' => 'search-denied-applicant', 'class' => 'form-inline', 'role' => 'form']) }}
                 <div class="form-group">
-                    <input type="email" class="form-control" placeholder="Control Number" style="width: 280px;">
+                    <input type="text" id="denied-applicant-control-no" class="form-control" placeholder="Control Number" style="width: 280px;">
                 </div>
-                <button type="submit" class="btn btn-primary">Proceed</button>
-            </form>
+
+                <button type="submit" class="btn btn-primary">
+                    Proceed
+                </button>
+            {{ Form::close() }}
+
         </div>
     </div>
 </div>
 
-<div class="col-md-10" id="application-form">
+<div class="col-md-10 hidden" id="denied-application-form">
     <!--<form class="form-horizontal" role="form">-->
     {{ Form::open(['url' => 'validate-inputs', 'files' => true, 'class' => 'form-horizontal', 'role' => 'form', 'id' => 'applicant-form']) }}
 

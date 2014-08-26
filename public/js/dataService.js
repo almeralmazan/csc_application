@@ -123,6 +123,10 @@ var dataService = function () {
             type: 'get',
             data: $('#results-form').serialize()
         });
+    },
+
+    searchDeniedApplicant = function(controlNumber) {
+        return $.getJSON(urlBase + '/search-denied-applicant/' + controlNumber);
     };
 
     return {
@@ -144,6 +148,7 @@ var dataService = function () {
         adminUpdateToFailedStatus: adminUpdateToFailedStatus,
         updateToPaidStatus: updateToPaidStatus,
         adminUpdateToPaidStatus: adminUpdateToPaidStatus,
-        filterResults: filterResults
+        filterResults: filterResults,
+        searchDeniedApplicant: searchDeniedApplicant
     };
 }();

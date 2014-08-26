@@ -21,6 +21,11 @@ Route::post('admin/login', 'AdminController@verifyLogin');
 Route::get('processor/login', 'ProcessorController@loginPage');
 Route::post('processor/login', 'ProcessorController@verifyLogin');
 
+/*
+ * Search Denied Applicant
+ */
+Route::get('search-denied-applicant/{controlNumber}', 'HomeController@searchDeniedApplicant');
+
 
 // Processor Pages
 Route::group(['before' => 'processor', 'prefix' => 'processor'], function() {

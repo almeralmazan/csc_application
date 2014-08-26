@@ -65,6 +65,22 @@ class HomeController extends BaseController {
             compact('title', 'cities_and_provinces', 'locations', 'requirements'));
     }
 
+    public function searchDeniedApplicant($controlNumber)
+    {
+        $applicant = Applicant::where('controlno', $controlNumber)->where('applicant_status', 0)->first();
+
+        if ( ! is_null($applicant) )
+        {
+            return Response::json([
+                'success'   =>  true
+            ]);
+        }
+
+        return Response::json([
+            'success'   =>  false
+        ]);
+    }
+
     public function payment()
     {
         $title = 'Payment';
