@@ -29,6 +29,6 @@
                 </div>
             </div>
         </div>
-        <a data-toggle="modal" href="#modal-available-schedules" id="btn-add-schedule" class="btn btn-default btn-sm">Add schedule</a>
+        <a data-toggle="modal" href="#modal-available-schedules" id="btn-add-schedule" class="disabled btn btn-default btn-sm">Add schedule</a>
     </div>
 </div>

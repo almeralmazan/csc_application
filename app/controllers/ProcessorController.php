@@ -178,10 +178,11 @@ class ProcessorController extends BaseController {
                         ->first();
 
         // Delete applicant
-        DB::table('applicants')->where('id', $applicant->id)->delete();
+//        DB::table('applicants')->where('id', $applicant->id)->delete();
+        DB::table('applicants')->where('id', $applicant->id)->update(['applicant_status' => 0]);
 
         // Delete payments of applicant
-        DB::table('payments')->where('applicant_id', $applicant->id)->delete();
+//        DB::table('payments')->where('applicant_id', $applicant->id)->delete();
 
 
         $reasons = '';

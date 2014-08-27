@@ -8,7 +8,7 @@
                 <label for="csid-no">CSID #</label>
             </div>
             <div class="col-md-3">
-                <input type="text" class="form-control" id="csid-no" name="csid_no" placeholder="Ex. 1000-0-1">
+                <input disabled type="text" class="form-control" id="csid-no" name="csid_no" placeholder="Ex. 1000-0-1">
             </div>
         </div>
         <div class="row form-category-row">
@@ -16,7 +16,7 @@
                 <label for="exam-mode">Exam mode <span class="required">*</span></label>
             </div>
             <div class="col-md-3">
-                <select id="exam-mode" name="new_exam_mode" class="form-control">
+                <select disabled id="exam-mode" name="new_exam_mode" class="form-control">
                     <option value="empty" selected>-- Select Exam Mode --</option>
                     <option value="ppt">Paper-and-Pencil Test (PPT)</option>
                     <option value="cat">Computer-Assisted Test (CAT)</option>
@@ -29,7 +29,7 @@
                 <label for="exam-level">Exam level <span class="required">*</span></label>
             </div>
             <div class="col-md-3 exam-level">
-                <select id="exam-level" name="new_exam_level" class="form-control">
+                <select disabled id="exam-level" name="new_exam_level" class="form-control">
                     <option value="empty" selected>-- Select Exam Level --</option>
                     <option value="Sub Pro">CSE - Sub professional</option>
                     <option value="Professional">CSE - Professional</option>
@@ -50,7 +50,7 @@
                 <label for="testing-center-location">Testing Centers <span class="required">*</span></label>
             </div>
             <div class="col-md-3">
-                <select class="form-control" id="testing-center-location" name="testing_centers_location">
+                <select disabled class="form-control" id="testing-center-location" name="testing_centers_location">
                     <option value="empty" selected>-- Select Testing Centers --</option>
                     @foreach ($locations as $loc)
                         <option value="{{ $loc->id }}">{{ $loc->location }}</option>
@@ -104,7 +104,7 @@
                 <label for="exam-mode">Exam Level</label>
             </div>
             <div class="col-md-3 exam-level">
-                <select class="form-control" name="previous_exam_level">
+                <select disabled id="previous-exam-level" class="form-control" name="previous_exam_level">
                     <option value="empty" selected>-- Select Exam Level --</option>
                     <option value="previous_subpro">CSE - Sub professional</option>
                     <option value="previous_pro">CSE - Professional</option>
@@ -117,7 +117,7 @@
             </div>
             <div class="col-md-3">
                 <div class="input-group date form_date col-md-12" data-date="{{ date('Y-m-d') }}" data-date-format="yyyy-mm-dd" data-link-field="dtp_input3">
-                    <input  name="previous_date_exam" class="form-control" size="16" type="text" value="{{ e(Input::old('previous_date_exam')) }}" readonly>
+                    <input disabled id="previous-date-exam" name="previous_date_exam" class="form-control" size="16" type="text" value="{{ e(Input::old('previous_date_exam')) }}" readonly>
                     <span class="input-group-addon"><span class="glyphicon glyphicon-calendar"></span></span>
                 </div>
             </div>

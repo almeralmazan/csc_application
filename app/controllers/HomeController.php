@@ -53,6 +53,113 @@ class HomeController extends BaseController {
         return Applicant::getAllPassedApplicants();
     }
 
+    public function deniedApplicant()
+    {
+        $title = 'Denied Applicant Page';
+
+        $cities_and_provinces = CityProvince::all();
+        $locations = TestingCenter::all();
+        $requirements = Requirement::all();
+
+        return View::make('home.denied-applicant',
+            compact('title', 'cities_and_provinces', 'locations', 'requirements'));
+    }
+
+    public function searchDeniedApplicant($fullName)
+    {
+        $name = explode(' ', $fullName);
+        $firstName = $name[0];
+        $lastName = $name[1];
+
+        $applicant = Applicant::where('applicant_first_name', $firstName)
+                        ->where('applicant_last_name', $lastName)
+                        ->where('applicant_status', 0)
+                        ->first();
+
+        // Store applicant id into session
+
+        if ( ! is_null($applicant) )
+        {
+            Session::put('applicantId', $applicant->id);
+
+            return Response::json([
+                'success'   =>  true,
+                'applicant' =>  $applicant->toArray()
+            ]);
+        }
+
+        return Response::json([
+            'success'   =>  false
+        ]);
+    }
+
+    public function updateInfo()
+    {
+        $validation = Validator::make(Input::all(), Applicant::$rules, Applicant::$messages);
+
+        if ($validation->fails())
+        {
+            return Redirect::back()->withInput()->withErrors($validation->messages());
+        }
+        else
+        {
+            // Applicant Picture File upload
+            $applicantPictureImage  = Input::file('applicant_picture');
+            $applicantPicFileName   = date('Y-m-d-') . $applicantPictureImage->getClientOriginalName();
+
+            // First Requirement Image
+            $firstRequirementImage      = Input::file('first_requirement_image');
+            $firstRequirementFileName   = date('Y-m-d-') . $firstRequirementImage->getClientOriginalName();
+
+            // Second Requirement Image
+            $secondRequirementImage     = Input::file('second_requirement_image');
+            $secondRequirementFileName  = date('Y-m-d-') . $secondRequirementImage->getClientOriginalName();
+
+
+            $destinationPath        = public_path() . '/img/applicants';
+            $applicantPictureImage->move($destinationPath, $applicantPicFileName);
+            $firstRequirementImage->move($destinationPath, $firstRequirementFileName);
+            $secondRequirementImage->move($destinationPath, $secondRequirementFileName);
+
+            $applicantId = Session::get('applicantId');
+
+            Applicant::where('id', $applicantId)->update([
+                'applicant_last_name'           =>  Input::get('applicant_last_name'),
+                'applicant_first_name'          =>  Input::get('applicant_first_name'),
+                'applicant_middle_name'         =>  Input::get('applicant_middle_name'),
+                'applicant_middle_initial'      =>  Input::get('applicant_middle_initial'),
+                'applicant_suffix'              =>  Input::get('applicant_suffix'),
+                'gender'                        =>  Input::get('gender'),
+                'date_of_birth'                 =>  Input::get('date_of_birth'),
+                'place_of_birth'                =>  Input::get('place_of_birth'),
+                'maiden_last_name'              =>  Input::get('maiden_last_name'),
+                'maiden_first_name'             =>  Input::get('maiden_first_name'),
+                'maiden_middle_name'            =>  Input::get('maiden_middle_name'),
+                'address'                       =>  Input::get('address'),
+                'citizenship'                   =>  Input::get('citizenship'),
+                'civil_status'                  =>  Input::get('civil_status'),
+                'mobile_number'                 =>  Input::get('mobile_number'),
+                'phone_number'                  =>  Input::get('phone_number'),
+                'email'                         =>  Input::get('email'),
+                'csid_no'                       =>  Input::get('csid_no'),
+                'new_exam_mode'                 =>  Input::get('new_exam_mode'),
+                'new_exam_level'                =>  Input::get('new_exam_level'),
+                'testing_centers_location_id'   =>  Input::get('testing_centers_location'),
+                'schedule_date_start'           =>  Input::get('schedule_date_start'),
+                'schedule_time_start'           =>  Input::get('schedule_time_start'),
+                'schedule_time_end'             =>  Input::get('schedule_time_end'),
+                'previous_exam_level'           =>  Input::get('previous_exam_level'),
+                'previous_date_exam'            =>  Input::get('previous_date_exam'),
+                'applicant_picture'             =>  $applicantPicFileName,
+                'requirement_type_1'            =>  Input::get('requirement_type_1'),
+                'requirement_image_1'           =>  $firstRequirementFileName,
+                'requirement_type_2'            =>  Input::get('requirement_type_2'),
+                'requirement_image_2'           =>  $secondRequirementFileName
+            ]);
+
+        }
+    }
+
     public function payment()
     {
         $title = 'Payment';
@@ -128,6 +235,7 @@ class HomeController extends BaseController {
             $applicant->applicant_last_name       =  Input::get('applicant_last_name');
             $applicant->applicant_first_name      =  Input::get('applicant_first_name');
             $applicant->applicant_middle_name     =  Input::get('applicant_middle_name');
+            $applicant->applicant_middle_initial  =  Input::get('applicant_middle_initial');
             $applicant->applicant_suffix          =  Input::get('applicant_suffix');
             $applicant->gender                    =  Input::get('gender');
             $applicant->date_of_birth             =  Input::get('date_of_birth');

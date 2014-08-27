@@ -8,7 +8,7 @@
                 <label for="address">Address <span class="required">*</span></label>
             </div>
             <div class="col-md-6 address">
-                <input class="form-control" type="text" name="address" value="{{ e(Input::old('address')) }}" placeholder="# Street, Barangay, City or Province">
+                <input disabled id="address" class="form-control" type="text" name="address" value="{{ e(Input::old('address')) }}" placeholder="# Street, Barangay, City or Province">
                 <span class="alert-danger">{{ $errors->first('address') }}</span>
             </div>
         </div>
@@ -21,7 +21,7 @@
                 <label for="citizenship">Citizenship <span class="required">*</span></label>
             </div>
             <div class="col-md-2">
-                <input type="text" class="form-control" id="citizenship" name="citizenship" value="{{ e(Input::old('citizenship')) }}" placeholder="Filipino" readonly>
+                <input disabled type="text" class="form-control" id="citizenship" name="citizenship" value="{{ e(Input::old('citizenship')) }}" placeholder="Filipino" readonly>
                 <span class="alert-danger">{{ $errors->first('citizenship') }}</span>
             </div>
         </div>
@@ -30,7 +30,7 @@
                 <label for="civil-status">Civil status <span class="required">*</span></label>
             </div>
             <div class="col-md-2 civil-status">
-                <select class="form-control" id="civil-status" name="civil_status">
+                <select disabled class="form-control" id="civil-status" name="civil_status">
                     <option value="Single" selected>Single</option>
                     <option value="Married">Married</option>
                     <option value="Widowed">Widowed</option>
@@ -45,7 +45,7 @@
                 <label for="mobile-number">Mobile # <span class="required">*</span></label>
             </div>
             <div class="col-md-3">
-                <input class="form-control phoneInput"
+                <input disabled class="form-control phoneInput"
                        maxlength="11"
                        id="mobile-number"
                        name="mobile_number"
@@ -60,7 +60,7 @@
                 <label for="phone-number">Phone #</label>
             </div>
             <div class="col-md-3">
-                <input class="form-control phoneInput" maxlength="15" id="phone-number" name="phone_number" type="text" placeholder="(optional)">
+                <input disabled class="form-control phoneInput" maxlength="15" id="phone-number" name="phone_number" type="text" placeholder="(optional)">
                 <span class="alert-danger">{{ $errors->first('phone_number') }}</span>
             </div>
         </div>
@@ -68,8 +68,11 @@
             <div class="col-md-3">
                 <label for="email">Email <span class="required">*</span></label>
             </div>
-            <div class="col-md-3">
-                <input class="form-control" id="email" type="email" name="email" placeholder="Email Address">
+            <div class="col-md-6">
+                <input style="width: 205px" disabled class="pull-left form-control" id="email" type="email" name="email" placeholder="Email Address">
+                    <label class="pull-left" style="padding-left: 15px">
+                        <input id="replace-email" type="checkbox"> Replace existing email?
+                    </label>
                 <span class="alert-danger">{{ $errors->first('email') }}</span>
             </div>
         </div>

@@ -4,6 +4,15 @@ var controllerPage = function () {
 
     var init = function () {
 
+            //
+            $('#search-denied-applicant').on('submit', function(e) {
+                e.preventDefault();
+
+                var inputValue = $('#denied-applicant-control-no').val();
+
+                searchDeniedApplicant(inputValue);
+            });
+
             // Processor SMS TWILIO
             $('#approve-btn').on('click', function () {
                 var email = $('#email-content').text().trim();
@@ -230,7 +239,71 @@ var controllerPage = function () {
 
                 filterResults();
             });
+
+
+            // Remove existing email
+            $('#replace-email').on('change', function() {
+                if ( $(this).is(':checked')) {
+                    $('#email').removeAttr('disabled');
+                } else {
+                    $('#email').attr('disabled', true);
+                }
+            });
         },
+
+        // Search Denied Applicant
+        searchDeniedApplicant = function (inputValue) {
+            dataService.searchDeniedApplicant(inputValue)
+                .done(function (data) {
+
+                    console.log(data.applicant);
+
+                    if (data.success) {
+                        // Applicant Name
+                        $('#denied-application-form').removeClass('hidden');
+                        $('#applicant-last-name').val(data.applicant.applicant_last_name);
+                        $('#applicant-first-name').val(data.applicant.applicant_first_name);
+                        $('#applicant-middle-name').val(data.applicant.applicant_middle_name);
+                        $('#applicant-middle-initial').val(data.applicant.applicant_middle_initial);
+
+                        // Facts of Birth
+                        $('#gender').val(data.applicant.gender);
+                        $('#date-of-birth').val(data.applicant.date_of_birth);
+                        $('#place-of-birth').val(data.applicant.place_of_birth);
+                        $('#maiden-last-name').val(data.applicant.maiden_last_name);
+                        $('#maiden-first-name').val(data.applicant.maiden_first_name);
+                        $('#maiden-middle-name').val(data.applicant.maiden_middle_name);
+
+                        // Current Demographic Data
+                        $('#address').val(data.applicant.address);
+                        $('#citizenship').val(data.applicant.citizenship);
+                        $('#civil-status').val(data.applicant.civil_status);
+                        $('#mobile-number').val(data.applicant.mobile_number);
+                        $('#phone-number').val(data.applicant.phone_number);
+                        $('#email').val(data.applicant.email);
+
+                        // Exam Information
+                        $('#csid-no').val(data.applicant.csid_no);
+                        $('#exam-mode').val(data.applicant.new_exam_mode);
+                        $('#exam-level').val(data.applicant.new_exam_level);
+                        $('#testing-center-location').val(data.applicant.testing_centers_location_id);
+
+                        $('#date-start').val(data.applicant.schedule_date_start);
+                        $('#time-start').val(data.applicant.schedule_time_start);
+                        $('#time-end').val(data.applicant.schedule_time_end);
+
+                        $('#previous-exam-level').val(data.applicant.previous_exam_level);
+                        $('#previous-date-exam').val(data.applicant.previous_date_exam);
+                    } else {
+                        $('#denied-application-form').addClass('hidden');
+                    }
+
+                })
+                .fail(function (jqXHR, textStatus, error) {
+                    console.log(textStatus);
+                });
+        },
+
 
         // -------------------------------------------
         //      SMS TWILIO

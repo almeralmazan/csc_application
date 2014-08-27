@@ -11,6 +11,8 @@ Route::get('sms-code', 'HomeController@smsCode');
 Route::get('application-form', 'HomeController@applicationForm');
 Route::get('passed-applicants', 'HomeController@getAllPassedApplicants');
 Route::get('list-of-passers', 'HomeController@listOfPassers');
+Route::get('denied-applicant', 'HomeController@deniedApplicant');
+Route::post('update-info', 'HomeController@updateInfo');
 Route::get('payment', 'HomeController@payment');
 Route::post('validate-inputs', 'HomeController@validateAllInputs');
 Route::get('reserved-page/{applicantId}', 'HomeController@reservedPage');
@@ -19,6 +21,11 @@ Route::get('admin/login', 'AdminController@loginPage');
 Route::post('admin/login', 'AdminController@verifyLogin');
 Route::get('processor/login', 'ProcessorController@loginPage');
 Route::post('processor/login', 'ProcessorController@verifyLogin');
+
+/*
+ * Search Denied Applicant
+ */
+Route::get('search-denied-applicant/{fullName}', 'HomeController@searchDeniedApplicant');
 
 
 // Processor Pages
