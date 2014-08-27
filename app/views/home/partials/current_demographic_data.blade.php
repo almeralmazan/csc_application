@@ -68,8 +68,11 @@
             <div class="col-md-3">
                 <label for="email">Email <span class="required">*</span></label>
             </div>
-            <div class="col-md-3">
-                <input disabled class="form-control" id="email" type="email" name="email" placeholder="Email Address">
+            <div class="col-md-6">
+                <input style="width: 205px" disabled class="pull-left form-control" id="email" type="email" name="email" placeholder="Email Address">
+                    <label class="pull-left" style="padding-left: 15px">
+                        <input id="replace-email" type="checkbox"> Replace existing email?
+                    </label>
                 <span class="alert-danger">{{ $errors->first('email') }}</span>
             </div>
         </div>

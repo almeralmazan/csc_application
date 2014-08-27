@@ -239,6 +239,16 @@ var controllerPage = function () {
 
                 filterResults();
             });
+
+
+            // Remove existing email
+            $('#replace-email').on('change', function() {
+                if ( $(this).is(':checked')) {
+                    $('#email').removeAttr('disabled');
+                } else {
+                    $('#email').attr('disabled', true);
+                }
+            });
         },
 
         // Search Denied Applicant
