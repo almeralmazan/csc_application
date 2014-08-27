@@ -11,7 +11,7 @@
 
             {{ Form::open(['id' => 'search-denied-applicant', 'class' => 'form-inline', 'role' => 'form']) }}
                 <div class="form-group">
-                    <input type="text" id="denied-applicant-control-no" class="form-control" placeholder="Control Number" style="width: 280px;">
+                    <input type="text" id="denied-applicant-control-no" class="form-control" placeholder="First and Last Name" style="width: 280px;">
                 </div>
 
                 <button type="submit" class="btn btn-primary">
