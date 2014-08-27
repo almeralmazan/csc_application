@@ -12,6 +12,7 @@ Route::get('application-form', 'HomeController@applicationForm');
 Route::get('passed-applicants', 'HomeController@getAllPassedApplicants');
 Route::get('list-of-passers', 'HomeController@listOfPassers');
 Route::get('denied-applicant', 'HomeController@deniedApplicant');
+Route::post('update-info', 'HomeController@updateInfo');
 Route::get('payment', 'HomeController@payment');
 Route::post('validate-inputs', 'HomeController@validateAllInputs');
 Route::get('reserved-page/{applicantId}', 'HomeController@reservedPage');
@@ -24,7 +25,7 @@ Route::post('processor/login', 'ProcessorController@verifyLogin');
 /*
  * Search Denied Applicant
  */
-Route::get('search-denied-applicant/{controlNumber}', 'HomeController@searchDeniedApplicant');
+Route::get('search-denied-applicant/{fullName}', 'HomeController@searchDeniedApplicant');
 
 
 // Processor Pages

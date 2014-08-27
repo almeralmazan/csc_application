@@ -125,8 +125,8 @@ var dataService = function () {
         });
     },
 
-    searchDeniedApplicant = function(controlNumber) {
-        return $.getJSON(urlBase + '/search-denied-applicant/' + controlNumber);
+    searchDeniedApplicant = function(fullName) {
+        return $.getJSON(urlBase + '/search-denied-applicant/' + fullName);
     };
 
     return {

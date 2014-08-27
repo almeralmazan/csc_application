@@ -25,7 +25,7 @@
 
 <div class="col-md-10 hidden" id="denied-application-form">
     <!--<form class="form-horizontal" role="form">-->
-    {{ Form::open(['url' => 'validate-inputs', 'files' => true, 'class' => 'form-horizontal', 'role' => 'form', 'id' => 'applicant-form']) }}
+    {{ Form::open(['url' => 'update-info', 'files' => true, 'class' => 'form-horizontal', 'role' => 'form', 'id' => 'applicant-form']) }}
 
     <!--  Applicant Name -->
     @include('home.partials.applicant_name')
@@ -45,7 +45,7 @@
     <!-- Save Button -->
     <div class="row">
         <div class="col-md-offset-3 col-md-6">
-            {{ Form::submit('Save Now', ['class' => 'btn btn-success btn-lg btn-block']) }}
+            {{ Form::submit('Update Info', ['class' => 'btn btn-success btn-lg btn-block']) }}
         </div>
     </div>
 

@@ -12,7 +12,7 @@
                 <span class="text-right">
                     <!-- Applicant Status -->
                     @if ($applicant->applicant_status == 0)
-                        <span class="label label-danger">Disapprove</span>
+                        <span class="label label-danger">Denied</span>
                     @elseif ($applicant->applicant_status == 1)
                         <span class="label label-success">Approve</span>
                     @else
@@ -81,7 +81,7 @@
                             <div class="col-md-12 text-center">
                                 <button id="approve-btn" class="btn btn-success">Approve</button>
                                 <button id="disapprove-btn" class="btn btn-warning" data-toggle="modal" data-target="#myModal-disapproved">
-                                    Disapprove
+                                    Deny
                                 </button>
                                 <button id="paid-btn" class="btn btn-info">Paid</button>
                                 <button id="passed-btn" class="btn btn-success">Passed</button>
